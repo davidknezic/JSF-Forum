@@ -31,6 +31,11 @@ public class ReplyModel {
 	private int userId;
 
 	/**
+	 * The user
+	 */
+	private UserModel user;
+
+	/**
 	 * The reply content
 	 */
 	private String content;
@@ -201,23 +206,14 @@ public class ReplyModel {
 	}
 
 	/**
-	 * Get parent reply
-	 * 
-	 * @return ReplyModel
-	 * @throws Throwable
-	 */
-	public ReplyModel getReply() throws Throwable {
-		return new ReplyModel(this.replyId);
-	}
-
-	/**
 	 * Get user
 	 * 
 	 * @return UserModel
 	 * @throws Throwable
 	 */
 	public UserModel getUser() throws Throwable {
-		return new UserModel(this.userId);
+		if(this.user == null) this.user = new UserModel(this.userId);
+		return this.user;
 	}
 
 }
