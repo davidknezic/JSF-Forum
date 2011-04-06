@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+	<servlet>
+
+		<servlet-name>FacesServlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+
+    </servlet>
+
+	<servlet-mapping>
+
+        <servlet-name>FacesServlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+
+    </servlet-mapping>
+
+    <!-- TODO: Custom 404 page -->
+    <!--<error-page>
+
+        <error-code>404</error-code>
+        <location>/404.xhtml</location>
+
+    </error-page>-->
+
+    <!-- Catch everything throwable -->
+    <error-page>
+
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/exception.xhtml</location>
+
+    </error-page>
+    
+    <welcome-file-list>
+
+        <welcome-file>index.xhtml</welcome-file>
+
+    </welcome-file-list>
+
+    <context-param>
+
+        <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+        <param-value>true</param-value>
+
+    </context-param>
+
+</web-app>

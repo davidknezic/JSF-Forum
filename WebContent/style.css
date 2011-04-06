@@ -1,0 +1,156 @@
+body {
+	font-family: Verdana, "Sans Serif";
+	margin: 0;
+	font-size: 12px;
+}
+
+a {
+	outline: none;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#top {
+	height: 44px;
+	background: url(Bilder/top_head.png) left top repeat-x;
+}
+
+#head {
+	background: url(Bilder/top_head.png) left bottom repeat-x;
+	height: 134px;
+}
+
+#head h1 {
+	margin: 0;
+}
+
+#navi {
+	height: 45px;
+	background: url(Bilder/navi.png) left bottom repeat-x;
+}
+
+#navi ul {
+	padding: 0;
+	margin: 0 auto;
+	width: 1000px;
+	list-style-type: none;
+}
+
+#navi li {
+	float: left;
+	height: 45px;
+	display: block;
+	background: url(Bilder/navi.png) left bottom repeat-x;
+}
+
+#navi li:hover {
+	background-position: left top;
+}
+
+#navi li a {
+	font-weight: bold;
+	display: block;
+	color: white;
+	padding: 15px 25px 0 25px;
+	height: 30px;
+	text-decoration: none;
+	text-shadow: #232323 -1px -1px 0;
+}
+
+#navi li:hover a {
+	text-shadow: #0e6fb4 -1px -1px 0;
+}
+
+#subnavi {
+	height: 25px;
+	background: url(Bilder/subnavi.png) top left repeat-x;
+}
+
+#content {
+	margin: 0 auto;
+	width: 880px;
+}
+
+.block h2 {
+	background-image: url(Bilder/title.png);
+	color: white;
+	text-decoration: none;
+	text-shadow: #1571b2 -1px -1px 0;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 37px;
+	height: 37px;
+	width: 880px;
+	padding: 0 10px;
+	margin: 25px 0 0 0;
+}
+
+.block table {
+	width: 900px;
+}
+
+.block table th {
+	background-image: url(Bilder/table_head.png); 
+	text-align: left;
+	height: 26px;
+	line-height: 26px;
+	color: #6c6c6c;
+	font-weight: bold;
+	font-size: 11px;
+	text-shadow: white 1px 1px 0;
+}
+
+.block table td {
+	padding: 5px 0;
+	background-color: #efefef;
+	border-top: 1px solid white;
+	color: #969292;
+	text-shadow: white 1px 1px 0;
+	font-size: 10px;
+	line-height: 14px;
+}
+
+.block table td h3, .block table td h3 a {
+	font-size: 12px;
+	font-weight: bold;
+	color: #0273c1;
+}
+
+.block table .left {
+	padding-left: 10px;
+	width: 475px;
+}
+
+.block table .center {
+	padding-left: 5px;
+	width: 200px;
+	line-height: 16px;
+	vertical-align: middle;
+}
+
+.block table .right {
+	padding-right: 10px;
+	padding-left: 5px;
+	width: 195px;
+	line-height: 16px;
+}
+
+.firstHeading {
+	padding-left: 5px;
+}
+
+.block table .replyLeft {
+	padding-left: 10px;
+	padding-right: 10px;
+	border-right: 1px solid white;
+	width: 200px;
+}
+
+.block table .replyRight {
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 659px;
+}

@@ -1,0 +1,16 @@
+# Files and folders to ignore
+
+# Files and folders created by Eclipse
+.classpath
+.project
+.settings/
+
+# Build files
+build/
+
+# The META-INF folder
+WebContent/META-INF/
+
+# The lib folder and its .jar files
+WebContent/WEB-INF/lib/
+

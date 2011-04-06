@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>JSF Forum<ui:insert name="title" /></title>
+    <link href="reset.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+</h:head>
+<h:body>  
+	<div id="top" >
+		<ui:insert name="top" >
+			top
+		</ui:insert>
+	</div>
+
+	<div id="head">
+		<h1>Forum</h1>
+	</div>
+	
+	<div id="navi" >
+		<ul>
+			<li>
+				<h:outputLink value="index.xhtml" ><h:outputText value="#{msgs.home}" /></h:outputLink>
+			</li>
+			<li>
+				<h:outputLink value="forum.xhtml" ><h:outputText value="#{msgs.forum}" /></h:outputLink>
+			</li>
+			<li>
+				<h:outputLink value="#" ><h:outputText value="#{msgs.downloads}" /></h:outputLink>
+			</li>
+			<li>
+				<h:outputLink value="#" ><h:outputText value="#{msgs.member}" /></h:outputLink>
+			</li>
+		</ul>
+		<div style="clear: both;" ></div>
+	</div>
+	
+	<div id="subnavi" ></div>
+	
+	<div id="content">
+		<ui:insert name="content"/>
+	</div>
+	
+	<div id="footer">
+		<h:outputText value="Copyright (c) 2011"/>
+	</div>
+
+</h:body>
+</html>  
