@@ -1,0 +1,23 @@
+README
+======
+
+1. Description
+--------------
+JSF-Forum is a small and simple forum written on top of JSF (Java Server Faces).It is developed as a school project.
+
+2. Requirements
+---------------
+In order to run this project you have to make some preparations, which are discussed in the following paragraphs.
+
+The required libraries must be obtained and included into the classpath:
+* jsf-impl.jar (http://javaserverfaces.java.net/)
+* jsf-api.jar (is bundled with jsf-impl.jar)
+* mysql-connector.jar (http://dev.mysql.com/downloads/connector/j/)
+* apache-codec.jar (http://commons.apache.org/codec/)
+* apache-io.jar (http://commons.apache.org/io/)
+* apache-lang.jar (http://commons.apache.org/lang/)
+
+The database tables must be created using the structure.sql file and eventually filled by the statements from content.sql.
+
+The database settings, currently found in src/models/DBConnection.java, must be adjusted.
+
