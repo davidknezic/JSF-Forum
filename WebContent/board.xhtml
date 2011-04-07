@@ -12,7 +12,7 @@
 		<ui:define name="content">
 			   	<div class="block" >
 		   			<h2><h:outputText value="#{boardBean.board.title}" /></h2>
-		   			<h:dataTable value="#{boardBean.threads}" var="thread" columnClasses="left,center,right" >
+		   			<h:dataTable value="#{boardBean.threads}" var="thread" columnClasses="left,center,right" columns="3" class="vmiddle" >
 		   				<h:column>
 		   					<f:facet name="header" >
 		   						<h:outputText value="#{msgs.thread}" styleClass="firstHeading" />
