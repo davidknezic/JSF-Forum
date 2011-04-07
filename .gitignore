@@ -4,6 +4,7 @@
 .classpath
 .project
 .settings/
+WebContent/.tmp_*
 
 # Build files
 build/
