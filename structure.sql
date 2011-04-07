@@ -6,7 +6,7 @@ DROP DATABASE IF EXISTS forum;
 
 CREATE DATABASE forum;
 
-USE test;
+USE forum;
 
 --
 -- user

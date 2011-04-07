@@ -2,7 +2,7 @@
 -- Database content
 --
 
-USE test;
+USE forum;
 
 --
 -- user
