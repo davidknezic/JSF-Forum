@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="title" >
+			:: users
+		</ui:define>
+		<ui:define name="content">
+			   	<div class="block" >
+		   			<h2><h:outputText value="#{msgs.user}" /></h2>
+		   			<table>
+		   				<tr>
+		   					<th><h:outputText value="#{userBean.user.username}" /></th>
+		   				</tr>
+		   				<tr>
+		   					<td><h:outputText value="#{userBean.user.username}" /></td>
+		   				</tr>
+		   				<tr>
+		   					<td><h:graphicImage value="#{userBean.user.avatar}" /></td>
+		   				</tr>
+		   			</table>
+			   	</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
