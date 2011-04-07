@@ -7,6 +7,16 @@ body {
 a {
 	outline: none;
 	text-decoration: none;
+	color: #0273c1;
+	font-weight: bold;
+}
+
+a, a:focus {
+	outline: none;
+}
+
+td {
+	vertical-align: top;
 }
 
 a:hover {
@@ -153,4 +163,14 @@ a:hover {
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 659px;
+}
+
+.reply_username {
+	display: block;
+	text-align: center;
+}
+
+.reply_avatar {
+	display: block;
+	margin: 5px auto;
 }
