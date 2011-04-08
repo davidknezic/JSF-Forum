@@ -254,5 +254,28 @@ public class BoardModel {
 			return 0;
 		}
 	}
+	
+	/**
+	 * Get number of replies in board
+	 * 
+	 * @return int
+	 * @throws Throwable
+	 */
+	public int getReplyCount() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+
+		PreparedStatement stmt = conn
+				.prepareStatement("SELECT COUNT(*) FROM reply r JOIN thread t ON r.threadId = t.threadId WHERE t.boardId = ?");
+		stmt.setInt(1, this.boardId);
+		ResultSet res = stmt.executeQuery();
+
+		if (res.first()) {
+			// Return the reply count
+			return res.getInt(1);
+		} else {
+			// An error occured, return zero
+			return 0;
+		}
+	}
 
 }
