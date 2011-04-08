@@ -278,7 +278,7 @@ public class ThreadModel {
 	 * @return ReplyModel
 	 * @throws Throwable
 	 */
-	public ReplyModel getLastThread() throws Throwable {
+	public ReplyModel getLastReply() throws Throwable {
 		ArrayList<ReplyModel> replies = this.getReplies(0, 1);
 
 		if (replies.size() > 0) {
