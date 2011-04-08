@@ -1,0 +1,20 @@
+TODO
+====
+
+This is a list of tasks to complete in the future. Feel free to extend!
+
+1. High priority
+----------------
+* Implement authentication on controller level (UserModel.authenticate() already available)
+* Enable thread, reply creation (depedent on previous task)
+
+2. Normal priority
+------------------
+* Avoid empty tables without corresponding messages for the end-user
+* Limit the title and content lengths when displaying latest threads, threads and latest replies
+
+3. Low priority
+---------------
+* Optimize performance (caching?)
+* Maybe we could use ORM instead of the current unflexible, hardly maintainable models
+
