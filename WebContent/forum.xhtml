@@ -31,22 +31,33 @@
 			   					</h:outputFormat>
 			   					<br />
 			   					<h:outputFormat value="#{msgs.replies}" >
-			   						<f:param value="TODO" />
+			   						<f:param value="#{board.replyCount}" />
 			   					</h:outputFormat>
 			   				</h:column>
 			   				<h:column>
 			   					<f:facet name="header" >
 			   						<h:outputText value="#{msgs.latestPost}" />
 			   					</f:facet>
-			   					<h:outputFormat value="#{msgs.by}" >
-			   						<f:param value="TODO" />
-			   					</h:outputFormat>
-			   					<br />
-			   					<h:outputFormat value="#{msgs.in}" >
-			   						<f:param value="TODO" />
-			   					</h:outputFormat>
-			   					<br />
-			   					<h:outputText value="TODO" />
+								
+								<h:panelGroup rendered="#{board.lastThread != null}">
+									<h:outputLink value="thread.xhtml?threadId=#{board.lastThread.threadId}" >
+										<h:outputText value="#{board.lastThread.title}" />
+									</h:outputLink>
+									<br />
+									<h:outputLink value="profile.xhtml?userId=#{board.lastThread.user.userId}" >
+					   					<h:outputFormat value="#{msgs.by}" >
+					   						<f:param value="#{board.lastThread.user.username}" />
+					   					</h:outputFormat>
+									</h:outputLink>
+									<h:outputFormat value=" #{msgs.on}" >
+					   						<f:param value="#{board.lastThread.createdOn}" />
+					   					</h:outputFormat>
+								</h:panelGroup>
+								
+								<h:panelGroup rendered="#{board.lastThread == null}">
+									-
+								</h:panelGroup>
+								
 			   				</h:column>
 			   			</h:dataTable>
 			   		</h:column>

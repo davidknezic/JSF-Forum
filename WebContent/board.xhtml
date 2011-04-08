@@ -17,26 +17,50 @@
 		   					<f:facet name="header" >
 		   						<h:outputText value="#{msgs.thread}" styleClass="firstHeading" />
 		   					</f:facet>
-		   					<h3><h:outputLink value="thread.xhtml?threadId=#{thread.threadId}" ><h:outputText value="#{thread.title}" /></h:outputLink></h3>
-		   					<h:outputText value="TODO" />
+		   					<h3>
+			   					<h:outputLink value="thread.xhtml?threadId=#{thread.threadId}" >
+			   						<h:outputText value="#{thread.title}" />
+								</h:outputLink>
+							</h3>
+							<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}" >
+			   					<h:outputFormat value="#{msgs.by}" >
+			   						<f:param value="#{thread.user.username}" />
+			   					</h:outputFormat>
+							</h:outputLink>
+							<h:outputFormat value=" #{msgs.on}" >
+		   						<f:param value="#{thread.createdOn}" />
+		   					</h:outputFormat>
 		   				</h:column>
 		   				<h:column>
 		   					<f:facet name="header" >
 		   						<h:outputText value="#{msgs.stats}" />
 		   					</f:facet>
 		   					<h:outputFormat value="#{msgs.replies}" >
-		   						<f:param value="TODO" />
+		   						<f:param value="#{thread.replyCount}" />
 		   					</h:outputFormat>
 		   				</h:column>
 		   				<h:column>
 		   					<f:facet name="header" >
-		   						<h:outputText value="#{msgs.latestPost}" />
+		   						<h:outputText value="#{msgs.latestReply}" />
 		   					</f:facet>
-		   					<h:outputFormat value="#{msgs.by}" >
-		   						<f:param value="TODO" />
-		   					</h:outputFormat>
-		   					<br />
-		   					<h:outputText value="TODO" />
+							
+							<h:panelGroup rendered="#{thread.lastReply != null}">
+								limited reply content...
+								<br />
+								<h:outputLink value="profile.xhtml?userId=#{thread.lastReply.user.userId}" >
+				   					<h:outputFormat value="#{msgs.by}" >
+				   						<f:param value="#{thread.lastReply.user.username}" />
+				   					</h:outputFormat>
+								</h:outputLink>
+								<h:outputFormat value=" #{msgs.on}" >
+			   						<f:param value="#{thread.lastReply.createdOn}" />
+			   					</h:outputFormat>
+							</h:panelGroup>
+							
+							<h:panelGroup rendered="#{thread.lastReply == null}">
+								-
+							</h:panelGroup>
+							
 		   				</h:column>
 		   			</h:dataTable>
 			   	</div>

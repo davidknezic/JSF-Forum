@@ -21,6 +21,9 @@
 		   					<h:outputLink value="profile.xhtml?userId=#{reply.user.userId}" >
 		   						<h:outputText value="#{reply.user.username}" class="reply_username" />
 		   					</h:outputLink>
+							<h:outputFormat value="#{msgs.on}" >
+		   						<f:param value="#{reply.createdOn}" />
+		   					</h:outputFormat>
 		   				</h:column>
 		   				<h:column>
 		   					<f:facet name="header" >
