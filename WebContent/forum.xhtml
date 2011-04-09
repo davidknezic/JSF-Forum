@@ -48,10 +48,8 @@
 					   					<h:outputFormat value="#{msgs.by}" >
 					   						<f:param value="#{board.lastThread.user.username}" />
 					   					</h:outputFormat>
-									</h:outputLink>
-									<h:outputFormat value=" #{msgs.on}" >
-					   						<f:param value="#{board.lastThread.createdOn}" />
-					   					</h:outputFormat>
+									</h:outputLink>, 
+					   				<h:outputText value="#{board.lastThread.createdOn}" converter="forum.DateConverter" />
 								</h:panelGroup>
 								
 								<h:panelGroup rendered="#{board.lastThread == null}">

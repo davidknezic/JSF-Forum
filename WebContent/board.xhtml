@@ -26,10 +26,8 @@
 			   					<h:outputFormat value="#{msgs.by}" >
 			   						<f:param value="#{thread.user.username}" />
 			   					</h:outputFormat>
-							</h:outputLink>
-							<h:outputFormat value=" #{msgs.on}" >
-		   						<f:param value="#{thread.createdOn}" />
-		   					</h:outputFormat>
+							</h:outputLink>, 
+							<h:outputText value="#{thread.createdOn}" converter="forum.DateConverter" />
 		   				</h:column>
 		   				<h:column>
 		   					<f:facet name="header" >
@@ -51,10 +49,8 @@
 				   					<h:outputFormat value="#{msgs.by}" >
 				   						<f:param value="#{thread.lastReply.user.username}" />
 				   					</h:outputFormat>
-								</h:outputLink>
-								<h:outputFormat value=" #{msgs.on}" >
-			   						<f:param value="#{thread.lastReply.createdOn}" />
-			   					</h:outputFormat>
+								</h:outputLink>, 
+								<h:outputText value="#{thread.lastReply.createdOn}" converter="forum.DateConverter" />
 							</h:panelGroup>
 							
 							<h:panelGroup rendered="#{thread.lastReply == null}">

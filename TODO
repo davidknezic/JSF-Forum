@@ -13,7 +13,6 @@ This is a list of tasks to complete in the future. Feel free to extend!
 ------------------
 * Avoid empty tables without corresponding messages for the end-user
 * Limit the title and content lengths when displaying latest threads, threads and latest replies (with converters)
-* Convert dates to a better readable format (eventually adding today, yesterday, etc.)
 * Better place the information on thread facelet
 * Show last user activity when on profile facelet and rearrange information
 * Add 'joined on ...' on the user list

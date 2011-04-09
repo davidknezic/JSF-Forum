@@ -19,5 +19,12 @@
         </resource-bundle>
 
 	</application>
+	
+	<converter>
+
+		<converter-id>forum.DateConverter</converter-id>
+		<converter-class>converters.DateConverter</converter-class>
+
+	</converter>
 
 </faces-config>
