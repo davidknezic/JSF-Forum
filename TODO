@@ -7,14 +7,20 @@ This is a list of tasks to complete in the future. Feel free to extend!
 ----------------
 * Implement authentication on controller level (UserModel.authenticate() already available)
 * Enable thread, reply creation (depedent on previous task)
+* Implement roles (user, moderator, admin)
 
 2. Normal priority
 ------------------
 * Avoid empty tables without corresponding messages for the end-user
-* Limit the title and content lengths when displaying latest threads, threads and latest replies
+* Limit the title and content lengths when displaying latest threads, threads and latest replies (with converters)
+* Convert dates to a better readable format (eventually adding today, yesterday, etc.)
+* Better place the information on thread facelet
+* Show last user activity when on profile facelet and rearrange information
+* Add 'joined on ...' on the user list
 
 3. Low priority
 ---------------
+* Put the db connection information into an external config (xml) file
 * Optimize performance (caching?)
 * Maybe we could use ORM instead of the current unflexible, hardly maintainable models
 
