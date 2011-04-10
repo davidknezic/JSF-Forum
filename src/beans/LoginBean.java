@@ -15,7 +15,7 @@ import models.UserModel;
 public class LoginBean {
 	private UIInput username;
 	private String name;
-	private UserModel user;
+	private UserModel user; 
 	
 	public LoginBean() {
 	}
