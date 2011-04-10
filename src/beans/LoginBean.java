@@ -29,7 +29,13 @@ public class LoginBean {
 	}
 	
 	public boolean getLoggedin() {
-		return (this.user == null ? false : true);
+		System.out.println(this.user);
+		if(this.user != null) return true;
+		return false;
+	}
+	
+	public void logout() {
+		this.user = null;
 	}
 	
 	public void login(FacesContext context, UIComponent component, Object value) throws ValidatorException {
