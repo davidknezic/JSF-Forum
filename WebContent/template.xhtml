@@ -11,6 +11,12 @@
 <h:body>  
 	<div id="top" >
 		<ui:insert name="top" >
+			<h:panelGroup layout="block" rendered="#{loginValidator.loggedin}" >
+				loggedin
+			</h:panelGroup>
+			<h:panelGroup layout="block" rendered="#{!loginValidator.loggedin}" >
+				not
+			</h:panelGroup>
 		</ui:insert>
 	</div>
 

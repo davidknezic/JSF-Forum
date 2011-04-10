@@ -12,8 +12,6 @@ import models.UserModel;
 @ManagedBean
 @SessionScoped
 public class UserBean {
-	private UserModel loggedUser;
-	
 	public void logout() {
 		
 	}

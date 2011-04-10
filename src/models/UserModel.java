@@ -20,11 +20,23 @@ import org.apache.commons.codec.digest.DigestUtils;
  * @author David Knezic <davidknezic@gmail.com>
  */
 public class UserModel {
+	
+	/**
+	 * UserPermissions
+	 */
+	public static final int USER = 0;
+	public static final int ADMIN = 1;
+	public static final int SUPER_ADMIN = 2;
 
 	/**
 	 * The userId
 	 */
 	private int userId;
+	
+	/**
+	 * The permission
+	 */
+	private int permission;
 
 	/**
 	 * The username
@@ -64,7 +76,7 @@ public class UserModel {
 		Connection conn = DBConnection.getInstance().getConnection();
 
 		PreparedStatement stmt = conn
-				.prepareStatement("SELECT username, password, email, active FROM user WHERE userId = ?");
+				.prepareStatement("SELECT username, password, email, active, permission FROM user WHERE userId = ?");
 		stmt.setInt(1, userId);
 		ResultSet res = stmt.executeQuery();
 
@@ -75,6 +87,7 @@ public class UserModel {
 			this.password = res.getString(2);
 			this.email = res.getString(3);
 			this.active = (res.getInt(4) == 0 ? false : true);
+			this.permission = res.getInt(5);
 		} else {
 			// No user with given id found
 			throw new Exception("Could not find user");
@@ -95,13 +108,13 @@ public class UserModel {
 			// Insert a new record
 			stmt = conn
 					.prepareStatement(
-							"INSERT INTO user (username, password, email, active) VALUES (?, ?, ?, ?)",
+							"INSERT INTO user (username, password, email, active, permission) VALUES (?, ?, ?, ?, ?)",
 							Statement.RETURN_GENERATED_KEYS);
 		} else {
 			// Update record
 			stmt = conn
 					.prepareStatement(
-							"UPDATE user SET username = ?, password = ?, email = ?, active = ? WHERE userId = ?",
+							"UPDATE user SET username = ?, password = ?, email = ?, active = ?, permission = ? WHERE userId = ?",
 							Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(4, this.userId);
 		}
@@ -111,6 +124,7 @@ public class UserModel {
 		stmt.setString(2, this.password);
 		stmt.setString(3, this.email);
 		stmt.setInt(4, (this.active == true ? 1 : 0));
+		stmt.setInt(5, this.permission);
 
 		// Execute query
 		stmt.executeUpdate();
@@ -204,6 +218,14 @@ public class UserModel {
 	 */
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	
+	public int getPermission() {
+		return this.permission;
+	}
+	
+	public void setPermission(int permission) {
+		this.permission = permission;
 	}
 
 	/**
@@ -340,6 +362,7 @@ public class UserModel {
 		ResultSet res = stmt.executeQuery();
 
 		if (res.first()) {
+			System.out.println("ok");
 			// Return the user object
 			return new UserModel(res.getInt(1));
 		} else {
@@ -347,5 +370,4 @@ public class UserModel {
 			return null;
 		}
 	}
-
 }
