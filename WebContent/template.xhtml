@@ -11,6 +11,30 @@
 <h:body>  
 	<div id="top" >
 		<ui:insert name="top" >
+			<h:panelGroup layout="block" rendered="#{loginBean.loggedin}" >
+				<h:form>
+					<h:commandButton value="#{msgs.logout}" action="#{loginBean.logout}" />
+				</h:form>
+			</h:panelGroup>
+			<h:panelGroup layout="block" rendered="#{!loginBean.loggedin}" >
+				<h:form>
+					<h:panelGrid columns="5" >
+						<h:outputText value="#{msgs.username}:" />
+						<h:panelGroup>
+							<h:message for="username" ></h:message>
+							<h:inputText id="username" binding="#{loginBean.username}" />
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.password}:" />
+						<h:panelGroup>
+							<h:message for="password" ></h:message>
+							<h:inputSecret id="password" validator="#{loginBean.login}" />
+						</h:panelGroup>
+						
+						<h:commandButton value="#{msgs.login}" action="index.xhtml" />
+					</h:panelGrid>
+				</h:form>
+			</h:panelGroup>
 		</ui:insert>
 	</div>
 
