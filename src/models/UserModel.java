@@ -116,7 +116,7 @@ public class UserModel {
 					.prepareStatement(
 							"UPDATE user SET username = ?, password = ?, email = ?, active = ?, permission = ? WHERE userId = ?",
 							Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(4, this.userId);
+			stmt.setInt(6, this.userId);
 		}
 
 		// Set global variables
