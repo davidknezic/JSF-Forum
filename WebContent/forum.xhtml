@@ -45,9 +45,8 @@
 									</h:outputLink>
 									<br />
 									<h:outputLink value="profile.xhtml?userId=#{board.lastThread.user.userId}" >
-					   					<h:outputFormat value="#{msgs.by}" >
-					   						<f:param value="#{board.lastThread.user.username}" />
-					   					</h:outputFormat>
+					   					<h:outputText value="#{msgs.by}" />
+					   					<h:outputText value="#{board.lastThread.user.username}" />
 									</h:outputLink>, 
 					   				<h:outputText value="#{board.lastThread.createdOn}" converter="forum.DateConverter" />
 								</h:panelGroup>

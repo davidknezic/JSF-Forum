@@ -12,7 +12,7 @@
 		<ui:define name="content">
 			   	<div class="block" >
 		   			<h2><h:outputText value="#{msgs.user}" /></h2>
-		   			<h:dataTable value="#{userBean.users}" var="user" columnClasses="left" columns="2" >
+		   			<h:dataTable value="#{userBean.users}" var="user" columnClasses="left" >
 		   				<!--  TODO: may render actions if admin -->
 		   				<h:column>
 		   					<h:outputLink value="profile.xhtml?userId=#{user.userId}" >
