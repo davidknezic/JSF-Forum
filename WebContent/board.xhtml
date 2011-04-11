@@ -22,8 +22,8 @@
 			   						<h:outputText value="#{thread.title}" />
 								</h:outputLink>
 							</h3>
+			   				<h:outputText value="#{msgs.by} " />
 							<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}" >
-			   					<h:outputText value="#{msgs.by}" />
 			   					<h:outputText value="#{thread.user.username}" />
 							</h:outputLink>, 
 							<h:outputText value="#{thread.createdOn}" converter="forum.DateConverter" />
@@ -44,8 +44,8 @@
 							<h:panelGroup rendered="#{thread.lastReply != null}">
 								limited reply content...
 								<br />
-								<h:outputLink value="profile.xhtml?userId=#{thread.lastReply.user.userId}" >
-				   					<h:outputText value="#{msgs.by}" />
+								<h:outputText value="#{msgs.by} " />
+				   				<h:outputLink value="profile.xhtml?userId=#{thread.lastReply.user.userId}" >
 				   					<h:outputText value="#{thread.lastReply.user.username}" />
 								</h:outputLink>, 
 								<h:outputText value="#{thread.lastReply.createdOn}" converter="forum.DateConverter" />
