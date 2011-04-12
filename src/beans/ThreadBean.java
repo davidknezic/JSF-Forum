@@ -13,6 +13,8 @@ import models.ThreadModel;
 @ManagedBean
 @SessionScoped
 public class ThreadBean {
+	private String title, content;
+	
 	public ThreadModel getThread() throws Throwable {
 		Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		Integer threadId = Integer.parseInt(request.get("threadId"));
@@ -36,5 +38,35 @@ public class ThreadBean {
 			replies.add(0, reply);
 		}
 		return replies;
+	}
+	
+	public String save(Integer boardId, Integer userId) throws Throwable {
+		System.out.println("Save");
+		ThreadModel thread = new ThreadModel();
+		
+		thread.setBoardId(boardId);
+		thread.setContent(content);
+		thread.setTitle(title);
+		thread.setUserId(userId);
+		
+		thread.save();
+		
+		return null;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
