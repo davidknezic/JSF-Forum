@@ -1,36 +1,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 </head>
 <body>
 	<ui:composition template="template.xhtml">
-		<ui:define name="title" >
+		<ui:define name="title">
 			:: forum :: board :: thread
 		</ui:define>
 		<ui:define name="content">
-			   	<div class="block" >
-		   			<h2><h:outputText value="#{threadBean.thread.title}" /></h2>
-		   			<h:dataTable value="#{threadBean.replies}" var="reply" columnClasses="replyLeft,replyRight" >
-		   				<h:column>
-		   					<f:facet name="header" >
-		   						<h:outputFormat value="#{msgs.user}" styleClass="firstHeading" />
-		   					</f:facet>
-		   					<h:graphicImage url="#{reply.user.avatar}" class="reply_avatar" />
-		   					<h:outputLink value="profile.xhtml?userId=#{reply.user.userId}" >
-		   						<h:outputText value="#{reply.user.username}" class="reply_username" />
-		   					</h:outputLink>
-							<h:outputText value="#{reply.createdOn}" converter="forum.DateConverter" />
-		   				</h:column>
-		   				<h:column>
-		   					<f:facet name="header" >
-		   						<h:outputFormat value="#{msgs.post}" styleClass="firstHeading" />
-		   					</f:facet>
-		   					<h:outputFormat value="#{reply.content}" />
-		   				</h:column>
-		   			</h:dataTable>
-			   	</div>
+			<div class="block">
+				<h2>
+					<h:outputText value="#{threadBean.thread.title}" />
+				</h2>
+				<h:dataTable value="#{threadBean.replies}" var="reply"
+					columnClasses="replyLeft,replyRight">
+					<h:column>
+						<f:facet name="header">
+							<h:outputFormat value="#{msgs.user}" styleClass="firstHeading" />
+						</f:facet>
+						<h:graphicImage url="#{reply.user.avatar}" class="reply_avatar" />
+						<h:outputLink value="profile.xhtml?userId=#{reply.user.userId}">
+							<h:outputText value="#{reply.user.username}"
+								class="reply_username" />
+						</h:outputLink>
+						<h:outputText value="#{reply.createdOn}"
+							converter="forum.DateConverter" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputFormat value="#{msgs.post}" styleClass="firstHeading" />
+						</f:facet>
+						<f:facet name="footer">
+							<h:form rendered="#{loginBean.loggedin}">
+								<h:inputTextarea value="#{replyBean.content}" />
+								<h:commandButton
+									action="#{replyBean.save(threadBean.thread.threadId, loginBean.user.userId)}"
+									value="#{msgs.save}" >
+									<f:param name="threadId" value="#{queryManager.get('threadId')}" />
+								</h:commandButton>
+							</h:form>
+						</f:facet>
+						<h:outputFormat value="#{reply.content}" />
+					</h:column>
+				</h:dataTable>
+			</div>
 		</ui:define>
 	</ui:composition>
 </body>
