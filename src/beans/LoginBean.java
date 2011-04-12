@@ -29,7 +29,6 @@ public class LoginBean {
 	}
 	
 	public boolean getLoggedin() {
-		System.out.println(this.user);
 		if(this.user != null) return true;
 		return false;
 	}
