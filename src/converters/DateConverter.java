@@ -57,21 +57,21 @@ public class DateConverter implements Converter {
 		// Today?
 		tmp = (Calendar) today.clone();
 		if (now.after(tmp)) {
-			return "today";
+			return "today, HH:mm";
 		}
 
 		// Yesterday?
 		tmp = (Calendar) today.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, -1);
 		if (now.after(tmp)) {
-			return "yesterday";
+			return "yesterday, HH:mm";
 		}
 
 		// This week? Weekday
 		tmp = (Calendar) today.clone();
 		tmp.add(Calendar.WEEK_OF_YEAR, -1);
 		if (now.after(tmp)) {
-			formatter.applyPattern("EEEE");
+			formatter.applyPattern("EEEE, HH:mm");
 			return formatter.format(now.getTime());
 		}
 
@@ -79,12 +79,12 @@ public class DateConverter implements Converter {
 		tmp = (Calendar) today.clone();
 		tmp.add(Calendar.YEAR, -1);
 		if (now.after(tmp)) {
-			formatter.applyPattern("EEEE dd.");
+			formatter.applyPattern("dd. MMMM, HH:mm");
 			return formatter.format(now.getTime());
 		}
 
 		// Else? Day, month and year
-		formatter.applyPattern("dd. MMMM yyyy");
+		formatter.applyPattern("dd. MMMM yyyy, HH:mm");
 		return formatter.format(now.getTime());
 	}
 
