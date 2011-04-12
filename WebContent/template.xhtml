@@ -13,7 +13,10 @@
 		<ui:insert name="top" >
 			<h:panelGroup layout="block" rendered="#{loginBean.loggedin}" >
 				<h:form>
-					<h:commandButton value="#{msgs.logout}" action="#{loginBean.logout}" />
+					<h:commandButton value="#{msgs.logout}" action="#{loginBean.logout}" >
+						<f:param name="threadId" value="#{queryManager.get('threadId')}" />
+						<f:param name="boardId" value="#{queryManager.get('boardId')}" />
+					</h:commandButton>
 				</h:form>
 			</h:panelGroup>
 			<h:panelGroup layout="block" rendered="#{!loginBean.loggedin}" >
@@ -31,7 +34,11 @@
 							<h:inputSecret id="password" validator="#{loginBean.login}" />
 						</h:panelGroup>
 						
-						<h:commandButton value="#{msgs.login}" action="index.xhtml" />
+						<h:commandButton value="#{msgs.login}" action="null" >
+							<f:param name="threadId" value="#{queryManager.get('threadId')}" />
+							<f:param name="boardId" value="#{queryManager.get('boardId')}" />
+						</h:commandButton>
+						
 					</h:panelGrid>
 				</h:form>
 			</h:panelGroup>
