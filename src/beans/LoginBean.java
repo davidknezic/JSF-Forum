@@ -28,6 +28,10 @@ public class LoginBean {
 		this.username = username;
 	}
 	
+	public UserModel getUser() {
+		return this.user;
+	}
+	
 	public boolean getLoggedin() {
 		if(this.user != null) return true;
 		return false;
