@@ -3,6 +3,7 @@ package converters;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -38,12 +39,15 @@ public class DateConverter implements Converter {
 	 */
 	public String getAsString(FacesContext context, UIComponent component,
 			Object value) {
+		ResourceBundle rb;
 		SimpleDateFormat formatter = new SimpleDateFormat();
-		Calendar now = Calendar.getInstance();
-		Calendar today;
-		Calendar tmp;
+		Calendar now, today, tmp;
 
+		// Get the message bundle
+		rb = ResourceBundle.getBundle("beans.messages");
+		
 		// Set now to original date
+		now = Calendar.getInstance();
 		now.setTime((Date) value);
 
 		// Today's start date/time
@@ -57,14 +61,16 @@ public class DateConverter implements Converter {
 		// Today?
 		tmp = (Calendar) today.clone();
 		if (now.after(tmp)) {
-			return "today, HH:mm";
+			formatter.applyPattern("HH:mm");
+			return rb.getString("today") + ", " + formatter.format(now.getTime());
 		}
 
 		// Yesterday?
 		tmp = (Calendar) today.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, -1);
 		if (now.after(tmp)) {
-			return "yesterday, HH:mm";
+			formatter.applyPattern("HH:mm");
+			return rb.getString("yesterday") + "y, " + formatter.format(now.getTime());
 		}
 
 		// This week? Weekday

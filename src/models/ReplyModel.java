@@ -1,10 +1,11 @@
 package models;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * The reply model
@@ -41,9 +42,9 @@ public class ReplyModel {
 	private String content;
 
 	/**
-	 * The creation date
+	 * The creation timestamp
 	 */
-	private Date createdOn;
+	private Timestamp createdOn;
 
 	/**
 	 * Initialize an empty reply
@@ -73,7 +74,7 @@ public class ReplyModel {
 			this.threadId = res.getInt(1);
 			this.userId = res.getInt(2);
 			this.content = res.getString(3);
-			this.createdOn = res.getDate(4);
+			this.createdOn = res.getTimestamp(4);
 		} else {
 			// No reply with given id found
 			throw new Exception("Could not find reply");
@@ -102,7 +103,7 @@ public class ReplyModel {
 					.prepareStatement(
 							"UPDATE reply SET threadId = ?, userId = ?, content = ?, createdOn = ? WHERE replyId = ?",
 							Statement.RETURN_GENERATED_KEYS);
-			stmt.setDate(4, this.createdOn);
+			stmt.setTimestamp(4, this.createdOn);
 			stmt.setInt(5, this.replyId);
 		}
 
@@ -188,21 +189,21 @@ public class ReplyModel {
 	}
 
 	/**
-	 * Get the creation date
+	 * Get the creation date as a standard java Date
 	 * 
 	 * @return Date
 	 */
 	public Date getCreatedOn() {
-		return createdOn;
+		return (Date) createdOn;
 	}
 
 	/**
-	 * Set the creation date
+	 * Set the creation timestamp as a standard java Date
 	 * 
 	 * @param createdOn
 	 */
 	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+		this.createdOn = new Timestamp(createdOn.getTime());
 	}
 
 	/**
