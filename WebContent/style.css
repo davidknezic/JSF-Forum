@@ -188,3 +188,11 @@ a:hover {
 	display: block;
 	margin: 5px auto;
 }
+
+.addAction {
+	float: right;
+}
+
+.addAction img {
+	margin: 6px 0 0 0;
+}
