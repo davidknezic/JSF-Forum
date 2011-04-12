@@ -26,7 +26,7 @@ public class ThreadBean {
 		ThreadModel thread = getThread();
 		
 		ArrayList<ReplyModel> replies = thread.getReplies(0, 20);
-		if(true)  { // Auf erster Seite TODO !!
+		if(true)  { // Nur auf erster Seite TODO !!
 			// Adding a "fake" reply representing the thread
 			ReplyModel reply = new ReplyModel();
 			reply.setContent(thread.getContent());
