@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import javax.faces.application.Application;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -44,7 +45,12 @@ public class DateConverter implements Converter {
 		Calendar now, today, tmp;
 
 		// Get the message bundle
-		rb = ResourceBundle.getBundle("beans.messages");
+		Application app = FacesContext.getCurrentInstance().getApplication();
+		try {
+			rb = ResourceBundle.getBundle(app.getMessageBundle());
+		} catch (Exception e) {
+			rb = ResourceBundle.getBundle(app.getMessageBundle(), app.getDefaultLocale());
+		}
 		
 		// Set now to original date
 		now = Calendar.getInstance();
