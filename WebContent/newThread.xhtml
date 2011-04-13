@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="title">
+			:: forum :: board :: thread :: new
+		</ui:define>
+		<ui:define name="content">
+			<h:form rendered="#{loginBean.loggedin}">
+				<div class="block">
+					<h2>
+						<h:outputText value="#{msgs.newThread}" />
+					</h2>
+					<h:panelGrid columns="2">
+						<f:facet name="header" />
+						<h:outputText value="#{msgs.title}" />
+						<h:panelGroup>
+							<h:messages />
+							<h:message for="titleIn" />
+							<h:inputText value="#{threadBean.title}" id="titleIn"
+								required="true" />
+						</h:panelGroup>
+						<h:outputText value="#{msgs.content}" />
+						<h:panelGroup>
+							<h:message for="contentIn" />
+							<h:inputTextarea value="#{threadBean.content}" id="contentIn"
+								required="true" />
+						</h:panelGroup>
+						<h:panelGroup>
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:commandButton value="#{msgs.save}"
+								action="#{threadBean.save(queryManager.get('boardId'), loginBean.user.userId)}" />
+						</h:panelGroup>
+					</h:panelGrid>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
