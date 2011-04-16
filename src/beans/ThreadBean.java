@@ -40,9 +40,10 @@ public class ThreadBean {
 		return replies;
 	}
 	
-	public String save(Integer boardId, Integer userId) throws Throwable {
-		System.out.println("Save");
+	public String save(Integer userId) throws Throwable {
 		ThreadModel thread = new ThreadModel();
+		
+		int boardId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("boardId"));
 		
 		thread.setBoardId(boardId);
 		thread.setContent(content);
@@ -51,7 +52,7 @@ public class ThreadBean {
 		
 		thread.save();
 		
-		return null;
+		return String.format("board.xhtml?boardId=%d", boardId);
 	}
 
 	public String getTitle() {
