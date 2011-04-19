@@ -12,9 +12,9 @@
 		<ui:define name="content">
 			   	<div class="block" >
 		   			<h2><h:outputText value="#{msgs.user}" /></h2>
-		   			<div>
-		   				<h:graphicImage value="#{userBean.user.getAvatar(128)}" style="float: left; border: 1px solid black;" />
-						<dl>
+		   			<table><tr><td>
+		   				<h:graphicImage class="profile_avatar" value="#{userBean.user.getAvatar(128)}" />
+						<dl class="profile_info">
 							<dt>Username</dt>
 							<dd><h:outputText value="#{userBean.user.username}" /></dd>
 							
@@ -34,7 +34,62 @@
 							<dd><h:outputText value="#{userBean.user.createdOn}" converter="forum.DateConverter" /></dd>
 						</dl>
 						<div style="clear: both;"></div>
-		   			</div>
+		   			</td></tr></table>
+					
+					<h2>
+						<h:outputText value="#{msgs.latestThreads}" />
+					</h2>
+					<h:dataTable rendered="#{userBean.latestThreads.size() > 0}"
+					value="#{userBean.latestThreads}" var="thread"
+					columnClasses="left,center,right" columns="3" class="vmiddle">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.thread}" styleClass="firstHeading" />
+						</f:facet>
+						<h3>
+							<h:outputLink value="thread.xhtml?threadId=#{thread.threadId}">
+								<h:outputText value="#{thread.title}" />
+							</h:outputLink>
+						</h3>
+						<h:outputText value="#{msgs.by} " />
+						<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
+							<h:outputText value="#{thread.user.username}" />
+						</h:outputLink>, 
+							<h:outputText value="#{thread.createdOn}"
+							converter="forum.DateConverter" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.statistics}" />
+						</f:facet>
+						<h:outputFormat value="#{msgs.replyCount}">
+							<f:param value="#{thread.replyCount}" />
+						</h:outputFormat>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.latestReply}" />
+						</f:facet>
+
+						<h:panelGroup rendered="#{thread.lastReply != null}">
+								limited reply content...
+								<br />
+							<h:outputText value="#{msgs.by} " />
+							<h:outputLink
+								value="profile.xhtml?userId=#{thread.lastReply.user.userId}">
+								<h:outputText value="#{thread.lastReply.user.username}" />
+							</h:outputLink>, 
+								<h:outputText value="#{thread.lastReply.createdOn}"
+								converter="forum.DateConverter" />
+						</h:panelGroup>
+
+						<h:panelGroup rendered="#{thread.lastReply == null}">
+								-
+						</h:panelGroup>
+
+					</h:column>
+				</h:dataTable>
+					
 			   	</div>
 		</ui:define>
 	</ui:composition>
