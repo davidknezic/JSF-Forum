@@ -1,67 +1,79 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 </head>
 <body>
 	<ui:composition template="template.xhtml">
-		<ui:define name="title" >
+		<ui:define name="title">
 			:: forum :: board
 		</ui:define>
 		<ui:define name="content">
-			   	<div class="block" >
-		   			<h2><h:outputText value="#{boardBean.board.title}" />
-		   			<h:outputLink value="newThread.xhtml" class="addAction" rendered="#{loginBean.loggedin}" >
-		   				<f:param name="boardId" value="#{queryManager.get('boardId')}" />
-		   				<h:graphicImage value="Bilder/add.png" />
- 		   			</h:outputLink></h2>
-		   			<h:dataTable value="#{boardBean.threads}" var="thread" columnClasses="left,center,right" columns="3" class="vmiddle" >
-		   				<h:column>
-		   					<f:facet name="header" >
-		   						<h:outputText value="#{msgs.thread}" styleClass="firstHeading" />
-		   					</f:facet>
-		   					<h3>
-			   					<h:outputLink value="thread.xhtml?threadId=#{thread.threadId}" >
-			   						<h:outputText value="#{thread.title}" />
-								</h:outputLink>
-							</h3>
-			   				<h:outputText value="#{msgs.by} " />
-							<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}" >
-			   					<h:outputText value="#{thread.user.username}" />
-							</h:outputLink>, 
-							<h:outputText value="#{thread.createdOn}" converter="forum.DateConverter" />
-		   				</h:column>
-		   				<h:column>
-		   					<f:facet name="header" >
-		   						<h:outputText value="#{msgs.statistics}" />
-		   					</f:facet>
-		   					<h:outputFormat value="#{msgs.replyCount}" >
-		   						<f:param value="#{thread.replyCount}" />
-		   					</h:outputFormat>
-		   				</h:column>
-		   				<h:column>
-		   					<f:facet name="header" >
-		   						<h:outputText value="#{msgs.latestReply}" />
-		   					</f:facet>
-							
-							<h:panelGroup rendered="#{thread.lastReply != null}">
+			<div class="block">
+				<h2>
+					<h:outputText value="#{boardBean.board.title}" />
+					<h:outputLink value="newThread.xhtml" class="addAction"
+						rendered="#{loginBean.loggedin}">
+						<f:param name="boardId" value="#{queryManager.get('boardId')}" />
+						<h:graphicImage value="Bilder/add.png" />
+					</h:outputLink>
+				</h2>
+				<h:dataTable rendered="#{boardBean.threads.size() > 0}"
+					value="#{boardBean.threads}" var="thread"
+					columnClasses="left,center,right" columns="3" class="vmiddle">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.thread}" styleClass="firstHeading" />
+						</f:facet>
+						<h3>
+							<h:outputLink value="thread.xhtml?threadId=#{thread.threadId}">
+								<h:outputText value="#{thread.title}" />
+							</h:outputLink>
+						</h3>
+						<h:outputText value="#{msgs.by} " />
+						<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
+							<h:outputText value="#{thread.user.username}" />
+						</h:outputLink>, 
+							<h:outputText value="#{thread.createdOn}"
+							converter="forum.DateConverter" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.statistics}" />
+						</f:facet>
+						<h:outputFormat value="#{msgs.replyCount}">
+							<f:param value="#{thread.replyCount}" />
+						</h:outputFormat>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.latestReply}" />
+						</f:facet>
+
+						<h:panelGroup rendered="#{thread.lastReply != null}">
 								limited reply content...
 								<br />
-								<h:outputText value="#{msgs.by} " />
-				   				<h:outputLink value="profile.xhtml?userId=#{thread.lastReply.user.userId}" >
-				   					<h:outputText value="#{thread.lastReply.user.username}" />
-								</h:outputLink>, 
-								<h:outputText value="#{thread.lastReply.createdOn}" converter="forum.DateConverter" />
-							</h:panelGroup>
-							
-							<h:panelGroup rendered="#{thread.lastReply == null}">
+							<h:outputText value="#{msgs.by} " />
+							<h:outputLink
+								value="profile.xhtml?userId=#{thread.lastReply.user.userId}">
+								<h:outputText value="#{thread.lastReply.user.username}" />
+							</h:outputLink>, 
+								<h:outputText value="#{thread.lastReply.createdOn}"
+								converter="forum.DateConverter" />
+						</h:panelGroup>
+
+						<h:panelGroup rendered="#{thread.lastReply == null}">
 								-
 							</h:panelGroup>
-							
-		   				</h:column>
-		   			</h:dataTable>
-			   	</div>
+
+					</h:column>
+				</h:dataTable>
+				<h:panelGrid columns="1" columnClasses="left"
+					rendered="#{boardBean.threads.size() == 0}">
+					<h:outputText value="#{msgs.noThreads}" />
+				</h:panelGrid>
+			</div>
 		</ui:define>
 	</ui:composition>
 </body>
