@@ -12,12 +12,25 @@
 		<ui:define name="content">
 			   	<div class="block" >
 		   			<h2><h:outputText value="#{msgs.user}" /></h2>
-		   			<h:dataTable value="#{userBean.users}" var="user" columnClasses="left" >
-		   				<!--  TODO: may render actions if admin -->
+		   			<h:dataTable value="#{userBean.users}" var="user" columnClasses="left,right" >
 		   				<h:column>
+		   					<f:facet name="header" >
+		   						<h:outputText class="left" value="#{msgs.username}" />
+		   					</f:facet>
 		   					<h:outputLink value="profile.xhtml?userId=#{user.userId}" >
 		   						<h:outputText value="#{user.username}" />
 		   					</h:outputLink>
+		   				</h:column>
+		   				<h:column>
+		   					<f:facet name="header" >
+		   						<h:outputText value="#{msgs.registeredSince}" />
+		   					</f:facet>
+		   					<h:outputText value="#{user.createdOn}" converter="forum.DateConverter" />
+		   				</h:column>
+		   				<h:column rendered="#{loginBean.loggedin and loginBean.user.permission >= UserModel.ADMIN}" >
+		   					<f:facet name="header" >
+		   						<h:outputText value="Actions" />
+		   					</f:facet>
 		   				</h:column>
 		   			</h:dataTable>
 			   	</div>
