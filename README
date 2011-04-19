@@ -20,7 +20,7 @@ The required libraries must be obtained and included into the classpath:
 All these libraries can be downloaded in one package from:
 http://tmp.davidknezic.com/jsf-forum_lib_20110410.tar.bz2
 
-The database tables must be created using the structure.sql file and eventually filled by the statements from content.sql.
+The database tables including the content must be created using the current dump_YYYY-MM-DD.sql file.
 
 The database settings, currently found in src/models/DBConnection.java, must be adjusted.
 
