@@ -44,6 +44,7 @@ public class DBConnection {
 		this.database.setPort(3306);
 		this.database.setUser("root");
 		this.database.setPassword("");
+		this.database.setZeroDateTimeBehavior("convertToNull");
 
 		try {
 			// Connect and save connection
