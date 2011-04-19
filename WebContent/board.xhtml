@@ -31,12 +31,14 @@
 								<h:outputText value="#{thread.title}" />
 							</h:outputLink>
 						</h3>
-						<h:outputText value="#{msgs.by} " />
-						<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
-							<h:outputText value="#{thread.user.username}" />
-						</h:outputLink>, 
-							<h:outputText value="#{thread.createdOn}"
-							converter="forum.DateConverter" />
+						<span class="meta" >
+							<h:outputText value="#{msgs.by} " />
+							<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
+								<h:outputText value="#{thread.user.username}" />
+							</h:outputLink>, 
+								<h:outputText value="#{thread.createdOn}"
+								converter="forum.DateConverter" />
+						</span>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
@@ -52,8 +54,6 @@
 						</f:facet>
 
 						<h:panelGroup rendered="#{thread.lastReply != null}">
-								limited reply content...
-								<br />
 							<h:outputText value="#{msgs.by} " />
 							<h:outputLink
 								value="profile.xhtml?userId=#{thread.lastReply.user.userId}">
