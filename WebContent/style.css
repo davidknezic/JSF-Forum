@@ -27,6 +27,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+.meta {
+	font-size: 10px;
+}
+
 #top {
 	line-height: 44px;
 	color: #c4daf1;
@@ -141,8 +145,8 @@ a:hover {
 	border-top: 1px solid white;
 	color: #969292;
 	text-shadow: white 1px 1px 0;
-	font-size: 10px;
-	line-height: 14px;
+	font-size: 12px;
+	line-height: 18px;
 }
 
 .vmiddle td {
@@ -182,6 +186,7 @@ a:hover {
 	padding-right: 10px;
 	border-right: 1px solid white;
 	width: 150px;
+	text-align: center;
 }
 
 .block table .replyRight {
@@ -191,13 +196,16 @@ a:hover {
 }
 
 .reply_username {
+	padding-top: 10px;
 	display: block;
-	text-align: center;
+}
+
+.reply_permission {
+	display: block;
 }
 
 .reply_avatar {
-	display: block;
-	margin: 5px auto;
+	margin: 5px 0;
 }
 
 .addAction {
@@ -238,4 +246,19 @@ a:hover {
 	width: 600px;
 	height: 180px;
 	max-width: 600px;
+}
+
+.profile_avatar {
+	margin: 5px 20px;
+	float: left;
+}
+
+.profile_info {
+	margin: 10px;
+}
+
+.profile_info dt {
+	font-weight: bold;
+	float: left;
+	width: 200px;
 }
