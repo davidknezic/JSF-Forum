@@ -34,14 +34,16 @@
 						</f:facet>
 						<f:facet name="footer">
 							<h:form rendered="#{loginBean.loggedin}">
-								<h:messages/>
+								<h:messages />
 								<h:inputTextarea value="#{replyBean.content}" required="true" />
 								<h:commandButton
 									action="#{replyBean.save(threadBean.thread.threadId, loginBean.user.userId)}"
-									value="#{msgs.save}" >
-									<f:param name="threadId" value="#{queryManager.get('threadId')}" />
+									value="#{msgs.save}">
+									<f:param name="threadId"
+										value="#{queryManager.get('threadId')}" />
 								</h:commandButton>
 							</h:form>
+							<h:outputText rendered="#{!loginBean.loggedin}" value="#{msgs.login2reply}" />
 						</f:facet>
 						<h:outputFormat value="#{reply.content}" />
 					</h:column>
