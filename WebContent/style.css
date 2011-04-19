@@ -196,3 +196,28 @@ a:hover {
 .addAction img {
 	margin: 6px 0 0 0;
 }
+
+input[type=submit], input[type=reset], input[type=button] {
+	margin: 5px 0;
+	padding: 5px 20px;
+}
+
+input[type=submit], input[type=reset], input[type=button], input[type=text], input[type=password], textarea {
+	display: block;
+	border: 1px solid #9d9d9d;
+	border-top: 1px solid #a0a0a0;
+	background-color: #fbfbfb;
+	color: #929292;
+	text-shadow: #ffffff 1px 1px 0;
+}
+
+input[type=text], input[type=password] {
+	width: 400px;
+}
+
+textarea {
+	margin: 0;
+	width: 600px;
+	height: 180px;
+	max-width: 600px;
+}
