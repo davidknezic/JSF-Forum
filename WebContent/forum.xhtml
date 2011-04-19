@@ -20,7 +20,7 @@
 			   						<h:outputText value="#{msgs.forum}" styleClass="firstHeading" />
 			   					</f:facet>
 			   					<h3><h:outputLink value="board.xhtml?boardId=#{board.boardId}" ><h:outputText value="#{board.title}" /></h:outputLink></h3>
-			   					<h:outputText value="#{board.description}" />
+			   					<h:outputText class="meta" value="#{board.description}" />
 			   				</h:column>
 			   				<h:column>
 			   					<f:facet name="header" >
@@ -44,11 +44,13 @@
 										<h:outputText value="#{board.lastThread.title}" />
 									</h:outputLink>
 									<br />
-									<h:outputText value="#{msgs.by} " />
-					   				<h:outputLink value="profile.xhtml?userId=#{board.lastThread.user.userId}" >
-					   					<h:outputText value="#{board.lastThread.user.username}" />
-									</h:outputLink>, 
-					   				<h:outputText value="#{board.lastThread.createdOn}" converter="forum.DateConverter" />
+									<span class="meta" >
+										<h:outputText value="#{msgs.by} " />
+						   				<h:outputLink value="profile.xhtml?userId=#{board.lastThread.user.userId}" >
+						   					<h:outputText value="#{board.lastThread.user.username}" />
+										</h:outputLink>, 
+						   				<h:outputText value="#{board.lastThread.createdOn}" converter="forum.DateConverter" />
+									</span>
 								</h:panelGroup>
 								
 								<h:panelGroup rendered="#{board.lastThread == null}">
