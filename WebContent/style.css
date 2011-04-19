@@ -28,8 +28,19 @@ a:hover {
 }
 
 #top {
+	line-height: 44px;
+	color: #c4daf1;
+	padding: 0 20px;
 	height: 44px;
 	background: url(Bilder/top_head.png) left top repeat-x;
+}
+
+#top input {
+	border: 1px solid #327dc9;
+	padding: 3px 5px;
+	margin: 0 5px;
+	background: #4d98e3;
+	color: #c4daf1;
 }
 
 #head {
@@ -197,12 +208,18 @@ a:hover {
 	margin: 6px 0 0 0;
 }
 
-input[type=submit], input[type=reset], input[type=button] {
+#content input[type=submit], 
+#content input[type=reset], 
+#content input[type=button] {
 	margin: 5px 0;
 	padding: 5px 20px;
 }
 
-input[type=submit], input[type=reset], input[type=button], input[type=text], input[type=password], textarea {
+#content input[type=submit], 
+#content input[type=reset], 
+#content input[type=button], 
+#content input[type=text], 
+#content input[type=password], textarea {
 	display: block;
 	border: 1px solid #9d9d9d;
 	border-top: 1px solid #a0a0a0;
@@ -211,11 +228,12 @@ input[type=submit], input[type=reset], input[type=button], input[type=text], inp
 	text-shadow: #ffffff 1px 1px 0;
 }
 
-input[type=text], input[type=password] {
+#content input[type=text], 
+#content input[type=password] {
 	width: 400px;
 }
 
-textarea {
+#content textarea {
 	margin: 0;
 	width: 600px;
 	height: 180px;
