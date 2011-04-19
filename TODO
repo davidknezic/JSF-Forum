@@ -5,9 +5,6 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 1. High priority
 ----------------
-* Implement authentication on controller level (UserModel.authenticate() already available)
-* Enable thread, reply creation (depedent on previous task)
-* Implement roles (user, moderator, admin)
 
 2. Normal priority
 ------------------
@@ -16,6 +13,7 @@ This is a list of tasks to complete in the future. Feel free to extend!
 * Better place the information on thread facelet
 * Show last user activity when on profile facelet and rearrange information
 * Add 'joined on ...' on the user list
+* Redirect user to his new thread, after creation
 
 3. Low priority
 ---------------
