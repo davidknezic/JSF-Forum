@@ -5,6 +5,7 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 1. High priority
 ----------------
+* Cache DB Results / Models
 
 2. Normal priority
 ------------------
@@ -12,12 +13,10 @@ This is a list of tasks to complete in the future. Feel free to extend!
 * Limit the title and content lengths when displaying latest threads, threads and latest replies (with converters)
 * Better place the information on thread facelet
 * Show last user activity when on profile facelet and rearrange information
-* Add 'joined on ...' on the user list
 * Redirect user to his new thread, after creation
+* Pagination
+* ThreadBean Line 31 (See comment)
 
 3. Low priority
 ---------------
 * Put the db connection information into an external config (xml) file
-* Optimize performance (caching?)
-* Maybe we could use ORM instead of the current unflexible, hardly maintainable models
-
