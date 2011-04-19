@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import jgravatar.Gravatar;
 import jgravatar.GravatarDefaultImage;
@@ -52,11 +54,41 @@ public class UserModel {
 	 * The email address
 	 */
 	private String email;
+	
+	/**
+	 * The website
+	 */
+	private String website;
+	
+	/**
+	 * The location
+	 */
+	private String location;
+	
+	/**
+	 * First name
+	 */
+	private String firstName;
+	
+	/**
+	 * Last name
+	 */
+	private String lastName;
 
+	/**
+	 * Date of birth
+	 */
+	private Timestamp dateOfBirth;
+	
 	/**
 	 * The activation status
 	 */
 	private boolean active;
+	
+	/**
+	 * The creation date
+	 */
+	private Timestamp createdOn;
 
 	/**
 	 * Initialize an empty user
@@ -76,7 +108,7 @@ public class UserModel {
 		Connection conn = DBConnection.getInstance().getConnection();
 
 		PreparedStatement stmt = conn
-				.prepareStatement("SELECT username, password, email, active, permission FROM user WHERE userId = ?");
+				.prepareStatement("SELECT username, password, email, active, permission, website, location, firstName, lastName, dateOfBirth, createdOn FROM user WHERE userId = ?");
 		stmt.setInt(1, userId);
 		ResultSet res = stmt.executeQuery();
 
@@ -88,6 +120,12 @@ public class UserModel {
 			this.email = res.getString(3);
 			this.active = (res.getInt(4) == 0 ? false : true);
 			this.permission = res.getInt(5);
+			this.website = res.getString(6);
+			this.location = res.getString(7);
+			this.firstName = res.getString(8);
+			this.lastName = res.getString(9);
+			this.dateOfBirth = res.getTimestamp(10);
+			this.createdOn = res.getTimestamp(11);
 		} else {
 			// No user with given id found
 			throw new Exception("Could not find user");
@@ -108,15 +146,15 @@ public class UserModel {
 			// Insert a new record
 			stmt = conn
 					.prepareStatement(
-							"INSERT INTO user (username, password, email, active, permission) VALUES (?, ?, ?, ?, ?)",
+							"INSERT INTO user (username, password, email, active, permission, website, location, firstName, lastName, dateOfBirth, createdOn) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 							Statement.RETURN_GENERATED_KEYS);
 		} else {
 			// Update record
 			stmt = conn
 					.prepareStatement(
-							"UPDATE user SET username = ?, password = ?, email = ?, active = ?, permission = ? WHERE userId = ?",
+							"UPDATE user SET username = ?, password = ?, email = ?, active = ?, permission = ?, website = ?, location = ?, firstName = ?, lastName = ?, dateOfBirth = ?, createdOn = ? WHERE userId = ?",
 							Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(6, this.userId);
+			stmt.setInt(12, this.userId);
 		}
 
 		// Set global variables
@@ -125,6 +163,14 @@ public class UserModel {
 		stmt.setString(3, this.email);
 		stmt.setInt(4, (this.active == true ? 1 : 0));
 		stmt.setInt(5, this.permission);
+		
+		
+		stmt.setString(6, this.website);
+		stmt.setString(7, this.location);
+		stmt.setString(8, this.firstName);
+		stmt.setString(9, this.lastName);
+		stmt.setTimestamp(10, this.dateOfBirth);
+		stmt.setTimestamp(11, this.createdOn);
 
 		// Execute query
 		stmt.executeUpdate();
@@ -220,12 +266,130 @@ public class UserModel {
 		this.active = active;
 	}
 	
+	/**
+	 * Get permission role
+	 * 
+	 * @return int
+	 */
 	public int getPermission() {
 		return this.permission;
 	}
 	
+	/**
+	 * Set permission role
+	 * 
+	 * @param permission
+	 */
 	public void setPermission(int permission) {
 		this.permission = permission;
+	}
+
+	/**
+	 * Get website
+	 * 
+	 * @return String
+	 */
+	public String getWebsite() {
+		return website;
+	}
+
+	/**
+	 * Set website
+	 * 
+	 * @param website
+	 */
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	/**
+	 * Get location
+	 * 
+	 * @return String
+	 */
+	public String getLocation() {
+		return location;
+	}
+
+	/**
+	 * Set location
+	 * 
+	 * @param location
+	 */
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	/**
+	 * Get first name
+	 * 
+	 * @return String
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * Set first name
+	 * 
+	 * @param firstName
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * Get last name
+	 * 
+	 * @return String
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * Set last name
+	 * 
+	 * @param lastName
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * Get the "timestamp of birth" as a standard java Date
+	 * 
+	 * @return Date
+	 */
+	public Date getDateOfBirth() {
+		return (Date) dateOfBirth;
+	}
+
+	/**
+	 * Set the "timestamp of birth" as a standard java Date
+	 * 
+	 * @param createdOn
+	 */
+	public void setDateOfBirth(Timestamp dateOfBirth) {
+		this.dateOfBirth = new Timestamp(dateOfBirth.getTime());
+	}
+
+	/**
+	 * Get the creation timestamp as a standard java Date
+	 * 
+	 * @return Date
+	 */
+	public Date getCreatedOn() {
+		return (Date) createdOn;
+	}
+
+	/**
+	 * Set the creation timestamp as a standard java Date
+	 * 
+	 * @param createdOn
+	 */
+	public void setCreatedOn(Timestamp createdOn) {
+		this.createdOn = new Timestamp(createdOn.getTime());
 	}
 
 	/**
@@ -283,11 +447,12 @@ public class UserModel {
 	/**
 	 * Get the avatar picture url
 	 * 
+	 * @param size
 	 * @return String
 	 */
-	public String getAvatar() {
+	public String getAvatar(Long size) {
 		Gravatar gravatar = new Gravatar();
-		gravatar.setSize(50);
+		gravatar.setSize(size.intValue());
 		gravatar.setRating(GravatarRating.GENERAL_AUDIENCES);
 		gravatar.setDefaultImage(GravatarDefaultImage.IDENTICON);
 		String url = gravatar.getUrl(this.email);

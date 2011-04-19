@@ -20,7 +20,7 @@
 						<f:facet name="header">
 							<h:outputFormat value="#{msgs.user}" styleClass="firstHeading" />
 						</f:facet>
-						<h:graphicImage url="#{reply.user.avatar}" class="reply_avatar" />
+						<h:graphicImage url="#{reply.user.getAvatar(64)}" class="reply_avatar" />
 						<h:outputLink value="profile.xhtml?userId=#{reply.user.userId}">
 							<h:outputText value="#{reply.user.username}"
 								class="reply_username" />

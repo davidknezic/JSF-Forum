@@ -12,17 +12,29 @@
 		<ui:define name="content">
 			   	<div class="block" >
 		   			<h2><h:outputText value="#{msgs.user}" /></h2>
-		   			<table>
-		   				<tr>
-		   					<th><h:outputText value="#{userBean.user.username}" /></th>
-		   				</tr>
-		   				<tr>
-		   					<td><h:outputText value="#{userBean.user.username}" /></td>
-		   				</tr>
-		   				<tr>
-		   					<td><h:graphicImage value="#{userBean.user.avatar}" /></td>
-		   				</tr>
-		   			</table>
+		   			<div>
+		   				<h:graphicImage value="#{userBean.user.getAvatar(128)}" style="float: left; border: 1px solid black;" />
+						<dl>
+							<dt>Username</dt>
+							<dd><h:outputText value="#{userBean.user.username}" /></dd>
+							
+							<dt>Role</dt>
+							<dd><h:outputText value="#{userBean.user.permission}" /></dd>
+							
+							<dt>Website</dt>
+							<dd><h:outputText value="#{userBean.user.website}" /></dd>
+							
+							<dt>Location</dt>
+							<dd><h:outputText value="#{userBean.user.location}" /></dd>
+							
+							<dt>Age</dt>
+							<dd><h:outputText value="#{userBean.user.dateOfBirth}" /></dd>
+							
+							<dt><h:outputText value="#{msgs.registeredSince}" /></dt>
+							<dd><h:outputText value="#{userBean.user.createdOn}" converter="forum.DateConverter" /></dd>
+						</dl>
+						<div style="clear: both;"></div>
+		   			</div>
 			   	</div>
 		</ui:define>
 	</ui:composition>
