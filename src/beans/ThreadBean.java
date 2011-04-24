@@ -4,38 +4,47 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import models.ReplyModel;
 import models.ThreadModel;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class ThreadBean {
 	private String title, content;
+	private ThreadModel thread;
+	private ArrayList<ReplyModel> replies;
 	
 	public ThreadModel getThread() throws Throwable {
-		Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		Integer threadId = Integer.parseInt(request.get("threadId"));
+		if(thread == null) {
+			Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+			Integer threadId = Integer.parseInt(request.get("threadId"));
+			
+			if(threadId == null) throw new Exception("Invalid Request");
+			
+			thread = new ThreadModel(threadId);
+		}
 		
-		if(threadId == null) throw new Exception("Invalid Request");
-		
-		return new ThreadModel(threadId);
+		return thread;
 	}
 	
 	public ArrayList<ReplyModel> getReplies() throws Throwable {
-		ThreadModel thread = getThread();
 		
-		ArrayList<ReplyModel> replies = thread.getReplies(0, 20);
-		if(true)  { // Nur auf erster Seite TODO !!
-			// Adding a "fake" reply representing the thread
-			ReplyModel reply = new ReplyModel();
-			reply.setContent(thread.getContent());
-			reply.setCreatedOn(thread.getCreatedOn());
-			reply.setThreadId(thread.getThreadId());
-			reply.setUserId(thread.getUserId());
-			replies.add(0, reply);
+		if(replies == null) {
+			ThreadModel thread = getThread();
+			
+			replies = thread.getReplies(0, 20);
+			if(true)  { // Nur auf erster Seite TODO !!
+				// Adding a "fake" reply representing the thread
+				ReplyModel reply = new ReplyModel();
+				reply.setContent(thread.getContent());
+				reply.setCreatedOn(thread.getCreatedOn());
+				reply.setThreadId(thread.getThreadId());
+				reply.setUserId(thread.getUserId());
+				replies.add(0, reply);
+			}
 		}
 		return replies;
 	}
