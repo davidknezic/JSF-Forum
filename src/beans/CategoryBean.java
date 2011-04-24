@@ -3,14 +3,15 @@ package beans;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 import models.CategoryModel;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class CategoryBean {
-
+	private ArrayList<CategoryModel> categories;
+	
 	/**
 	 * Get all categories
 	 * 
@@ -18,7 +19,8 @@ public class CategoryBean {
 	 */
 	public ArrayList<CategoryModel> getCategories() throws Throwable {
 		// Return the category array
-		return CategoryModel.getCategories();
+		if(categories == null) categories = CategoryModel.getCategories();
+		return categories;
 	}
 
 }
