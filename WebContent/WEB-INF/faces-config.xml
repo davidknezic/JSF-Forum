@@ -26,5 +26,12 @@
 		<converter-class>converters.DateConverter</converter-class>
 
 	</converter>
+	
+	<converter>
+
+		<converter-id>forum.AgeConverter</converter-id>
+		<converter-class>converters.AgeConverter</converter-class>
+
+	</converter>
 
 </faces-config>

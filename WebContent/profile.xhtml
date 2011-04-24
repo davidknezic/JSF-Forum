@@ -19,7 +19,11 @@
 							<dd><h:outputText value="#{userBean.user.username}" /></dd>
 							
 							<dt>Role</dt>
-							<dd><h:outputText value="#{userBean.user.permission}" /></dd>
+							<dd>
+								<h:outputFormat value="#{msgs.permissionValue}" >
+									<f:param value="#{userBean.user.permission}" />
+								</h:outputFormat>
+							</dd>
 							
 							<dt>Website</dt>
 							<dd><h:outputText value="#{userBean.user.website}" /></dd>
@@ -28,7 +32,7 @@
 							<dd><h:outputText value="#{userBean.user.location}" /></dd>
 							
 							<dt>Age</dt>
-							<dd><h:outputText value="#{userBean.user.dateOfBirth}" /></dd>
+							<dd><h:outputText value="#{userBean.user.dateOfBirth}" converter="forum.AgeConverter" /></dd>
 							
 							<dt><h:outputText value="#{msgs.registeredSince}" /></dt>
 							<dd><h:outputText value="#{userBean.user.createdOn}" converter="forum.DateConverter" /></dd>
