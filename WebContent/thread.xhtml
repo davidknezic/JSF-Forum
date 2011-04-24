@@ -21,11 +21,13 @@
 							<h:outputFormat value="#{msgs.user}" styleClass="firstHeading" />
 						</f:facet>
 						<h:outputText class="date" value="#{reply.createdOn}"
-							converter="forum.DateConverter" /><br />
+							converter="forum.DateConverter" />
 						<h:outputLink class="reply_username" value="profile.xhtml?userId=#{reply.user.userId}">
 							<h:outputText value="#{reply.user.username}" />
-						</h:outputLink><br />
-						<h:outputText value="#{reply.user.permission}" /><br />
+						</h:outputLink>
+						<h:outputFormat class="reply_permission" value="#{msgs.permissionValue}">
+							<f:param value="#{reply.user.permission}" />
+						</h:outputFormat>
 						<h:graphicImage url="#{reply.user.getAvatar(64)}" class="reply_avatar" />
 					</h:column>
 					<h:column>
