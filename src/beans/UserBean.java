@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import models.ReplyModel;
@@ -12,30 +12,40 @@ import models.ThreadModel;
 import models.UserModel;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class UserBean {
-	public void logout() {
-		
-	}
+	private UserModel user;
+	private ArrayList<ThreadModel> threads;
+	private ArrayList<ReplyModel> replies;
+	private ArrayList<UserModel> users;
 	
 	public UserModel getUser() throws Throwable {
-		Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		Integer userId = Integer.parseInt(request.get("userId"));
-		
-		if(userId == null) throw new Exception("Invalid Request");
-		
-		return new UserModel(userId);
+		if(user == null) { 
+			Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+			Integer userId = Integer.parseInt(request.get("userId"));
+			
+			if(userId == null) throw new Exception("Invalid Request");
+			
+			user = new UserModel(userId);
+		}
+		return user;
 	}
 	
 	public ArrayList<ThreadModel> getLatestThreads() throws Throwable {
-		return this.getUser().getThreads(0, 5);
+		if(threads == null)
+			threads = this.getUser().getThreads(0, 5);
+		return threads;
 	}
 	
 	public ArrayList<ReplyModel> getLatestReplies() throws Throwable {
-		return this.getUser().getReplies(0, 5);
+		if(replies == null)
+			replies = this.getUser().getReplies(0, 5);
+		return replies;
 	}
 	
 	public ArrayList<UserModel> getUsers() throws Throwable {
-		return UserModel.getUsers(0, 20);
+		if(users == null)
+			users = UserModel.getUsers(0, 20);
+		return users;
 	}
 }
