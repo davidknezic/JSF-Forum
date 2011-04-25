@@ -17,28 +17,47 @@ import models.ThreadModel;
 @ManagedBean
 @RequestScoped
 public class BoardBean {
+	public static final int THREADS_PER_PAGE = 5;
+	
 	private BoardModel board;
 	private ArrayList<ThreadModel> threads;
 
 	private int currentPage;
+	private int pages;
 	
-	public BoardBean() {
-		Integer page;
-
-		// Get the requested page number
+	public BoardBean() throws Throwable {
 		Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		
+		/*
+		 * Save board
+		 */
+		Integer boardId = Integer.parseInt(request.get("boardId"));
+		this.board = new BoardModel(boardId);
+		
+		/*
+		 * Get page count
+		 */
+		this.pages = this.board.getThreadCount()/THREADS_PER_PAGE;
+		if (this.board.getThreadCount()%THREADS_PER_PAGE != 0) {
+			this.pages++;
+		}
+
+		/*
+		 * Save requested page number
+		 */
 		try {
-			page = Integer.parseInt(request.get("page"));
+			this.currentPage = Integer.parseInt(request.get("page"));
 			
 			// Check boundaries
-			if (page < 0) {
-				page = 0;
+			if (this.currentPage < 0) {
+				this.currentPage = 0;
+			}
+			if (this.currentPage > this.pages) {
+				this.currentPage = this.pages - 1;
 			}
 		} catch (Exception e) {
-			page = 0;
+			this.currentPage = 0;
 		}
-		
-		this.currentPage = page.intValue();
 	}
 	
 	public int getCurrentPage() {
@@ -50,26 +69,15 @@ public class BoardBean {
 	}
 	
 	public boolean hasNext() throws Throwable {
-		return (this.board.getThreadCount() > (this.currentPage + 1)*5);
+		return (this.currentPage + 1 < this.pages);
 	}
 	
 	/**
-	 * Get board which is requesetd via RequestParameterMap
-	 * @return BoardModel board requested via RequestParameterMap
+	 * Get board
+	 * @return BoardModel requested board
 	 * @throws Throwable
 	 */
 	public BoardModel getBoard() throws Throwable {
-		if (board == null) {
-			Map<String, String> request = FacesContext.getCurrentInstance()
-					.getExternalContext().getRequestParameterMap();
-			Integer boardId = Integer.parseInt(request.get("boardId"));
-
-			if (boardId == null)
-				throw new Exception("Invalid Request");
-
-			board = new BoardModel(boardId);
-		}
-
 		return board;
 	}
 
@@ -80,7 +88,7 @@ public class BoardBean {
 	 */
 	public ArrayList<ThreadModel> getThreads() throws Throwable {
 		if (threads == null)
-			threads = getBoard().getThreads(currentPage*5, 5);
+			threads = getBoard().getThreads(currentPage*THREADS_PER_PAGE, THREADS_PER_PAGE);
 		return threads;
 	}
 }
