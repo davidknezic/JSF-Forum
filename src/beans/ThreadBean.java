@@ -13,29 +13,41 @@ import models.ThreadModel;
 @ManagedBean
 @RequestScoped
 public class ThreadBean {
+	public static final int REPLIES_PER_PAGE = 3;
+	
 	private String title, content;
 	private ThreadModel thread;
 	private ArrayList<ReplyModel> replies;
 	
 	private int currentPage;
+	private int pages;
 	
-	public ThreadBean() {
-		Integer page;
-
-		// Get the requested page number
+	public ThreadBean() throws Throwable {
 		Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		
+		/*
+		 * Save thread
+		 */
+		Integer threadId = Integer.parseInt(request.get("threadId"));
+		this.thread = new ThreadModel(threadId);
+
+		/*
+		 * Save requested page number
+		 */
+		this.pages = this.thread.getReplyCount()/REPLIES_PER_PAGE;
 		try {
-			page = Integer.parseInt(request.get("page"));
+			this.currentPage = Integer.parseInt(request.get("page"));
 			
 			// Check boundaries
-			if (page < 0) {
-				page = 0;
+			if (this.currentPage < 0) {
+				this.currentPage = 0;
+			}
+			if (this.currentPage > this.pages) {
+				this.currentPage = this.pages - 1;
 			}
 		} catch (Exception e) {
-			page = 0;
+			this.currentPage = 0;
 		}
-		
-		this.currentPage = page.intValue();
 	}
 	
 	public int getCurrentPage() {
@@ -47,19 +59,10 @@ public class ThreadBean {
 	}
 	
 	public boolean hasNext() throws Throwable {
-		return (this.thread.getReplyCount() > (this.currentPage + 1)*2);
+		return (this.currentPage + 1 < this.pages);
 	}
 	
-	public ThreadModel getThread() throws Throwable {
-		if(thread == null) {
-			Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-			Integer threadId = Integer.parseInt(request.get("threadId"));
-			
-			if(threadId == null) throw new Exception("Invalid Request");
-			
-			thread = new ThreadModel(threadId);
-		}
-		
+	public ThreadModel getThread() {
 		return thread;
 	}
 	
@@ -67,7 +70,7 @@ public class ThreadBean {
 		if(replies == null) {
 			ThreadModel thread = getThread();
 			
-			replies = thread.getReplies(currentPage*2, 2);
+			replies = thread.getReplies(currentPage*REPLIES_PER_PAGE, REPLIES_PER_PAGE);
 			if(currentPage == 0)  {
 				// Adding a "fake" reply representing the thread
 				ReplyModel reply = new ReplyModel();
