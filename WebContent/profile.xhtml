@@ -26,13 +26,22 @@
 							</dd>
 							
 							<dt>Website</dt>
-							<dd><h:outputText value="#{userBean.user.website}" /></dd>
+							<dd>
+								<h:outputText value="#{userBean.user.website}" rendered="#{userBean.user.website != null}" />
+								<h:outputText value="-" rendered="#{userBean.user.website == null}" />
+							</dd>
 							
 							<dt>Location</dt>
-							<dd><h:outputText value="#{userBean.user.location}" /></dd>
+							<dd>
+								<h:outputText value="#{userBean.user.location}" rendered="#{userBean.user.location != null}" />
+								<h:outputText value="-" rendered="#{userBean.user.location == null}" />
+							</dd>
 							
 							<dt>Age</dt>
-							<dd><h:outputText value="#{userBean.user.dateOfBirth}" converter="forum.AgeConverter" /></dd>
+							<dd>
+								<h:outputText value="#{userBean.user.dateOfBirth}" converter="forum.AgeConverter" rendered="#{userBean.user.dateOfBirth != null}" />
+								<h:outputText value="-" rendered="#{userBean.user.dateOfBirth == null}" />
+							</dd>
 							
 							<dt><h:outputText value="#{msgs.registeredSince}" /></dt>
 							<dd><h:outputText value="#{userBean.user.createdOn}" converter="forum.DateConverter" /></dd>
@@ -55,12 +64,14 @@
 								<h:outputText value="#{thread.title}" />
 							</h:outputLink>
 						</h3>
-						<h:outputText value="#{msgs.by} " />
-						<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
-							<h:outputText value="#{thread.user.username}" />
-						</h:outputLink>, 
-							<h:outputText value="#{thread.createdOn}"
-							converter="forum.DateConverter" />
+						<span class="meta">
+							<h:outputText value="#{msgs.by} " />
+							<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
+								<h:outputText value="#{thread.user.username}" />
+							</h:outputLink>, 
+								<h:outputText value="#{thread.createdOn}"
+								converter="forum.DateConverter" />
+						</span>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
@@ -76,8 +87,6 @@
 						</f:facet>
 
 						<h:panelGroup rendered="#{thread.lastReply != null}">
-								limited reply content...
-								<br />
 							<h:outputText value="#{msgs.by} " />
 							<h:outputLink
 								value="profile.xhtml?userId=#{thread.lastReply.user.userId}">
@@ -93,6 +102,10 @@
 
 					</h:column>
 				</h:dataTable>
+				<h:panelGrid columns="1" columnClasses="left"
+					rendered="#{userBean.latestThreads.size() == 0}">
+					<h:outputText value="#{msgs.noUserThreads}" />
+				</h:panelGrid>
 					
 			   	</div>
 		</ui:define>
