@@ -74,6 +74,16 @@
 					<h:outputText value="#{msgs.noThreads}" />
 				</h:panelGrid>
 			</div>
+			<div class="pagination">
+				<h:outputLink rendered="#{boardBean.hasPrev()}" class="prev"
+				  value="board.xhtml?boardId=#{queryManager.get('boardId')}&amp;page=#{boardBean.currentPage - 1}">
+					<h:outputText value="#{msgs.previous}" />
+				</h:outputLink>
+				<h:outputLink rendered="#{boardBean.hasNext()}" class="next"
+				  value="board.xhtml?boardId=#{queryManager.get('boardId')}&amp;page=#{boardBean.currentPage + 1}">
+					<h:outputText value="#{msgs.next}" />
+				</h:outputLink>
+			</div>
 		</ui:define>
 	</ui:composition>
 </body>
