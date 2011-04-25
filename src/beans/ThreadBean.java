@@ -15,7 +15,6 @@ import models.ThreadModel;
 public class ThreadBean {
 	public static final int REPLIES_PER_PAGE = 3;
 	
-	private String title, content;
 	private ThreadModel thread;
 	private ArrayList<ReplyModel> replies;
 	
@@ -32,9 +31,16 @@ public class ThreadBean {
 		this.thread = new ThreadModel(threadId);
 
 		/*
-		 * Save requested page number
+		 * Get page count
 		 */
 		this.pages = this.thread.getReplyCount()/REPLIES_PER_PAGE;
+		if (this.thread.getReplyCount()%REPLIES_PER_PAGE != 0) {
+			this.pages++;
+		}
+		
+		/*
+		 * Save requested page number
+		 */
 		try {
 			this.currentPage = Integer.parseInt(request.get("page"));
 			
@@ -83,35 +89,5 @@ public class ThreadBean {
 		}
 		return replies;
 	}
-	
-	public String save(Integer userId) throws Throwable {
-		ThreadModel thread = new ThreadModel();
-		
-		int boardId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("boardId"));
-		
-		thread.setBoardId(boardId);
-		thread.setContent(content);
-		thread.setTitle(title);
-		thread.setUserId(userId);
-		
-		thread.save();
-		
-		return String.format("board.xhtml?boardId=%d", boardId);
-	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
 }

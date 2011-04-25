@@ -21,20 +21,20 @@
 						<h:panelGroup>
 							<h:messages />
 							<h:message for="titleIn" />
-							<h:inputText value="#{threadBean.title}" id="titleIn"
+							<h:inputText value="#{newThreadBean.title}" id="titleIn"
 								required="true" />
 						</h:panelGroup>
 						<h:outputText value="#{msgs.content}" />
 						<h:panelGroup>
 							<h:message for="contentIn" />
-							<h:inputTextarea value="#{threadBean.content}" id="contentIn"
+							<h:inputTextarea value="#{newThreadBean.content}" id="contentIn"
 								required="true" />
 						</h:panelGroup>
 						<h:panelGroup>
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:commandButton value="#{msgs.save}"
-								action="#{threadBean.save(loginBean.user.userId)}">
+								action="#{newThreadBean.save(loginBean.user.userId)}">
 								<f:param name="boardId" value="#{queryManager.get('boardId')}" />
 							</h:commandButton>
 						</h:panelGroup>
