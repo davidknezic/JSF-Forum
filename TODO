@@ -9,13 +9,9 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 2. Normal priority
 ------------------
-* Avoid empty tables without corresponding messages for the end-user
-* Limit the title and content lengths when displaying latest threads, threads and latest replies (with converters)
-* Better place the information on thread facelet
-* Show last user activity when on profile facelet and rearrange information
+* Limit the title length when displaying threads (with converters)
 * Redirect user to his new thread, after creation
-* Pagination
-* ThreadBean Line 31 (See comment)
+* Redirect user to his new reply, after creation
 
 3. Low priority
 ---------------
