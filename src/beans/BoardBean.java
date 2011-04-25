@@ -20,6 +20,39 @@ public class BoardBean {
 	private BoardModel board;
 	private ArrayList<ThreadModel> threads;
 
+	private int currentPage;
+	
+	public BoardBean() {
+		Integer page;
+
+		// Get the requested page number
+		Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		try {
+			page = Integer.parseInt(request.get("page"));
+			
+			// Check boundaries
+			if (page < 0) {
+				page = 0;
+			}
+		} catch (Exception e) {
+			page = 0;
+		}
+		
+		this.currentPage = page.intValue();
+	}
+	
+	public int getCurrentPage() {
+		return this.currentPage;
+	}
+	
+	public boolean hasPrev() {
+		return (this.currentPage > 0);
+	}
+	
+	public boolean hasNext() throws Throwable {
+		return (this.board.getThreadCount() > (this.currentPage + 1)*5);
+	}
+	
 	/**
 	 * Get board which is requesetd via RequestParameterMap
 	 * @return BoardModel board requested via RequestParameterMap
@@ -47,7 +80,7 @@ public class BoardBean {
 	 */
 	public ArrayList<ThreadModel> getThreads() throws Throwable {
 		if (threads == null)
-			threads = getBoard().getThreads(0, 20);
+			threads = getBoard().getThreads(currentPage*5, 5);
 		return threads;
 	}
 }
