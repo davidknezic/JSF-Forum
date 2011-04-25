@@ -51,6 +51,16 @@
 					</h:column>
 				</h:dataTable>
 			</div>
+			<div class="pagination">
+				<h:outputLink rendered="#{threadBean.hasPrev()}" class="prev"
+				  value="thread.xhtml?threadId=#{queryManager.get('threadId')}&amp;page=#{threadBean.currentPage - 1}">
+					<h:outputText value="#{msgs.previous}" />
+				</h:outputLink>
+				<h:outputLink rendered="#{threadBean.hasNext()}" class="next"
+				  value="thread.xhtml?threadId=#{queryManager.get('threadId')}&amp;page=#{threadBean.currentPage + 1}">
+					<h:outputText value="#{msgs.next}" />
+				</h:outputLink>
+			</div>
 		</ui:define>
 	</ui:composition>
 </body>
