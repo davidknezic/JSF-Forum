@@ -177,11 +177,16 @@ a:hover {
 	line-height: 16px;
 }
 
+.block table tfoot td {
+	padding: 10px;
+}
+
 .firstHeading {
 	padding-left: 5px;
 }
 
-.block table .replyLeft {
+.block table .replyLeft,
+.block table .newThreadLeft {
 	padding-left: 10px;
 	padding-right: 10px;
 	border-right: 1px solid white;
@@ -189,7 +194,12 @@ a:hover {
 	text-align: center;
 }
 
-.block table .replyRight {
+.block table .newThreadLeft {
+	text-align: right;
+}
+
+.block table .replyRight,
+.block table .newThreadRight {
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 709px;
