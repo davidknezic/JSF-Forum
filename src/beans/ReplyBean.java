@@ -11,7 +11,6 @@ public class ReplyBean {
 	private String content;
 	
 	public String save(int threadId, int userId) throws Throwable {
-		System.out.println(userId);
 		ReplyModel reply = new ReplyModel();
 		reply.setContent(content);
 		reply.setThreadId(threadId);

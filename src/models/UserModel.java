@@ -527,7 +527,6 @@ public class UserModel {
 		ResultSet res = stmt.executeQuery();
 
 		if (res.first()) {
-			System.out.println("ok");
 			// Return the user object
 			return new UserModel(res.getInt(1));
 		} else {
