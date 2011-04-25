@@ -17,6 +17,39 @@ public class ThreadBean {
 	private ThreadModel thread;
 	private ArrayList<ReplyModel> replies;
 	
+	private int currentPage;
+	
+	public ThreadBean() {
+		Integer page;
+
+		// Get the requested page number
+		Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		try {
+			page = Integer.parseInt(request.get("page"));
+			
+			// Check boundaries
+			if (page < 0) {
+				page = 0;
+			}
+		} catch (Exception e) {
+			page = 0;
+		}
+		
+		this.currentPage = page.intValue();
+	}
+	
+	public int getCurrentPage() {
+		return this.currentPage;
+	}
+	
+	public boolean hasPrev() {
+		return (this.currentPage > 0);
+	}
+	
+	public boolean hasNext() throws Throwable {
+		return (this.thread.getReplyCount() > (this.currentPage + 1)*2);
+	}
+	
 	public ThreadModel getThread() throws Throwable {
 		if(thread == null) {
 			Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
@@ -31,12 +64,13 @@ public class ThreadBean {
 	}
 	
 	public ArrayList<ReplyModel> getReplies() throws Throwable {
-		
 		if(replies == null) {
+			int page = getCurrentPage();
+			
 			ThreadModel thread = getThread();
 			
-			replies = thread.getReplies(0, 20);
-			if(true)  { // Nur auf erster Seite TODO !!
+			replies = thread.getReplies(page*2, 2);
+			if(page == 0)  {
 				// Adding a "fake" reply representing the thread
 				ReplyModel reply = new ReplyModel();
 				reply.setContent(thread.getContent());
