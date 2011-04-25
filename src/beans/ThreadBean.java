@@ -65,12 +65,10 @@ public class ThreadBean {
 	
 	public ArrayList<ReplyModel> getReplies() throws Throwable {
 		if(replies == null) {
-			int page = getCurrentPage();
-			
 			ThreadModel thread = getThread();
 			
-			replies = thread.getReplies(page*2, 2);
-			if(page == 0)  {
+			replies = thread.getReplies(currentPage*2, 2);
+			if(currentPage == 0)  {
 				// Adding a "fake" reply representing the thread
 				ReplyModel reply = new ReplyModel();
 				reply.setContent(thread.getContent());
