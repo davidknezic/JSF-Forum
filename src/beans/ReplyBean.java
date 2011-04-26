@@ -2,6 +2,7 @@ package beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import models.ReplyModel;
 
@@ -18,6 +19,9 @@ public class ReplyBean {
 		reply.save();
 		
 		content = "";
+		
+		String re = String.format("thread.xhtml?threadId=%d&page=99999", threadId);
+		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
 		
 		return null;
 	}

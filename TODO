@@ -10,8 +10,6 @@ This is a list of tasks to complete in the future. Feel free to extend!
 2. Normal priority
 ------------------
 * Limit the title length when displaying threads (with converters)
-* Redirect user to his new thread, after creation
-* Redirect user to his new reply, after creation
 
 3. Low priority
 ---------------

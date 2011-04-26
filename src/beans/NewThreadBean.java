@@ -23,7 +23,10 @@ public class NewThreadBean {
 		
 		thread.save();
 		
-		return String.format("board.xhtml?boardId=%d", boardId);
+		String re = String.format("thread.xhtml?threadId=%d", thread.getThreadId());
+		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
+		
+		return null;
 	}
 
 	public String getTitle() {
