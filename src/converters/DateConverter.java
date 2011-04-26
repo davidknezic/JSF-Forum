@@ -76,7 +76,7 @@ public class DateConverter implements Converter {
 		tmp.add(Calendar.DAY_OF_MONTH, -1);
 		if (now.after(tmp)) {
 			formatter.applyPattern("HH:mm");
-			return rb.getString("yesterday") + "y, " + formatter.format(now.getTime());
+			return rb.getString("yesterday") + ", " + formatter.format(now.getTime());
 		}
 
 		// This week? Weekday
