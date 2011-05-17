@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import models.ReplyModel;
+import models.Settings;
 import models.ThreadModel;
 import models.UserModel;
 
@@ -33,13 +34,13 @@ public class UserBean {
 	
 	public ArrayList<ThreadModel> getLatestThreads() throws Throwable {
 		if(latestThreads == null)
-			latestThreads = this.getUser().getThreads(0, 5);
+			latestThreads = this.getUser().getThreads(0, Settings.getInstance().getInt("profileLatestThreads"));
 		return latestThreads;
 	}
 	
 	public ArrayList<ReplyModel> getLatestReplies() throws Throwable {
 		if(latestReplies == null)
-			latestReplies = this.getUser().getReplies(0, 5);
+			latestReplies = this.getUser().getReplies(0, Settings.getInstance().getInt("profileLatestReplies"));
 		return latestReplies;
 	}
 	

@@ -11,4 +11,8 @@
     	<threadsPerPage>10</threadsPerPage>
     	<repliesPerPage>5</repliesPerPage>
     </pagination>
+    <profile>
+    	<profileLatestThreads>4</profileLatestThreads>
+    	<profileLatestReplies>4</profileLatestReplies>
+    </profile>
 </Settings>
