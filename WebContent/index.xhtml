@@ -10,9 +10,14 @@
 			:: index
 		</ui:define>
 		<ui:define name="content">
-			
-				index file
-			   	
+			<div class="block">
+				<h2>
+					<h:outputText value="#{msgs.welcomeTitle}" />
+				</h2>
+				<h:panelGrid columns="1" columnClasses="left" >
+					<h:outputText value="#{msgs.welcomeText}" />
+				</h:panelGrid>
+			</div>
 		</ui:define>
 	</ui:composition>
 </body>
