@@ -8,13 +8,12 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import models.ReplyModel;
+import models.Settings;
 import models.ThreadModel;
 
 @ManagedBean
 @RequestScoped
 public class ThreadBean {
-	public static final int REPLIES_PER_PAGE = 3;
-	
 	private ThreadModel thread;
 	private ArrayList<ReplyModel> replies;
 	
@@ -33,8 +32,8 @@ public class ThreadBean {
 		/*
 		 * Get page count
 		 */
-		this.pages = this.thread.getReplyCount()/REPLIES_PER_PAGE;
-		if (this.thread.getReplyCount()%REPLIES_PER_PAGE != 0) {
+		this.pages = this.thread.getReplyCount()/Settings.getInstance().getInt("repliesPerPage");
+		if (this.thread.getReplyCount()%Settings.getInstance().getInt("repliesPerPage") != 0) {
 			this.pages++;
 		}
 		
@@ -76,7 +75,7 @@ public class ThreadBean {
 		if(replies == null) {
 			ThreadModel thread = getThread();
 			
-			replies = thread.getReplies(currentPage*REPLIES_PER_PAGE, REPLIES_PER_PAGE);
+			replies = thread.getReplies(currentPage*Settings.getInstance().getInt("repliesPerPage"), Settings.getInstance().getInt("repliesPerPage"));
 			if(currentPage == 0)  {
 				// Adding a "fake" reply representing the thread
 				ReplyModel reply = new ReplyModel();

@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import models.BoardModel;
+import models.Settings;
 import models.ThreadModel;
 /**
  * 
@@ -17,8 +18,6 @@ import models.ThreadModel;
 @ManagedBean
 @RequestScoped
 public class BoardBean {
-	public static final int THREADS_PER_PAGE = 5;
-	
 	private BoardModel board;
 	private ArrayList<ThreadModel> threads;
 
@@ -37,8 +36,8 @@ public class BoardBean {
 		/*
 		 * Get page count
 		 */
-		this.pages = this.board.getThreadCount()/THREADS_PER_PAGE;
-		if (this.board.getThreadCount()%THREADS_PER_PAGE != 0) {
+		this.pages = this.board.getThreadCount()/Settings.getInstance().getInt("threadsPerPage");
+		if (this.board.getThreadCount()%Settings.getInstance().getInt("threadsPerPage") != 0) {
 			this.pages++;
 		}
 
@@ -88,7 +87,7 @@ public class BoardBean {
 	 */
 	public ArrayList<ThreadModel> getThreads() throws Throwable {
 		if (threads == null)
-			threads = getBoard().getThreads(currentPage*THREADS_PER_PAGE, THREADS_PER_PAGE);
+			threads = getBoard().getThreads(currentPage*Settings.getInstance().getInt("threadsPerPage"), Settings.getInstance().getInt("threadsPerPage"));
 		return threads;
 	}
 }

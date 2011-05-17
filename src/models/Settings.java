@@ -40,6 +40,10 @@ public class Settings {
 		return map.get(key);
 	}
 	
+	public int getInt(String key) {
+		return Integer.parseInt(map.get(key));
+	}
+	
 	private class SettingsHandler extends DefaultHandler {
 		private String currentValue = "";
 		private String currentKey = "";
