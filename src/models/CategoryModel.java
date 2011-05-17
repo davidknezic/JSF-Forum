@@ -95,6 +95,21 @@ public class CategoryModel {
 			}
 		}
 	}
+	
+	/**
+	 * Deletes the current row
+	 * 
+	 * @throws Throwable
+	 */
+	public void delete() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+		PreparedStatement stmt;
+		
+		stmt = conn.prepareStatement("DELETE FROM category WHERE categoryId = ?");
+		stmt.setInt(1, this.categoryId);
+		
+		stmt.executeUpdate();
+	}
 
 	/**
 	 * Get the categoryId
