@@ -11,7 +11,6 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
  * @author David Knezic <davidknezic@gmail.com>
  */
 public class DBConnection {
-
 	private static DBConnection instance;
 	
 	/**
@@ -35,15 +34,18 @@ public class DBConnection {
 	 * Constructor
 	 */
 	public DBConnection() throws Throwable {
+		// Get Settings
+		Settings settings = Settings.getInstance();
+		
 		// New data source
 		this.database = new MysqlDataSource();
 
 		// Specify connection parameters
-		this.database.setDatabaseName("forum");
-		this.database.setServerName("localhost");
-		this.database.setPort(3306);
-		this.database.setUser("root");
-		this.database.setPassword("");
+		this.database.setDatabaseName(settings.get("dbName"));
+		this.database.setServerName(settings.get("dbHost"));
+		this.database.setPort(Integer.parseInt(settings.get("dbPort")));
+		this.database.setUser(settings.get("dbUser"));
+		this.database.setPassword(settings.get("dbPassword"));
 		this.database.setZeroDateTimeBehavior("convertToNull");
 
 		try {

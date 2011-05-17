@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Settings>
+    <db>
+        <dbHost>localhost</dbHost>
+        <dbPort>3306</dbPort>
+        <dbUser>root</dbUser>
+        <dbPassword></dbPassword>
+        <dbName>forum</dbName>
+    </db>
+    <pagination>
+    	<threadsPerPage>10</threadsPerPage>
+    	<repliesPerPage>5</repliesPerPage>
+    </pagination>
+</Settings>
