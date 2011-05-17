@@ -107,6 +107,64 @@
 					<h:outputText value="#{msgs.noUserThreads}" />
 				</h:panelGrid>
 					
+					<h2>
+						<h:outputText value="#{msgs.latestReply}" />
+					</h2>
+					<h:dataTable rendered="#{userBean.latestReplies.size() > 0}"
+					value="#{userBean.latestReplies}" var="reply"
+					columnClasses="left,center,right" columns="3" class="vmiddle">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.thread}" styleClass="firstHeading" />
+						</f:facet>
+						<h3>
+							<h:outputLink value="thread.xhtml?threadId=#{reply.thread.threadId}">
+								<h:outputText value="#{reply.thread.title}" />
+							</h:outputLink>
+						</h3>
+						<span class="meta">
+							<h:outputText value="#{msgs.by} " />
+							<h:outputLink value="profile.xhtml?userId=#{reply.thread.user.userId}">
+								<h:outputText value="#{reply.thread.user.username}" />
+							</h:outputLink>, 
+								<h:outputText value="#{reply.thread.createdOn}"
+								converter="forum.DateConverter" />
+						</span>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.statistics}" />
+						</f:facet>
+						<h:outputFormat value="#{msgs.replyCount}">
+							<f:param value="#{reply.thread.replyCount}" />
+						</h:outputFormat>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.latestReply}" />
+						</f:facet>
+
+						<h:panelGroup rendered="#{reply.thread.lastReply != null}">
+							<h:outputText value="#{msgs.by} " />
+							<h:outputLink
+								value="profile.xhtml?userId=#{reply.thread.lastReply.user.userId}">
+								<h:outputText value="#{reply.thread.lastReply.user.username}" />
+							</h:outputLink>, 
+								<h:outputText value="#{reply.thread.lastReply.createdOn}"
+								converter="forum.DateConverter" />
+						</h:panelGroup>
+
+						<h:panelGroup rendered="#{reply.thread.lastReply == null}">
+								-
+						</h:panelGroup>
+
+					</h:column>
+				</h:dataTable>
+				<h:panelGrid columns="1" columnClasses="left"
+					rendered="#{userBean.latestReplies.size() == 0}">
+					<h:outputText value="#{msgs.noUserThreads}" />
+				</h:panelGrid>
+					
 			   	</div>
 		</ui:define>
 	</ui:composition>

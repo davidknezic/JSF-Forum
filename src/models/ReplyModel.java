@@ -27,6 +27,11 @@ public class ReplyModel {
 	private int threadId;
 
 	/**
+	 * The parent thread
+	 */
+	private ThreadModel thread;
+
+	/**
 	 * The userId
 	 */
 	private int userId;
@@ -150,6 +155,15 @@ public class ReplyModel {
 	 */
 	public void setThreadId(int threadId) {
 		this.threadId = threadId;
+	}
+
+	/**
+	 * Get the parent thread
+	 * 
+	 * @return ThreadModel
+	 */
+	public ThreadModel getThread() throws Throwable {
+		return new ThreadModel(this.getThreadId());
 	}
 
 	/**
