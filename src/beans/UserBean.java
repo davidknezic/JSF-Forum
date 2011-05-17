@@ -15,8 +15,8 @@ import models.UserModel;
 @RequestScoped
 public class UserBean {
 	private UserModel user;
-	private ArrayList<ThreadModel> threads;
-	private ArrayList<ReplyModel> replies;
+	private ArrayList<ThreadModel> latestThreads;
+	private ArrayList<ReplyModel> latestReplies;
 	private ArrayList<UserModel> users;
 	
 	public UserModel getUser() throws Throwable {
@@ -32,15 +32,15 @@ public class UserBean {
 	}
 	
 	public ArrayList<ThreadModel> getLatestThreads() throws Throwable {
-		if(threads == null)
-			threads = this.getUser().getThreads(0, 5);
-		return threads;
+		if(latestThreads == null)
+			latestThreads = this.getUser().getThreads(0, 5);
+		return latestThreads;
 	}
 	
 	public ArrayList<ReplyModel> getLatestReplies() throws Throwable {
-		if(replies == null)
-			replies = this.getUser().getReplies(0, 5);
-		return replies;
+		if(latestReplies == null)
+			latestReplies = this.getUser().getReplies(0, 5);
+		return latestReplies;
 	}
 	
 	public ArrayList<UserModel> getUsers() throws Throwable {
