@@ -15,7 +15,6 @@ public class Settings {
 	private HashMap<String, String> map = new HashMap<String, String>();
 	
 	public Settings() throws Exception {
-		System.out.println("Construct Settings");
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser		 parser  = factory.newSAXParser();
@@ -23,7 +22,6 @@ public class Settings {
 			parser.parse(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/settings.xml")
 					, new SettingsHandler());
 		} catch(Exception e) {
-			System.out.println("");
 			throw e;
 		}
 	}
@@ -32,10 +30,6 @@ public class Settings {
 		if(Settings.instance == null) Settings.instance = new Settings();
 		
 		return Settings.instance;
-	}
-	
-	public String dummy() {
-		return "";
 	}
 	
 	private void set(String key, String value) {
@@ -52,12 +46,10 @@ public class Settings {
 
 		@Override
 		public void startDocument() throws SAXException {
-			System.out.println("reading Settings");
 		}
 
 		@Override
 		public void endElement(String namespace, String localName, String qName) {
-			System.out.println(this.currentKey+", "+this.currentValue);
 			set(this.currentKey, this.currentValue);
 		}
 
