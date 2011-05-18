@@ -164,6 +164,10 @@ a:hover {
 	width: 475px;
 }
 
+.block table .left2 {
+	padding-left: 10px;
+}
+
 .block table .center {
 	padding-left: 5px;
 	width: 200px;
