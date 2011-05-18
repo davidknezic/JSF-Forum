@@ -127,6 +127,21 @@ public class ThreadModel {
 			}
 		}
 	}
+	
+	/**
+	 * Deletes the current row
+	 * 
+	 * @throws Throwable
+	 */
+	public void delete() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+		PreparedStatement stmt;
+		
+		stmt = conn.prepareStatement("DELETE FROM thread WHERE threadId = ?");
+		stmt.setInt(1, this.threadId);
+		
+		stmt.executeUpdate();
+	}
 
 	/**
 	 * Get the threadId

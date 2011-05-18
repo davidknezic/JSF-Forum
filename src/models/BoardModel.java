@@ -111,6 +111,21 @@ public class BoardModel {
 			}
 		}
 	}
+	
+	/**
+	 * Deletes the current row
+	 * 
+	 * @throws Throwable
+	 */
+	public void delete() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+		PreparedStatement stmt;
+		
+		stmt = conn.prepareStatement("DELETE FROM board WHERE boardId = ?");
+		stmt.setInt(1, this.boardId);
+		
+		stmt.executeUpdate();
+	}
 
 	/**
 	 * Get the boardId
