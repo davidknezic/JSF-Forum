@@ -21,7 +21,7 @@
 			</h:panelGroup>
 			<h:panelGroup layout="block" rendered="#{!loginBean.loggedin}" >
 				<h:form>
-					<h:panelGrid columns="5" >
+					<h:panelGrid columns="6" >
 						<h:outputText value="#{msgs.username}:" />
 						<h:panelGroup>
 							<h:message for="username" ></h:message>
@@ -39,6 +39,9 @@
 							<f:param name="boardId" value="#{queryManager.get('boardId')}" />
 						</h:commandButton>
 						
+						<h:outputLink value="register.xhtml">
+							<h:outputText value="#{msgs.register}" />
+						</h:outputLink>
 					</h:panelGrid>
 				</h:form>
 			</h:panelGroup>

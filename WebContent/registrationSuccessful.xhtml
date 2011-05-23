@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="title" >
+			:: forum :: register :: success
+		</ui:define>
+		<ui:define name="content">
+			<div class="block">
+				<h2>
+					<h:outputText value="#{msgs.success}" />
+				</h2>
+				<table><tr><td class="left">
+					<h:outputText value="#{msgs.registrationSuccessful} " />
+					<h:outputLink value="index.xhtml">
+						<h:outputText value="#{msgs.backToHome}" />
+					</h:outputLink>
+				</td></tr></table>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -99,6 +99,6 @@ public class RegisterBean {
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 		
-		return "index.xhtml";
+		return "registrationSuccessful.xhtml";
 	}
 }

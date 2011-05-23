@@ -107,6 +107,7 @@ a:hover {
 
 #content {
 	margin: 0 auto;
+	margin-bottom: 20px;
 	width: 880px;
 }
 
@@ -275,4 +276,22 @@ a:hover {
 	font-weight: bold;
 	float: left;
 	width: 200px;
+}
+
+.pagination {
+	margin-top: 10px;
+}
+
+.pagination a {
+	display: inline-block;
+	padding: 9px 7px;
+	border: 1px solid #999999;
+	margin-right: 5px;
+	background-color: #efefef;
+}
+
+#footer {
+	margin: 0 auto;
+	padding-bottom: 50px;
+	width: 880px;
 }
