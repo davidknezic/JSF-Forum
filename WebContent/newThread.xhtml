@@ -34,7 +34,7 @@
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:commandButton value="#{msgs.save}"
-								action="#{newThreadBean.save(loginBean.user.userId)}">
+								action="#{newThreadBean.save()}">
 								<f:param name="boardId" value="#{queryManager.get('boardId')}" />
 							</h:commandButton>
 						</h:panelGroup>

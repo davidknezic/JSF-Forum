@@ -1,6 +1,7 @@
 package beans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
@@ -11,15 +12,30 @@ import models.ThreadModel;
 public class NewThreadBean {
 	private String title, content;
 	
-	public String save(Integer userId) throws Throwable {
+	@ManagedProperty(value = "#{loginBean}") 
+	private LoginBean loginBean;
+	
+	public LoginBean getLoginBean() {
+		return loginBean;
+	}
+
+	public void setLoginBean(LoginBean loginBean) {
+		this.loginBean = loginBean;
+	}
+
+	public String save() throws Throwable {
 		ThreadModel thread = new ThreadModel();
+		
+		if(!loginBean.getLoggedin()) {
+			return null;
+		}
 		
 		int boardId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("boardId"));
 		
 		thread.setBoardId(boardId);
 		thread.setContent(content);
 		thread.setTitle(title);
-		thread.setUserId(userId);
+		thread.setUserId(loginBean.getUser().getUserId());
 		
 		thread.save();
 		
