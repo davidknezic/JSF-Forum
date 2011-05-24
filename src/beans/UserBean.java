@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
@@ -20,6 +21,9 @@ public class UserBean {
 	private ArrayList<ReplyModel> latestReplies;
 	private ArrayList<UserModel> users;
 	
+	@ManagedProperty(value = "#{loginBean}")
+	private LoginBean loginBean;
+
 	/**
 	 * UserPermissions
 	 */
@@ -51,6 +55,11 @@ public class UserBean {
 		return user;
 	}
 	
+	public void grant(UserModel user) throws Throwable {
+		if(loginBean.getLoggedin() & loginBean.getUser().getPermission() >= this.SUPER_ADMIN)
+			user.save();
+	}
+	
 	public ArrayList<ThreadModel> getLatestThreads() throws Throwable {
 		if(latestThreads == null)
 			latestThreads = this.getUser().getThreads(0, Settings.getInstance().getInt("profileLatestThreads"));
@@ -67,5 +76,13 @@ public class UserBean {
 		if(users == null)
 			users = UserModel.getUsers(0, 20);
 		return users;
+	}
+	
+	public LoginBean getLoginBean() {
+		return loginBean;
+	}
+
+	public void setLoginBean(LoginBean loginBean) {
+		this.loginBean = loginBean;
 	}
 }

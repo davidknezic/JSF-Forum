@@ -27,10 +27,24 @@
 		   					</f:facet>
 		   					<h:outputText value="#{user.createdOn}" converter="forum.DateConverter" />
 		   				</h:column>
-		   				<h:column rendered="#{loginBean.loggedin and loginBean.user.permission >= UserModel.ADMIN}" >
+		   				<h:column >
 		   					<f:facet name="header" >
-		   						<h:outputText value="Actions" />
+		   						<h:outputText value="#{msgs.role}" />
 		   					</f:facet>
+		   					
+							<h:outputFormat value="#{msgs.permissionValue}" rendered="#{!(loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN)}" >
+								<f:param value="#{user.permission}" />
+							</h:outputFormat>
+		   					
+		   					<h:form rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >
+			   					<h:selectOneMenu value="#{user.permission}" >
+								 	<f:selectItem itemValue="#{userBean.USER}" 			itemLabel="#{msgs.permission0}" />
+								 	<f:selectItem itemValue="#{userBean.ADMIN}" 		itemLabel="#{msgs.permission1}" />
+								 	<f:selectItem itemValue="#{userBean.SUPER_ADMIN}" 	itemLabel="#{msgs.permission2}" />
+								</h:selectOneMenu> 
+								<h:commandButton value="#{msgs.grant}" action="#{userBean.grant(user)}" />
+							</h:form>
+		   					
 		   				</h:column>
 		   			</h:dataTable>
 			   	</div>
