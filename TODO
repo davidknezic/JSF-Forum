@@ -13,13 +13,12 @@ This is a list of tasks to complete in the future. Feel free to extend!
 * Limit the title length when displaying threads (with converters)
 * LoginBean ErrorMessages to messages.properties
 * New*Bean redirect's to null if user isn't logged in / hasn't permission to perform action -> ErrorMessage
-* Benutzerberechtigung vergeben
 * Category / Board / Thread editieren / löschen
 * Profil editieren
 * Pagination on
   * Profile page
   * UserOverview page
-* profile.xhtml messages.properties
+
 
 3. Low priority
 ---------------
