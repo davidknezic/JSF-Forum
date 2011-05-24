@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<div class="block">
+					<h2>
+						<h:outputText value="#{msgs.editProfile}" />
+					</h2>
+					<h:panelGrid columns="2" columnClasses="left2," rendered="#{loginBean.loggedin}" >
+						<f:facet name="header" />
+						
+						<h:outputText value="#{msgs.firstName}" />
+						<h:panelGroup>
+							<h:message for="firstName" />
+							<h:inputText value="#{editProfileBean.firstName}" id="firstName" />
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.lastName}" />
+						<h:panelGroup>
+							<h:message for="lastName" />
+							<h:inputText value="#{editProfileBean.lastName}" id="lastName" />
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.password}" />
+						<h:panelGroup>
+							<h:message for="pw" />
+							<h:inputSecret value="#{editProfileBean.password}" id="pw"
+								binding="#{equalityValidator.v2}" >
+								<f:validateLength minimum="5" />
+							</h:inputSecret>
+							<h:outputText value="#{msgs.blankNoChange}" />
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.passwordRepeat}" />
+						<h:panelGroup>
+							<h:message for="pwRep" />
+							<h:inputSecret id="pwRep"
+								validator="#{equalityValidator.validate}" validatorMessage="#{msgs.passwordsNotEqual}" >
+								<f:validateLength minimum="5" />
+							</h:inputSecret>
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.email}" />
+						<h:panelGroup>
+							<h:message for="email" />
+							<h:inputText value="#{editProfileBean.email}" id="email"
+								required="true" requiredMessage="emailRequired"
+								validator="EmailValidator" validatorMessage="emailInvalid" />
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.website}" />
+						<h:panelGroup>
+							<h:message for="website" />
+							<h:inputText value="#{editProfileBean.website}" id="website" />
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.location}" />
+						<h:panelGroup>
+							<h:message for="location" />
+							<h:inputText value="#{editProfileBean.location}" id="location" />
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.dateOfBirth}" />
+						<h:panelGroup>
+							<h:message for="dateOfBirth" />
+							<h:inputText value="#{editProfileBean.dob}" id="dateOfBirth" >
+								<f:convertDateTime pattern="dd.MM.yyyy" />
+							</h:inputText>
+						</h:panelGroup>
+						
+						<h:panelGroup>
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:commandButton value="#{msgs.save}"
+								action="#{editProfileBean.save}">
+							</h:commandButton>
+						</h:panelGroup>
+					</h:panelGrid>
+					<h:panelGrid columns="1" columnClasses="left2," rendered="#{!loginBean.loggedin}" >
+						<h:outputText value="#{msgs.notLoggedIn}" />
+					</h:panelGrid>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

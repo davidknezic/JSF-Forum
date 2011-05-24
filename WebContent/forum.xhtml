@@ -6,9 +6,6 @@
 </head>
 <body>
 	<ui:composition template="template.xhtml">
-		<ui:define name="title" >
-			:: forum
-		</ui:define>
 		<ui:define name="content">
 			<h:outputLink value="newCategory.xhtml" class="addAction"
 				rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >

@@ -57,11 +57,6 @@ public class RegisterBean {
 	}
 	
 	public String save() {
-		if(!password.equals(passwordRepeated)){
-			FacesMessage message = new FacesMessage("Password mismatch");
-			message.setSeverity(FacesMessage.SEVERITY_FATAL);
-			FacesContext.getCurrentInstance().addMessage(null, message);
-		}
 		
 		UserModel u = new UserModel();
 		u.setUsername(name);

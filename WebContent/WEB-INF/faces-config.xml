@@ -40,5 +40,12 @@
         <validator-class>validators.EmailValidator</validator-class>
         
     </validator>
+	
+    <validator>
+    
+        <validator-id>EqualityValidator</validator-id>
+        <validator-class>validators.EqualityValidator</validator-class>
+        
+    </validator>
 
 </faces-config>

@@ -6,12 +6,14 @@
 </head>
 <body>
 	<ui:composition template="template.xhtml">
-		<ui:define name="title" >
-			:: users
-		</ui:define>
 		<ui:define name="content">
 			   	<div class="block" >
-		   			<h2><h:outputText value="#{msgs.user}" /></h2>
+		   			<h2>
+		   				<h:outputText value="#{msgs.user}" />
+		   				<h:outputLink rendered="#{loginBean.loggedin and loginBean.user.userId == userBean.user.userId}" value="editProfile.xhtml" >
+		   					<h:outputText value="#{msgs.editProfile}" />
+		   				</h:outputLink>
+		   			</h2>
 		   			<table><tr><td>
 		   				<h:graphicImage class="profile_avatar" value="#{userBean.user.getAvatar(128)}" />
 						<dl class="profile_info">
@@ -23,6 +25,18 @@
 								<h:outputFormat value="#{msgs.permissionValue}" >
 									<f:param value="#{userBean.user.permission}" />
 								</h:outputFormat>
+							</dd>
+							
+							<dt><h:outputText value="#{msgs.firstName}" /></dt>
+							<dd>
+								<h:outputText value="#{userBean.user.firstName}" rendered="#{userBean.user.firstName != null}" />
+								<h:outputText value="-" rendered="#{userBean.user.firstName == null}" />
+							</dd>
+							
+							<dt><h:outputText value="#{msgs.lastName}" /></dt>
+							<dd>
+								<h:outputText value="#{userBean.user.lastName}" rendered="#{userBean.user.lastName != null}" />
+								<h:outputText value="-" rendered="#{userBean.user.lastName == null}" />
 							</dd>
 							
 							<dt><h:outputText value="#{msgs.website}" /></dt>
