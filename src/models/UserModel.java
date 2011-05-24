@@ -96,6 +96,7 @@ public class UserModel {
 	public UserModel() {
 		// Indicate that this object is not yet saved
 		this.userId = 0;
+		this.createdOn = new Timestamp(new Date().getTime());
 	}
 
 	/**
@@ -148,7 +149,6 @@ public class UserModel {
 					.prepareStatement(
 							"INSERT INTO user (username, password, email, active, permission, website, location, firstName, lastName, dateOfBirth, createdOn) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 							Statement.RETURN_GENERATED_KEYS);
-			this.createdOn = new Timestamp(new Date().getTime());
 		} else {
 			// Update record
 			stmt = conn
