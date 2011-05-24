@@ -12,13 +12,20 @@
 		<ui:define name="content">
 			<h:outputLink value="newCategory.xhtml" class="addAction"
 				rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >
-				<f:param name="boardId" value="#{queryManager.get('boardId')}" />
 				<h:graphicImage value="Bilder/add.png" />
 			</h:outputLink>
 			
 				<h:dataTable value="#{categoryBean.categories}" var="category" columnClasses="block" >
 			   		<h:column>
-			   			<h2><h:outputText value="#{category.title}" /></h2>
+			   			<h2>
+			   				<h:outputText value="#{category.title}" />
+			   			
+							<h:outputLink value="newBoard.xhtml" class="addAction"
+								rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >
+								<f:param name="categoryId" value="#{category.categoryId}" />
+								<h:graphicImage value="Bilder/add.png" />
+							</h:outputLink>	
+			   			</h2>
 			   			<h:dataTable value="#{category.boards}" var="board" columnClasses="left,center,right" class="vmiddle" >
 			   				<h:column>
 			   					<f:facet name="header" >
