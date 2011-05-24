@@ -24,11 +24,11 @@ public class NewThreadBean {
 	}
 
 	public String save() throws Throwable {
-		ThreadModel thread = new ThreadModel();
-		
 		if(!loginBean.getLoggedin()) {
 			return null;
 		}
+		
+		ThreadModel thread = new ThreadModel();
 		
 		int boardId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("boardId"));
 		

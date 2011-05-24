@@ -83,7 +83,7 @@ public class BoardModel {
 			// Insert a new record
 			stmt = conn
 					.prepareStatement(
-							"INSERT INTO board (categoryId, title, description) VALUES (?, ?)",
+							"INSERT INTO board (categoryId, title, description) VALUES (?, ?, ?)",
 							Statement.RETURN_GENERATED_KEYS);
 		} else {
 			// Update record
