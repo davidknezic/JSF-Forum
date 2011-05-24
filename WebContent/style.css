@@ -238,6 +238,7 @@ a:hover {
 	padding: 5px 20px;
 }
 
+/*
 #content input[type=submit], 
 #content input[type=reset], 
 #content input[type=button], 
@@ -250,7 +251,7 @@ a:hover {
 	color: #929292;
 	text-shadow: #ffffff 1px 1px 0;
 }
-
+*/
 #content input[type=text], 
 #content input[type=password] {
 	width: 400px;
