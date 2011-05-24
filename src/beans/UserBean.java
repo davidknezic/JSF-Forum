@@ -20,6 +20,25 @@ public class UserBean {
 	private ArrayList<ReplyModel> latestReplies;
 	private ArrayList<UserModel> users;
 	
+	/**
+	 * UserPermissions
+	 */
+	public final int USER = 0;
+	public final int ADMIN = 1;
+	public final int SUPER_ADMIN = 2;
+	
+	public int getUSER() {
+		return USER;
+	}
+
+	public int getADMIN() {
+		return ADMIN;
+	}
+
+	public int getSUPER_ADMIN() {
+		return SUPER_ADMIN;
+	}
+
 	public UserModel getUser() throws Throwable {
 		if(user == null) { 
 			Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
