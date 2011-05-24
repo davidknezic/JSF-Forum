@@ -15,29 +15,29 @@
 		   			<table><tr><td>
 		   				<h:graphicImage class="profile_avatar" value="#{userBean.user.getAvatar(128)}" />
 						<dl class="profile_info">
-							<dt>Username</dt>
+							<dt><h:outputText value="#{msgs.username}" /></dt>
 							<dd><h:outputText value="#{userBean.user.username}" /></dd>
 							
-							<dt>Role</dt>
+							<dt><h:outputText value="#{msgs.role}" /></dt>
 							<dd>
 								<h:outputFormat value="#{msgs.permissionValue}" >
 									<f:param value="#{userBean.user.permission}" />
 								</h:outputFormat>
 							</dd>
 							
-							<dt>Website</dt>
+							<dt><h:outputText value="#{msgs.website}" /></dt>
 							<dd>
 								<h:outputText value="#{userBean.user.website}" rendered="#{userBean.user.website != null}" />
 								<h:outputText value="-" rendered="#{userBean.user.website == null}" />
 							</dd>
 							
-							<dt>Location</dt>
+							<dt><h:outputText value="#{msgs.location}" /></dt>
 							<dd>
 								<h:outputText value="#{userBean.user.location}" rendered="#{userBean.user.location != null}" />
 								<h:outputText value="-" rendered="#{userBean.user.location == null}" />
 							</dd>
 							
-							<dt>Age</dt>
+							<dt><h:outputText value="#{msgs.age}" /></dt>
 							<dd>
 								<h:outputText value="#{userBean.user.dateOfBirth}" converter="forum.AgeConverter" rendered="#{userBean.user.dateOfBirth != null}" />
 								<h:outputText value="-" rendered="#{userBean.user.dateOfBirth == null}" />
@@ -162,7 +162,7 @@
 				</h:dataTable>
 				<h:panelGrid columns="1" columnClasses="left"
 					rendered="#{userBean.latestReplies.size() == 0}">
-					<h:outputText value="#{msgs.noUserThreads}" />
+					<h:outputText value="#{msgs.noUserReplies}" />
 				</h:panelGrid>
 					
 			   	</div>
