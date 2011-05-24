@@ -10,6 +10,11 @@
 			:: forum
 		</ui:define>
 		<ui:define name="content">
+			<h:outputLink value="newCategory.xhtml" class="addAction"
+				rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >
+				<f:param name="boardId" value="#{queryManager.get('boardId')}" />
+				<h:graphicImage value="Bilder/add.png" />
+			</h:outputLink>
 			
 				<h:dataTable value="#{categoryBean.categories}" var="category" columnClasses="block" >
 			   		<h:column>
