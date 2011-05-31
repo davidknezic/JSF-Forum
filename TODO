@@ -5,28 +5,26 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 1. High priority
 ----------------
-* Make threads / replies editable
-* Enable deletion of threads / replies
-* Make profiles editable
-* Enable user deletion
-* Avoid NullPointerException when logging out from profile page
-* Create link to profile edit form
-* Fix error message alignment on profile edit page
-* Style footer
-* Add error message to secured pages when user hasn't sufficient permission
-* Add pagination to profile / user overview page
+* Dave     Make threads / replies editable
+* Sven     Enable deletion of threads / replies
+* Marcel   Make profiles editable (Link @ top, message.properties, h:message under input, h:message mit styleClass)
+* Sven     Enable user deletion
+* David    Avoid NullPointerException when logging out from profile page
+* Sven     Style footer
+* Marcel   Add error message to secured pages when user hasn't sufficient permission
+* David    Add pagination to profile / user overview page
 
 * TESTING
 
 2. Normal priority
 ------------------
-* Limit the title length when displaying threads (with converters)
+* Marcel   Limit the title length when displaying threads (with converters)
 
 3. Low priority
 ---------------
-* CSS stylings
-* Cache DB Results / Models
-* Deletion possibilities to Models
-* LoginBean ErrorMessages to messages.properties
-* Custom JSF-Tags
+* Sven     CSS stylings
+* -        Cache DB Results / Models
+* Sven     Deletion possibilities to Models
+* David    LoginBean ErrorMessages to messages.properties
+* -        Custom JSF-Tags
 
