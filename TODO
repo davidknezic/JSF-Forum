@@ -5,21 +5,28 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 1. High priority
 ----------------
-* Cache DB Results / Models
-* Deletion possibilities to Models
+* Make threads / replies editable
+* Enable deletion of threads / replies
+* Make profiles editable
+* Enable user deletion
+* Avoid NullPointerException when logging out from profile page
+* Create link to profile edit form
+* Fix error message alignment on profile edit page
+* Style footer
+* Add error message to secured pages when user hasn't sufficient permission
+* Add pagination to profile / user overview page
+
+* TESTING
 
 2. Normal priority
 ------------------
 * Limit the title length when displaying threads (with converters)
-* LoginBean ErrorMessages to messages.properties
-* New*Bean redirect's to null if user isn't logged in / hasn't permission to perform action -> ErrorMessage
-* Category / Board / Thread editieren / löschen
-* Profil editieren
-* Pagination on
-  * Profile page
-  * UserOverview page
-
 
 3. Low priority
 ---------------
-* diverse css-Stylings
+* CSS stylings
+* Cache DB Results / Models
+* Deletion possibilities to Models
+* LoginBean ErrorMessages to messages.properties
+* Custom JSF-Tags
+
