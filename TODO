@@ -24,7 +24,6 @@ This is a list of tasks to complete in the future. Feel free to extend!
 ---------------
 * Sven     CSS stylings
 * -        Cache DB Results / Models
-* Sven     Deletion possibilities to Models
 * David    LoginBean ErrorMessages to messages.properties
 * -        Custom JSF-Tags
 

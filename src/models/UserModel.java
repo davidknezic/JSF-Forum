@@ -185,6 +185,21 @@ public class UserModel {
 			}
 		}
 	}
+	
+	/**
+	 * Deletes the current row
+	 * 
+	 * @throws Throwable
+	 */
+	public void delete() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+		PreparedStatement stmt;
+		
+		stmt = conn.prepareStatement("DELETE FROM user WHERE userId = ?");
+		stmt.setInt(1, this.userId);
+		
+		stmt.executeUpdate();
+	}
 
 	/**
 	 * Get the userId
