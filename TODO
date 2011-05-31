@@ -6,7 +6,8 @@ This is a list of tasks to complete in the future. Feel free to extend!
 1. High priority
 ----------------
 * Dave     Make threads / replies editable
-* Sven     Enable deletion of threads / replies
+>> * Sven     Enable deletion of threads / replies
+>> !!!! REJECTD !!!! Change in UseCases!!!!
 * Marcel   Make profiles editable (Link @ top, message.properties, h:message under input, h:message mit styleClass)
 * Sven     Enable user deletion
 * David    Avoid NullPointerException when logging out from profile page
@@ -15,6 +16,7 @@ This is a list of tasks to complete in the future. Feel free to extend!
 * David    Add pagination to profile / user overview page
 
 * TESTING
+* Security Testing (Send delete requests when logged out, etc.)
 
 2. Normal priority
 ------------------
