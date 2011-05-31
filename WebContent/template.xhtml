@@ -16,7 +16,11 @@
 					<h:commandButton value="#{msgs.logout}" action="#{loginBean.logout}" >
 						<f:param name="threadId" value="#{queryManager.get('threadId')}" />
 						<f:param name="boardId" value="#{queryManager.get('boardId')}" />
+						<f:param name="userId" value="#{queryManager.get('userId')}" />
 					</h:commandButton>
+					<h:outputLink value="editProfile.xhtml" >
+						<h:outputText value="#{msgs.editProfile}" />
+					</h:outputLink>
 				</h:form>
 			</h:panelGroup>
 			<h:panelGroup layout="block" rendered="#{!loginBean.loggedin}" >
