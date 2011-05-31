@@ -374,6 +374,10 @@ public class UserModel {
 	public void setDateOfBirth(Timestamp dateOfBirth) {
 		this.dateOfBirth = new Timestamp(dateOfBirth.getTime());
 	}
+	
+	public void setDateOfBirth(Date dob) {
+		this.dateOfBirth = new Timestamp(dob.getTime());
+	}
 
 	/**
 	 * Get the creation timestamp as a standard java Date
