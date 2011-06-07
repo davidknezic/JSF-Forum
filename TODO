@@ -5,12 +5,11 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 1. High priority
 ----------------
-* Dave     Make threads / replies editable
 >> * Sven     Enable deletion of threads / replies
 >> REJECTED - Change in UseCases!
 >> * Sven     Enable user deletion
 * Marcel   Add error message to secured pages when user hasn't sufficient permission
-* David    Add pagination to profile / user overview page
+* David    Add pagination to profile page
 * Sven     Rework messages.properties file
 * Sven     Rendering h:message[s] as unordered lists
 
