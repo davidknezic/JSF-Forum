@@ -39,12 +39,25 @@
 								 	<f:selectItem itemValue="#{userBean.ADMIN}" 		itemLabel="#{msgs.permission1}" />
 								 	<f:selectItem itemValue="#{userBean.SUPER_ADMIN}" 	itemLabel="#{msgs.permission2}" />
 								</h:selectOneMenu> 
-								<h:commandButton value="#{msgs.grant}" action="#{userBean.grant(user)}" />
+								<h:commandButton value="#{msgs.grant}" action="#{userBean.grant(user)}">
+									<f:param name="page"
+										value="#{userBean.currentPage}" />
+								</h:commandButton>
 							</h:form>
 		   					
 		   				</h:column>
 		   			</h:dataTable>
 			   	</div>
+				<div class="pagination">
+				<h:outputLink rendered="#{userBean.hasPrev()}" class="prev"
+				  value="users.xhtml?page=#{userBean.currentPage - 1}">
+					<h:outputText value="#{msgs.previous}" />
+				</h:outputLink>
+				<h:outputLink rendered="#{userBean.hasNext()}" class="next"
+				  value="users.xhtml?page=#{userBean.currentPage + 1}">
+					<h:outputText value="#{msgs.next}" />
+				</h:outputLink>
+			</div>
 		</ui:define>
 	</ui:composition>
 </body>
