@@ -47,5 +47,9 @@
         <validator-class>validators.EqualityValidator</validator-class>
         
     </validator>
+	
+	<lifecycle>
+ 		<phase-listener>beans.AccessChecker</phase-listener>
+	</lifecycle>
 
 </faces-config>

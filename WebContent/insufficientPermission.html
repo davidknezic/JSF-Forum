@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+	<ui:composition template="template.xhtml">
+		<div class="block">
+			<h2>
+				<h:outputText value="#{msgs.insufficientPermissionTitle}" />
+			</h2>
+			<h:panelGrid columns="1" columnClasses="left2,">
+				<h:panelGrid columns="1" columnClasses="left2,">
+					<h:panelGroup rendered="#{msgs.insufficientPermissionTitle}">
+						<h:outputText value="#{msgs.insufficientPermission}" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{!loginBean.loggedin}">
+						<h:outputText value="#{msgs.pleaseLogin}" />
+						<br />
+						<h:outputLink value="register.xhtml">
+							<h:outputText value="#{msgs.register}" />
+						</h:outputLink>
+					</h:panelGroup>
+				</h:panelGrid>
+			</h:panelGrid>
+		</div>
+	</ui:composition>
+</body>
+</html>

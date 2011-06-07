@@ -10,7 +10,7 @@
 			<h:form>
 				<div class="block">
 					<h2>
-						<h:outputText value="#{msgs.editProfile}" />
+						<h:outputText />
 					</h2>
 					<h:panelGrid columns="2" columnClasses="left2," rendered="#{loginBean.loggedin}" >
 						<f:facet name="header" />
@@ -81,9 +81,6 @@
 								action="#{editProfileBean.save}">
 							</h:commandButton>
 						</h:panelGroup>
-					</h:panelGrid>
-					<h:panelGrid columns="1" columnClasses="left2," rendered="#{!loginBean.loggedin}" >
-						<h:outputText value="#{msgs.notLoggedIn}" />
 					</h:panelGrid>
 				</div>
 			</h:form>
