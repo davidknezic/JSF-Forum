@@ -41,6 +41,13 @@
 
 	</converter>
 	
+	<converter>
+
+		<converter-id>forum.LengthConverter</converter-id>
+		<converter-class>converters.LengthConverter</converter-class>
+
+	</converter>
+	
     <validator>
     
         <validator-id>EmailValidator</validator-id>
