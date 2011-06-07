@@ -31,6 +31,10 @@ a:hover {
 	font-size: 10px;
 }
 
+.displayLinebreak {
+	white-space: pre-line;
+}
+
 #top {
 	line-height: 44px;
 	color: #c4daf1;
