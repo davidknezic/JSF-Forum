@@ -506,6 +506,28 @@ public class UserModel {
 	}
 
 	/**
+	 * Get number of users
+	 * 
+	 * @return int
+	 * @throws Throwable
+	 */
+	public static int getUserCount() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+
+		PreparedStatement stmt = conn
+				.prepareStatement("SELECT COUNT(*) FROM user");
+		ResultSet res = stmt.executeQuery();
+
+		if (res.first()) {
+			// Return the thread count
+			return res.getInt(1);
+		} else {
+			// An error occured, return zero
+			return 0;
+		}
+	}
+
+	/**
 	 * Get user by username
 	 * 
 	 * TODO: Check if this is necessary!
