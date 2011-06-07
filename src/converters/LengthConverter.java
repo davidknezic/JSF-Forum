@@ -6,7 +6,7 @@ import javax.faces.convert.Converter;
 
 public class LengthConverter implements Converter {
 
-	private static final int LENGTH = 40;
+	private static final int LENGTH = 25;
 	
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {

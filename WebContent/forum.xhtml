@@ -50,7 +50,7 @@
 								
 								<h:panelGroup rendered="#{board.lastThread != null}">
 									<h:outputLink value="thread.xhtml?threadId=#{board.lastThread.threadId}" >
-										<h:outputText value="#{board.lastThread.title}" />
+										<h:outputText value="#{board.lastThread.title}" converter="forum.LengthConverter" />
 									</h:outputLink>
 									<br />
 									<span class="meta" >
