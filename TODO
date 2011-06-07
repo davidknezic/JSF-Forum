@@ -8,13 +8,13 @@ This is a list of tasks to complete in the future. Feel free to extend!
 * Dave     Make threads / replies editable
 >> * Sven     Enable deletion of threads / replies
 >> REJECTD - Change in UseCases!
-* Marcel   Make profiles editable (Link @ top, message.properties, h:message under input, h:message mit styleClass)
 >> * Sven     Enable user deletion
 >> REJECTED Does not work with UserInfo display on thw whole page
-* David    Avoid NullPointerException when logging out from profile page
 * Sven     Style footer
 * Marcel   Add error message to secured pages when user hasn't sufficient permission
 * David    Add pagination to profile / user overview page
+* Sven     Rework messages.properties file
+* Sven     Rendering h:message[s] as unordered lists
 
 * TESTING
 * Security Testing (Send delete requests when logged out, etc.)

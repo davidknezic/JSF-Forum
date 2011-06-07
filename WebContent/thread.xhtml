@@ -50,7 +50,7 @@
 							</h:form>
 							<h:outputText rendered="#{!loginBean.loggedin}" value="#{msgs.login2reply}" />
 						</f:facet>
-						<h:outputFormat value="#{reply.content}" />
+						<h:outputFormat value="#{reply.content}" class="displayLinebreak" />
 					</h:column>
 				</h:dataTable>
 			</div>
