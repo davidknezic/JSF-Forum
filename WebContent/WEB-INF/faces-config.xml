@@ -34,6 +34,13 @@
 
 	</converter>
 	
+	<converter>
+
+		<converter-id>forum.BoardConverter</converter-id>
+		<converter-class>converters.BoardConverter</converter-class>
+
+	</converter>
+	
     <validator>
     
         <validator-id>EmailValidator</validator-id>
