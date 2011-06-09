@@ -11,7 +11,7 @@
 <h:body>
 
 	<div id="head">
-	
+
 		<div id="top">
 			<ui:insert name="top">
 				<h:panelGroup layout="block" rendered="#{loginBean.loggedin}">
@@ -35,18 +35,18 @@
 								<h:message for="username"></h:message>
 								<h:inputText id="username" binding="#{loginBean.username}" />
 							</h:panelGroup>
-	
+
 							<h:outputText value="#{msgs.password}:" />
 							<h:panelGroup>
 								<h:message for="password"></h:message>
 								<h:inputSecret id="password" validator="#{loginBean.login}" />
 							</h:panelGroup>
-	
+
 							<h:commandButton value="#{msgs.login}" action="null">
 								<f:param name="threadId" value="#{queryManager.get('threadId')}" />
 								<f:param name="boardId" value="#{queryManager.get('boardId')}" />
 							</h:commandButton>
-	
+
 							<h:outputLink value="register.xhtml">
 								<h:outputText value="#{msgs.register}" />
 							</h:outputLink>
@@ -60,15 +60,21 @@
 		</div>
 		<div id="navi">
 			<ul>
-				<li><h:outputLink value="index.xhtml">
+				<li class="#{navigationHelper.getClass('/index.xhtml')}"><h:outputLink
+						value="index.xhtml">
 						<h:outputText value="#{msgs.home}" />
-					</h:outputLink></li>
-				<li><h:outputLink value="forum.xhtml">
+					</h:outputLink>
+				</li>
+				<li class="#{navigationHelper.getClass('/forum.xhtml')}"><h:outputLink
+						value="forum.xhtml">
 						<h:outputText value="#{msgs.forum}" />
-					</h:outputLink></li>
-				<li><h:outputLink value="users.xhtml">
+					</h:outputLink>
+				</li>
+				<li class="#{navigationHelper.getClass('/users.xhtml')}"><h:outputLink
+						value="users.xhtml">
 						<h:outputText value="#{msgs.user}" />
-					</h:outputLink></li>
+					</h:outputLink>
+				</li>
 			</ul>
 			<div style="clear: both;"></div>
 		</div>
