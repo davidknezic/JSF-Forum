@@ -10,6 +10,12 @@
 			<div class="block">
 				<h2>
 					<h:outputText value="#{threadBean.thread.title}" />
+					
+					<h:outputLink value="editThread.xhtml" class="addAction"
+						rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN}" >
+						<f:param name="threadId" value="#{threadBean.thread.threadId}" />
+						<h:graphicImage value="Bilder/edit.png" />
+					</h:outputLink>	
 				</h2>
 				<h:dataTable value="#{threadBean.replies}" var="reply"
 					columnClasses="replyLeft,replyRight">
@@ -26,6 +32,13 @@
 							<f:param value="#{reply.user.permission}" />
 						</h:outputFormat>
 						<h:graphicImage url="#{reply.user.getAvatar(64)}" class="reply_avatar" />
+						<div>
+							<h:outputLink value="editReply.xhtml" class="replyAction"
+							rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN and reply.replyId != 0}" >
+							<f:param name="replyId" value="#{reply.replyId}" />
+							<h:graphicImage value="Bilder/edit.png" />
+							</h:outputLink>
+						</div>
 					</h:column>
 					<h:column>
 						<f:facet name="header">

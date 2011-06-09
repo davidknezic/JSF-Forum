@@ -293,4 +293,15 @@ public class BoardModel {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof BoardModel)) {
+			return false;
+		}
+
+		BoardModel board = (BoardModel) obj;
+
+		return (this.boardId == board.boardId);
+	}
+
 }

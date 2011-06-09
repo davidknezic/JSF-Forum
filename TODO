@@ -7,10 +7,8 @@ This is a list of tasks to complete in the future. Feel free to extend!
 ----------------
 * Dave     Make threads / replies editable
 >> * Sven     Enable deletion of threads / replies
->> REJECTD - Change in UseCases!
+>> REJECTED - Change in UseCases!
 >> * Sven     Enable user deletion
->> REJECTED Does not work with UserInfo display on thw whole page
-* Sven     Style footer
 * Marcel   Add error message to secured pages when user hasn't sufficient permission
 * David    Add pagination to profile / user overview page
 * Sven     Rework messages.properties file
@@ -21,7 +19,6 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 2. Normal priority
 ------------------
-* Marcel   Limit the title length when displaying threads (with converters)
 
 3. Low priority
 ---------------
