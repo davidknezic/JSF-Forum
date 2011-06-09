@@ -370,8 +370,30 @@ a:hover {
 	cursor: pointer;
 }
 
+.pagination a:hover, button, input[type=submit]:hover, input[type=reset]:hover {
+	background: #a5d3e6; /* fallback */
+	/* Webkit */
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0, #bde0ef),
+	    color-stop(1, #9bc3d4)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    #bde0ef 0%,
+	    #9bc3d4 100%
+	);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bde0ef', endColorstr='#9bc3d4');
+	/* CSS 3 */
+	background: linear-gradient(top, #bde0ef, #9bc3d4);
+	
+}
+
 #footer {
-	margin: 0 auto;
+	text-align: center;
+	color: #7a7a7a;
 	padding-bottom: 50px;
-	width: 880px;
 }
