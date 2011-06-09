@@ -10,38 +10,22 @@
 			<h:form rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}">
 				<div class="block">
 					<h2>
-						<h:outputText value="#{msgs.editThread}" />
+						<h:outputText value="#{msgs.editReply}" />
 					</h2>
 					<h:panelGrid columns="2" columnClasses="newThreadLeft,newThreadRight">
 						<f:facet name="header" />
-						<h:outputText value="#{msgs.board}" />
-						<h:panelGroup>
-							<h:message for="boardIn" />
-							<h:selectOneMenu id="boardIn" converter="forum.BoardConverter"
-							 value="#{editThreadBean.currentBoard}">
-							  <f:selectItems
-							   value="#{editThreadBean.boardList}" />
-							</h:selectOneMenu> 
-						</h:panelGroup>
-						<f:facet name="header" />
-						<h:outputText value="#{msgs.title}" />
-						<h:panelGroup>
-							<h:message for="titleIn" />
-							<h:inputText value="#{editThreadBean.title}" id="titleIn"
-								required="true" />
-						</h:panelGroup>
 						<h:outputText value="#{msgs.content}" />
 						<h:panelGroup>
 							<h:message for="contentIn" />
-							<h:inputTextarea value="#{editThreadBean.content}" id="contentIn"
+							<h:inputTextarea value="#{editReplyBean.content}" id="contentIn"
 								required="true" />
 						</h:panelGroup>
 						<h:panelGroup>
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:commandButton value="#{msgs.save}"
-								action="#{editThreadBean.save()}">
-								<f:param name="threadId" value="#{queryManager.get('threadId')}" />
+								action="#{editReplyBean.save()}">
+								<f:param name="replyId" value="#{queryManager.get('replyId')}" />
 							</h:commandButton>
 						</h:panelGroup>
 					</h:panelGrid>
