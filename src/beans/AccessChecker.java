@@ -19,6 +19,7 @@ public class AccessChecker implements PhaseListener {
 		permissions.put("/editReply.xhtml", UserModel.SUPER_ADMIN);
 		permissions.put("/editThread.xhtml", UserModel.SUPER_ADMIN);
 		permissions.put("/newBoard.xhtml", UserModel.SUPER_ADMIN);
+		permissions.put("/newCategory.xhtml", UserModel.SUPER_ADMIN);
 	}
 
 	@Override
