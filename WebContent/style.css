@@ -2,16 +2,16 @@ body {
 	font-family: Verdana, "Sans Serif";
 	margin: 0;
 	font-size: 12px;
+	background: url(Bilder/bg.jpg) top left repeat;
 }
 
 a {
 	outline: none;
 	text-decoration: none;
-	color: #0273c1;
-	font-weight: bold;
+	color: #70a7bf;
 }
 
-a, a:focus {
+a, a:focus, input:focus {
 	outline: none;
 }
 
@@ -35,27 +35,34 @@ a:hover {
 	white-space: pre-line;
 }
 
+/* TODO */
 #top {
 	line-height: 44px;
 	color: #c4daf1;
 	padding: 0 20px;
 	height: 44px;
-	background: url(Bilder/top_head.png) left top repeat-x;
 }
 
-#top input {
-	border: 1px solid #327dc9;
-	padding: 3px 5px;
+/* TODO */
+#top input[type=password], #top input[type=text] {
+	height: 33px;
+	line-height: 33px;
+	border: none;
 	margin: 0 5px;
 	background: #4d98e3;
 	color: #c4daf1;
 }
 
 #head {
-	background: url(Bilder/top_head.png) left bottom repeat-x;
-	height: 134px;
+	background: url(Bilder/head.jpg) left top repeat;
+	border-bottom: 7px solid #ffffff;
 }
 
+#head_text {
+	height: 100px;
+}
+
+/* TODO */
 #head h1 {
 	margin: 0;
 	width: 1000px;
@@ -68,58 +75,113 @@ a:hover {
 }
 
 #navi {
-	height: 45px;
-	background: url(Bilder/navi.png) left bottom repeat-x;
+	height: 34px;
+	margin: 0 auto;
+	width: 1000px;
 }
 
 #navi ul {
 	padding: 0;
-	margin: 0 auto;
-	width: 1000px;
+	margin: 0;
+	padding-left: 44px;
 	list-style-type: none;
 }
 
 #navi li {
 	float: left;
-	height: 45px;
 	display: block;
-	background: url(Bilder/navi.png) left bottom repeat-x;
-}
-
-#navi li:hover {
-	background-position: left top;
+	margin-right: 2px;
+	background: #9bc3d4; /* fallback */
+	/* Webkit */
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0, #B1D0DD),
+	    color-stop(1, #89B8CC)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    #B1D0DD 0%,
+	    #89B8CC 100%
+	);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b1d0dd', endColorstr='#89b8cc');
+	/* CSS 3 */
+	background: linear-gradient(top, #B1D0DD, #89B8CC);
+	
+	border-top: 1px solid #d0e2ea;
+	
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	-moz-border-top-left-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	
+	text-shadow: #7994a0 0 -1px 0;
 }
 
 #navi li a {
-	font-weight: bold;
 	display: block;
 	color: white;
-	padding: 15px 25px 0 25px;
-	height: 30px;
+	padding: 0 25px 0 25px;
+	height: 33px;
+	line-height: 33px;
 	text-decoration: none;
-	text-shadow: #232323 -1px -1px 0;
+	font-weight: bold;
 }
 
-#navi li:hover a {
-	text-shadow: #0e6fb4 -1px -1px 0;
+#navi li:hover, #navi li.active {
+	background: #ffffff;
+	border-top-color: #ffffff;
 }
 
-#subnavi {
-	height: 25px;
-	background: url(Bilder/subnavi.png) top left repeat-x;
+#navi li:hover a, #navi li.active a {
+	text-shadow: none;
+	color: #666666;
 }
 
 #content {
+	border-top: 1px solid #dadada;
+}
+
+#content>div {
 	margin: 0 auto;
 	margin-bottom: 20px;
 	width: 880px;
 }
 
 .block h2 {
-	background-image: url(Bilder/title.png);
+	background: #9bc3d4; /* fallback */
+	/* Webkit */
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0, #B1D0DD),
+	    color-stop(1, #89B8CC)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    #B1D0DD 0%,
+	    #89B8CC 100%
+	);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b1d0dd', endColorstr='#89b8cc');
+	/* CSS 3 */
+	background: linear-gradient(top, #B1D0DD, #89B8CC);
+	
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	-moz-border-top-left-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	
+	text-shadow: #7994a0 0 -1px 0;
 	color: white;
 	text-decoration: none;
-	text-shadow: #1571b2 -1px -1px 0;
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 37px;
@@ -138,7 +200,7 @@ a:hover {
 	text-align: left;
 	height: 26px;
 	line-height: 26px;
-	color: #6c6c6c;
+	color: #727272;
 	font-weight: bold;
 	font-size: 11px;
 	text-shadow: white 1px 1px 0;
@@ -146,9 +208,9 @@ a:hover {
 
 .block table td {
 	padding: 5px 0;
-	background-color: #efefef;
+	background-color: #eaeaea;
 	border-top: 1px solid white;
-	color: #969292;
+	color: #777777;
 	text-shadow: white 1px 1px 0;
 	font-size: 12px;
 	line-height: 18px;
@@ -161,7 +223,7 @@ a:hover {
 .block table td h3, .block table td h3 a {
 	font-size: 12px;
 	font-weight: bold;
-	color: #0273c1;
+	color: #70a7bf;
 }
 
 .block table .left {
@@ -235,27 +297,6 @@ a:hover {
 	margin: 6px 0 0 0;
 }
 
-#content input[type=submit], 
-#content input[type=reset], 
-#content input[type=button] {
-	margin: 5px 0;
-	padding: 5px 20px;
-}
-
-/*
-#content input[type=submit], 
-#content input[type=reset], 
-#content input[type=button], 
-#content input[type=text], 
-#content input[type=password], textarea {
-	display: block;
-	border: 1px solid #9d9d9d;
-	border-top: 1px solid #a0a0a0;
-	background-color: #fbfbfb;
-	color: #929292;
-	text-shadow: #ffffff 1px 1px 0;
-}
-*/
 #content input[type=text], 
 #content input[type=password] {
 	width: 400px;
@@ -285,14 +326,48 @@ a:hover {
 
 .pagination {
 	margin-top: 10px;
+	text-align: center;
 }
 
 .pagination a {
 	display: inline-block;
-	padding: 9px 7px;
-	border: 1px solid #999999;
-	margin-right: 5px;
-	background-color: #efefef;
+	margin: 0 10px 0 0;
+}
+
+.pagination a, button, input[type=submit], input[type=reset] {
+	background: #9bc3d4; /* fallback */
+	/* Webkit */
+	background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0, #B1D0DD),
+	    color-stop(1, #89B8CC)
+	);
+	background-image: -moz-linear-gradient(
+	    center top,
+	    #B1D0DD 0%,
+	    #89B8CC 100%
+	);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b1d0dd', endColorstr='#89b8cc');
+	/* CSS 3 */
+	background: linear-gradient(top, #B1D0DD, #89B8CC);
+	
+	border: none;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	
+	text-shadow: #7994a0 0 -1px 0;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 30px;
+	height: 30px;
+	padding: 0 10px;
+	cursor: pointer;
 }
 
 #footer {

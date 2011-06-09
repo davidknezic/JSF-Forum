@@ -1,85 +1,88 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>JSF Forum</title>
-    <link href="reset.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
+	<title>JSF Forum</title>
+	<link href="reset.css" rel="stylesheet" />
+	<link href="style.css" rel="stylesheet" />
 </h:head>
 <h:body>
-	<div id="top" >
-		<ui:insert name="top" >
-			<h:panelGroup layout="block" rendered="#{loginBean.loggedin}" >
-				<h:form>
-					<h:commandButton value="#{msgs.logout}" action="#{loginBean.logout}" >
-						<f:param name="threadId" value="#{queryManager.get('threadId')}" />
-						<f:param name="boardId" value="#{queryManager.get('boardId')}" />
-						<f:param name="userId" value="#{queryManager.get('userId')}" />
-					</h:commandButton>
-					<h:outputLink value="editProfile.xhtml" >
-						<h:outputText value="#{msgs.editProfile}" />
-					</h:outputLink>
-				</h:form>
-			</h:panelGroup>
-			<h:panelGroup layout="block" rendered="#{!loginBean.loggedin}" >
-				<h:form>
-					<h:panelGrid columns="6" >
-						<h:outputText value="#{msgs.username}:" />
-						<h:panelGroup>
-							<h:message for="username" ></h:message>
-							<h:inputText id="username" binding="#{loginBean.username}" />
-						</h:panelGroup>
-						
-						<h:outputText value="#{msgs.password}:" />
-						<h:panelGroup>
-							<h:message for="password" ></h:message>
-							<h:inputSecret id="password" validator="#{loginBean.login}" />
-						</h:panelGroup>
-						
-						<h:commandButton value="#{msgs.login}" action="null" >
-							<f:param name="threadId" value="#{queryManager.get('threadId')}" />
-							<f:param name="boardId" value="#{queryManager.get('boardId')}" />
-						</h:commandButton>
-						
-						<h:outputLink value="register.xhtml">
-							<h:outputText value="#{msgs.register}" />
-						</h:outputLink>
-					</h:panelGrid>
-				</h:form>
-			</h:panelGroup>
-		</ui:insert>
-	</div>
 
 	<div id="head">
-		<h1>Forum</h1>
+	
+		<div id="top">
+			<ui:insert name="top">
+				<h:panelGroup layout="block" rendered="#{loginBean.loggedin}">
+					<h:form>
+						<h:commandButton value="#{msgs.logout}"
+							action="#{loginBean.logout}">
+							<f:param name="threadId" value="#{queryManager.get('threadId')}" />
+							<f:param name="boardId" value="#{queryManager.get('boardId')}" />
+							<f:param name="userId" value="#{queryManager.get('userId')}" />
+						</h:commandButton>
+						<h:outputLink value="editProfile.xhtml">
+							<h:outputText value="#{msgs.editProfile}" />
+						</h:outputLink>
+					</h:form>
+				</h:panelGroup>
+				<h:panelGroup layout="block" rendered="#{!loginBean.loggedin}">
+					<h:form>
+						<h:panelGrid columns="6">
+							<h:outputText value="#{msgs.username}:" />
+							<h:panelGroup>
+								<h:message for="username"></h:message>
+								<h:inputText id="username" binding="#{loginBean.username}" />
+							</h:panelGroup>
+	
+							<h:outputText value="#{msgs.password}:" />
+							<h:panelGroup>
+								<h:message for="password"></h:message>
+								<h:inputSecret id="password" validator="#{loginBean.login}" />
+							</h:panelGroup>
+	
+							<h:commandButton value="#{msgs.login}" action="null">
+								<f:param name="threadId" value="#{queryManager.get('threadId')}" />
+								<f:param name="boardId" value="#{queryManager.get('boardId')}" />
+							</h:commandButton>
+	
+							<h:outputLink value="register.xhtml">
+								<h:outputText value="#{msgs.register}" />
+							</h:outputLink>
+						</h:panelGrid>
+					</h:form>
+				</h:panelGroup>
+			</ui:insert>
+		</div>
+		<div id="head_text">
+			<h1>Forum</h1>
+		</div>
+		<div id="navi">
+			<ul>
+				<li><h:outputLink value="index.xhtml">
+						<h:outputText value="#{msgs.home}" />
+					</h:outputLink></li>
+				<li><h:outputLink value="forum.xhtml">
+						<h:outputText value="#{msgs.forum}" />
+					</h:outputLink></li>
+				<li><h:outputLink value="users.xhtml">
+						<h:outputText value="#{msgs.user}" />
+					</h:outputLink></li>
+			</ul>
+			<div style="clear: both;"></div>
+		</div>
 	</div>
-	
-	<div id="navi" >
-		<ul>
-			<li>
-				<h:outputLink value="index.xhtml" ><h:outputText value="#{msgs.home}" /></h:outputLink>
-			</li>
-			<li>
-				<h:outputLink value="forum.xhtml" ><h:outputText value="#{msgs.forum}" /></h:outputLink>
-			</li>
-			<li>
-				<h:outputLink value="users.xhtml" ><h:outputText value="#{msgs.user}" /></h:outputLink>
-			</li>
-		</ul>
-		<div style="clear: both;" ></div>
-	</div>
-	
-	<div id="subnavi" ></div>
-	
+
 	<div id="content">
-		<ui:insert name="content"/>
+		<div>
+			<ui:insert name="content" />
+		</div>
 	</div>
-	
+
 	<div id="footer">
-		<h:outputText value="Copyright (c) 2011"/>
+		<h:outputText value="Copyright (c) 2011" />
 	</div>
 
 </h:body>
-</html>  
+</html>
