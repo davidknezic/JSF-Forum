@@ -14,7 +14,6 @@ public class AccessChecker implements PhaseListener {
 
 	public AccessChecker() {
 		permissions.put("/editProfile.xhtml", UserModel.USER);
-		permissions.put("/newBoard.xhtml", UserModel.USER);
 		permissions.put("/newThread.xhtml", UserModel.USER);
 		permissions.put("/editReply.xhtml", UserModel.ADMIN);
 		permissions.put("/editThread.xhtml", UserModel.ADMIN);
