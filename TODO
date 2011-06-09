@@ -5,24 +5,18 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 1. High priority
 ----------------
->> * Sven     Enable deletion of threads / replies
->> REJECTED - Change in UseCases!
->> * Sven     Enable user deletion
-* Marcel   Add error message to secured pages when user hasn't sufficient permission
+* David    Adapt Use-Cases to fit current features
 * David    Add pagination to profile page
 * Sven     Rework messages.properties file
 * Sven     Rendering h:message[s] as unordered lists
 
-* TESTING
-* Security Testing (Send delete requests when logged out, etc.)
-
-2. Normal priority
-------------------
+2. Testing
+----------
+* All      Security Testing (Send delete requests when logged out, etc.)
+* All      Functional Testing
 
 3. Low priority
 ---------------
 * Sven     CSS stylings
 * -        Cache DB Results / Models
 * David    LoginBean ErrorMessages to messages.properties
-* -        Custom JSF-Tags
-
