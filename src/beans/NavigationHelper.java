@@ -12,7 +12,6 @@ public class NavigationHelper {
 	
 	public String getClass(String facelet) {
 		String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
-		System.out.println(viewId);
 		if(viewId.equals(facelet))
 			return NavigationHelper.ACTIVE_CLASS;
 		return "";
