@@ -29,19 +29,14 @@ public class AccessChecker implements PhaseListener {
 		// Check to see if they are on the login page.
 		String viewId = fc.getViewRoot().getViewId();
 
-		System.out.println(viewId);
-
 		Integer permission = permissions.get(viewId);
 
 		if (permission != null && !hasPermission(permission)) {
 			fc.getApplication()
 					.getNavigationHandler()
 					.handleNavigation(fc, null, "/insufficientPermission.xhtml");
-			System.out.println("...");
 			return;
 		}
-
-		System.out.println("ok");
 	}
 
 	private boolean hasPermission(int perm) {
