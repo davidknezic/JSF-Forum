@@ -7,12 +7,13 @@
 <body>
 	<ui:composition template="template.xhtml">
 		<ui:define name="content">
-			<h:form >
+			<h:form>
 				<div class="block">
 					<h2>
 						<h:outputText value="#{msgs.newBoard}" />
 					</h2>
-					<h:panelGrid columns="2" columnClasses="newThreadLeft,newThreadRight">
+					<h:panelGrid columns="2"
+						columnClasses="newThreadLeft,newThreadRight">
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.title}" />
 						<h:panelGroup>
@@ -24,15 +25,16 @@
 						<h:outputText value="#{msgs.description}" />
 						<h:panelGroup>
 							<h:message for="descriptionIn" />
-							<h:inputTextarea value="#{newBoardBean.description}" id="descriptionIn"
-								required="true" />
+							<h:inputTextarea value="#{newBoardBean.description}"
+								id="descriptionIn" required="true" />
 						</h:panelGroup>
 						<h:panelGroup>
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:commandButton value="#{msgs.save}"
 								action="#{newBoardBean.save()}">
-								<f:param name="categoryId" value="#{queryManager.get('categoryId')}" />
+								<f:param name="categoryId"
+									value="#{queryManager.get('categoryId')}" />
 							</h:commandButton>
 						</h:panelGroup>
 					</h:panelGrid>

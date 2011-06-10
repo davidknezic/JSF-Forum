@@ -1,60 +1,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 </head>
 <body>
 	<ui:composition template="template.xhtml">
 		<ui:define name="content">
-			   	<div class="block" >
-		   			<h2><h:outputText value="#{msgs.user}" /></h2>
-		   			<h:dataTable value="#{userBean.users}" var="user" columnClasses="left,right" >
-		   				<h:column>
-		   					<f:facet name="header" >
-		   						<h:outputText class="left" value="#{msgs.username}" />
-		   					</f:facet>
-		   					<h:outputLink value="profile.xhtml?userId=#{user.userId}" >
-		   						<h:outputText value="#{user.username}" />
-		   					</h:outputLink>
-		   				</h:column>
-		   				<h:column>
-		   					<f:facet name="header" >
-		   						<h:outputText value="#{msgs.registeredSince}" />
-		   					</f:facet>
-		   					<h:outputText value="#{user.createdOn}" converter="forum.DateConverter" />
-		   				</h:column>
-		   				<h:column >
-		   					<f:facet name="header" >
-		   						<h:outputText value="#{msgs.role}" />
-		   					</f:facet>
-		   					
-							<h:outputFormat value="#{msgs.permissionValue}" rendered="#{!(loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN)}" >
-								<f:param value="#{user.permission}" />
-							</h:outputFormat>
-		   					
-		   					<h:form rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >
-			   					<h:selectOneMenu value="#{user.permission}" >
-								 	<f:selectItem itemValue="#{userBean.USER}" 			itemLabel="#{msgs.permission0}" />
-								 	<f:selectItem itemValue="#{userBean.ADMIN}" 		itemLabel="#{msgs.permission1}" />
-								 	<f:selectItem itemValue="#{userBean.SUPER_ADMIN}" 	itemLabel="#{msgs.permission2}" />
-								</h:selectOneMenu> 
-								<h:commandButton value="#{msgs.grant}" action="#{userBean.grant(user)}">
-									<f:param name="page"
-										value="#{userBean.currentPage}" />
-								</h:commandButton>
-							</h:form>
-		   					
-		   				</h:column>
-		   			</h:dataTable>
-			   	</div>
-				<div class="pagination">
+			<div class="block">
+				<h2>
+					<h:outputText value="#{msgs.user}" />
+				</h2>
+				<h:dataTable value="#{userBean.users}" var="user"
+					columnClasses="left,right">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText class="left" value="#{msgs.username}" />
+						</f:facet>
+						<h:outputLink value="profile.xhtml?userId=#{user.userId}">
+							<h:outputText value="#{user.username}" />
+						</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.registeredSince}" />
+						</f:facet>
+						<h:outputText value="#{user.createdOn}"
+							converter="forum.DateConverter" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.role}" />
+						</f:facet>
+
+						<h:outputFormat value="#{msgs.permissionValue}"
+							rendered="#{!(loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN)}">
+							<f:param value="#{user.permission}" />
+						</h:outputFormat>
+
+						<h:form
+							rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}">
+							<h:selectOneMenu value="#{user.permission}">
+								<f:selectItem itemValue="#{userBean.USER}"
+									itemLabel="#{msgs.permission0}" />
+								<f:selectItem itemValue="#{userBean.ADMIN}"
+									itemLabel="#{msgs.permission1}" />
+								<f:selectItem itemValue="#{userBean.SUPER_ADMIN}"
+									itemLabel="#{msgs.permission2}" />
+							</h:selectOneMenu>
+							<h:commandButton value="#{msgs.grant}"
+								action="#{userBean.grant(user)}">
+								<f:param name="page" value="#{userBean.currentPage}" />
+							</h:commandButton>
+						</h:form>
+
+					</h:column>
+				</h:dataTable>
+			</div>
+			<div class="pagination">
 				<h:outputLink rendered="#{userBean.hasPrev()}" class="prev"
-				  value="users.xhtml?page=#{userBean.currentPage - 1}">
+					value="users.xhtml?page=#{userBean.currentPage - 1}">
 					<h:outputText value="#{msgs.previous}" />
 				</h:outputLink>
 				<h:outputLink rendered="#{userBean.hasNext()}" class="next"
-				  value="users.xhtml?page=#{userBean.currentPage + 1}">
+					value="users.xhtml?page=#{userBean.currentPage + 1}">
 					<h:outputText value="#{msgs.next}" />
 				</h:outputLink>
 			</div>

@@ -1,12 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>Exception</title>
-    <link href="exception-Dateien/reset.htm" rel="stylesheet" />
-    <link href="exception-Dateien/style.htm" rel="stylesheet" />
+	<title>Exception</title>
+	<link href="exception-Dateien/reset.htm" rel="stylesheet" />
+	<link href="exception-Dateien/style.htm" rel="stylesheet" />
 </h:head>
 <h:body>
-	<h1><h:outputText value="#{e.message}"/></h1>
-	<pre><h:outputText value="#{e.stackTrace}"/></pre>
+	<h1>
+		<h:outputText value="#{e.message}" />
+	</h1>
+	<pre>
+		<h:outputText value="#{e.stackTrace}" />
+	</pre>
 </h:body>
 </html>

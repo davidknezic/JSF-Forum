@@ -10,12 +10,12 @@
 			<div class="block">
 				<h2>
 					<h:outputText value="#{threadBean.thread.title}" />
-					
+
 					<h:outputLink value="editThread.xhtml" class="addAction"
-						rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN}" >
+						rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN}">
 						<f:param name="threadId" value="#{threadBean.thread.threadId}" />
 						<h:graphicImage value="Bilder/edit.png" />
-					</h:outputLink>	
+					</h:outputLink>
 				</h2>
 				<h:dataTable value="#{threadBean.replies}" var="reply"
 					columnClasses="replyLeft,replyRight">
@@ -25,18 +25,21 @@
 						</f:facet>
 						<h:outputText class="date" value="#{reply.createdOn}"
 							converter="forum.DateConverter" />
-						<h:outputLink class="reply_username" value="profile.xhtml?userId=#{reply.user.userId}">
+						<h:outputLink class="reply_username"
+							value="profile.xhtml?userId=#{reply.user.userId}">
 							<h:outputText value="#{reply.user.username}" />
 						</h:outputLink>
-						<h:outputFormat class="reply_permission" value="#{msgs.permissionValue}">
+						<h:outputFormat class="reply_permission"
+							value="#{msgs.permissionValue}">
 							<f:param value="#{reply.user.permission}" />
 						</h:outputFormat>
-						<h:graphicImage url="#{reply.user.getAvatar(64)}" class="reply_avatar" />
+						<h:graphicImage url="#{reply.user.getAvatar(64)}"
+							class="reply_avatar" />
 						<div>
 							<h:outputLink value="editReply.xhtml" class="replyAction"
-							rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN and reply.replyId != 0}" >
-							<f:param name="replyId" value="#{reply.replyId}" />
-							<h:graphicImage value="Bilder/edit.png" />
+								rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN and reply.replyId != 0}">
+								<f:param name="replyId" value="#{reply.replyId}" />
+								<h:graphicImage value="Bilder/edit.png" />
 							</h:outputLink>
 						</div>
 					</h:column>
@@ -55,7 +58,8 @@
 										value="#{queryManager.get('threadId')}" />
 								</h:commandButton>
 							</h:form>
-							<h:outputText rendered="#{!loginBean.loggedin}" value="#{msgs.login2reply}" />
+							<h:outputText rendered="#{!loginBean.loggedin}"
+								value="#{msgs.login2reply}" />
 						</f:facet>
 						<h:outputFormat value="#{reply.content}" class="displayLinebreak" />
 					</h:column>
@@ -63,11 +67,11 @@
 			</div>
 			<div class="pagination">
 				<h:outputLink rendered="#{threadBean.hasPrev()}" class="prev"
-				  value="thread.xhtml?threadId=#{queryManager.get('threadId')}&amp;page=#{threadBean.currentPage - 1}">
+					value="thread.xhtml?threadId=#{queryManager.get('threadId')}&amp;page=#{threadBean.currentPage - 1}">
 					<h:outputText value="#{msgs.previous}" />
 				</h:outputLink>
 				<h:outputLink rendered="#{threadBean.hasNext()}" class="next"
-				  value="thread.xhtml?threadId=#{queryManager.get('threadId')}&amp;page=#{threadBean.currentPage + 1}">
+					value="thread.xhtml?threadId=#{queryManager.get('threadId')}&amp;page=#{threadBean.currentPage + 1}">
 					<h:outputText value="#{msgs.next}" />
 				</h:outputLink>
 			</div>

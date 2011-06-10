@@ -7,21 +7,21 @@
 <body>
 	<ui:composition template="template.xhtml">
 		<ui:define name="content">
-			<h:form >
+			<h:form>
 				<div class="block">
 					<h2>
 						<h:outputText value="#{msgs.editThread}" />
 					</h2>
-					<h:panelGrid columns="2" columnClasses="newThreadLeft,newThreadRight">
+					<h:panelGrid columns="2"
+						columnClasses="newThreadLeft,newThreadRight">
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.board}" />
 						<h:panelGroup>
 							<h:message for="boardIn" />
 							<h:selectOneMenu id="boardIn" converter="forum.BoardConverter"
-							 value="#{editThreadBean.currentBoard}">
-							  <f:selectItems
-							   value="#{editThreadBean.boardList}" />
-							</h:selectOneMenu> 
+								value="#{editThreadBean.currentBoard}">
+								<f:selectItems value="#{editThreadBean.boardList}" />
+							</h:selectOneMenu>
 						</h:panelGroup>
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.title}" />

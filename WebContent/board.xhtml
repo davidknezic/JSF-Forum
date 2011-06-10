@@ -28,14 +28,11 @@
 								<h:outputText value="#{thread.title}" />
 							</h:outputLink>
 						</h3>
-						<span class="meta" >
-							<h:outputText value="#{msgs.by} " />
+						<span class="meta"> <h:outputText value="#{msgs.by} " />
 							<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
 								<h:outputText value="#{thread.user.username}" />
-							</h:outputLink>, 
-								<h:outputText value="#{thread.createdOn}"
-								converter="forum.DateConverter" />
-						</span>
+							</h:outputLink>, <h:outputText value="#{thread.createdOn}"
+								converter="forum.DateConverter" /> </span>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
@@ -73,11 +70,11 @@
 			</div>
 			<div class="pagination">
 				<h:outputLink rendered="#{boardBean.hasPrev()}" class="prev"
-				  value="board.xhtml?boardId=#{queryManager.get('boardId')}&amp;page=#{boardBean.currentPage - 1}">
+					value="board.xhtml?boardId=#{queryManager.get('boardId')}&amp;page=#{boardBean.currentPage - 1}">
 					<h:outputText value="#{msgs.previous}" />
 				</h:outputLink>
 				<h:outputLink rendered="#{boardBean.hasNext()}" class="next"
-				  value="board.xhtml?boardId=#{queryManager.get('boardId')}&amp;page=#{boardBean.currentPage + 1}">
+					value="board.xhtml?boardId=#{queryManager.get('boardId')}&amp;page=#{boardBean.currentPage + 1}">
 					<h:outputText value="#{msgs.next}" />
 				</h:outputLink>
 			</div>

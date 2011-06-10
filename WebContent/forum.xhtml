@@ -1,76 +1,83 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 </head>
 <body>
 	<ui:composition template="template.xhtml">
 		<ui:define name="content">
 			<h:outputLink value="newCategory.xhtml" class="addAction"
-				rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >
+				rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}">
 				<h:graphicImage value="Bilder/add.png" />
 			</h:outputLink>
-			
-				<h:dataTable value="#{categoryBean.categories}" var="category" columnClasses="block" >
-			   		<h:column>
-			   			<h2>
-			   				<h:outputText value="#{category.title}" />
-			   			
-							<h:outputLink value="newBoard.xhtml" class="addAction"
-								rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}" >
-								<f:param name="categoryId" value="#{category.categoryId}" />
-								<h:graphicImage value="Bilder/add.png" />
-							</h:outputLink>	
-			   			</h2>
-			   			<h:dataTable value="#{category.boards}" var="board" columnClasses="left,center,right" class="vmiddle" >
-			   				<h:column>
-			   					<f:facet name="header" >
-			   						<h:outputText value="#{msgs.forum}" styleClass="firstHeading" />
-			   					</f:facet>
-			   					<h3><h:outputLink value="board.xhtml?boardId=#{board.boardId}" ><h:outputText value="#{board.title}" /></h:outputLink></h3>
-			   					<h:outputText class="meta" value="#{board.description}" />
-			   				</h:column>
-			   				<h:column>
-			   					<f:facet name="header" >
-			   						<h:outputText value="#{msgs.statistics}" />
-			   					</f:facet>
-			   					<h:outputFormat value="#{msgs.threadCount}" >
-			   						<f:param value="#{board.threadCount}" />
-			   					</h:outputFormat>
-			   					<br />
-			   					<h:outputFormat value="#{msgs.replyCount}" >
-			   						<f:param value="#{board.replyCount}" />
-			   					</h:outputFormat>
-			   				</h:column>
-			   				<h:column>
-			   					<f:facet name="header" >
-			   						<h:outputText value="#{msgs.latestPost}" />
-			   					</f:facet>
-								
-								<h:panelGroup rendered="#{board.lastThread != null}">
-									<h:outputLink value="thread.xhtml?threadId=#{board.lastThread.threadId}" >
-										<h:outputText value="#{board.lastThread.title}" converter="forum.LengthConverter" />
-									</h:outputLink>
-									<br />
-									<span class="meta" >
-										<h:outputText value="#{msgs.by} " />
-						   				<h:outputLink value="profile.xhtml?userId=#{board.lastThread.user.userId}" >
-						   					<h:outputText value="#{board.lastThread.user.username}" />
-										</h:outputLink>, 
-						   				<h:outputText value="#{board.lastThread.createdOn}" converter="forum.DateConverter" />
-									</span>
-								</h:panelGroup>
-								
-								<h:panelGroup rendered="#{board.lastThread == null}">
+
+			<h:dataTable value="#{categoryBean.categories}" var="category"
+				columnClasses="block">
+				<h:column>
+					<h2>
+						<h:outputText value="#{category.title}" />
+
+						<h:outputLink value="newBoard.xhtml" class="addAction"
+							rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}">
+							<f:param name="categoryId" value="#{category.categoryId}" />
+							<h:graphicImage value="Bilder/add.png" />
+						</h:outputLink>
+					</h2>
+					<h:dataTable value="#{category.boards}" var="board"
+						columnClasses="left,center,right" class="vmiddle">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msgs.forum}" styleClass="firstHeading" />
+							</f:facet>
+							<h3>
+								<h:outputLink value="board.xhtml?boardId=#{board.boardId}">
+									<h:outputText value="#{board.title}" />
+								</h:outputLink>
+							</h3>
+							<h:outputText class="meta" value="#{board.description}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msgs.statistics}" />
+							</f:facet>
+							<h:outputFormat value="#{msgs.threadCount}">
+								<f:param value="#{board.threadCount}" />
+							</h:outputFormat>
+							<br />
+							<h:outputFormat value="#{msgs.replyCount}">
+								<f:param value="#{board.replyCount}" />
+							</h:outputFormat>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msgs.latestPost}" />
+							</f:facet>
+
+							<h:panelGroup rendered="#{board.lastThread != null}">
+								<h:outputLink
+									value="thread.xhtml?threadId=#{board.lastThread.threadId}">
+									<h:outputText value="#{board.lastThread.title}"
+										converter="forum.LengthConverter" />
+								</h:outputLink>
+								<br />
+								<span class="meta"> <h:outputText value="#{msgs.by} " />
+									<h:outputLink
+										value="profile.xhtml?userId=#{board.lastThread.user.userId}">
+										<h:outputText value="#{board.lastThread.user.username}" />
+									</h:outputLink>, <h:outputText value="#{board.lastThread.createdOn}"
+										converter="forum.DateConverter" /> </span>
+							</h:panelGroup>
+
+							<h:panelGroup rendered="#{board.lastThread == null}">
 									-
 								</h:panelGroup>
-								
-			   				</h:column>
-			   			</h:dataTable>
-			   		</h:column>
-			   	</h:dataTable>
-			   	
+
+						</h:column>
+					</h:dataTable>
+				</h:column>
+			</h:dataTable>
+
 		</ui:define>
 	</ui:composition>
 </body>

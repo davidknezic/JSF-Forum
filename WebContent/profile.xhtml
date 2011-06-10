@@ -1,72 +1,110 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 </head>
 <body>
 	<ui:composition template="template.xhtml">
 		<ui:define name="content">
-			   	<div class="block" >
-		   			<h2>
-		   				<h:outputText value="#{msgs.user}" />
-		   				<h:outputLink rendered="#{loginBean.loggedin and loginBean.user.userId == userBean.user.userId}" value="editProfile.xhtml" >
-		   					<h:outputText value="#{msgs.editProfile}" />
-		   				</h:outputLink>
-		   			</h2>
-		   			<table><tr><td>
-		   				<h:graphicImage class="profile_avatar" value="#{userBean.user.getAvatar(128)}" />
-						<dl class="profile_info">
-							<dt><h:outputText value="#{msgs.username}" /></dt>
-							<dd><h:outputText value="#{userBean.user.username}" /></dd>
-							
-							<dt><h:outputText value="#{msgs.role}" /></dt>
-							<dd>
-								<h:outputFormat value="#{msgs.permissionValue}" >
-									<f:param value="#{userBean.user.permission}" />
-								</h:outputFormat>
-							</dd>
-							
-							<dt><h:outputText value="#{msgs.firstName}" /></dt>
-							<dd>
-								<h:outputText value="#{userBean.user.firstName}" rendered="#{userBean.user.firstName != null}" />
-								<h:outputText value="-" rendered="#{userBean.user.firstName == null}" />
-							</dd>
-							
-							<dt><h:outputText value="#{msgs.lastName}" /></dt>
-							<dd>
-								<h:outputText value="#{userBean.user.lastName}" rendered="#{userBean.user.lastName != null}" />
-								<h:outputText value="-" rendered="#{userBean.user.lastName == null}" />
-							</dd>
-							
-							<dt><h:outputText value="#{msgs.website}" /></dt>
-							<dd>
-								<h:outputText value="#{userBean.user.website}" rendered="#{userBean.user.website != null}" />
-								<h:outputText value="-" rendered="#{userBean.user.website == null}" />
-							</dd>
-							
-							<dt><h:outputText value="#{msgs.location}" /></dt>
-							<dd>
-								<h:outputText value="#{userBean.user.location}" rendered="#{userBean.user.location != null}" />
-								<h:outputText value="-" rendered="#{userBean.user.location == null}" />
-							</dd>
-							
-							<dt><h:outputText value="#{msgs.age}" /></dt>
-							<dd>
-								<h:outputText value="#{userBean.user.dateOfBirth}" converter="forum.AgeConverter" rendered="#{userBean.user.dateOfBirth != null}" />
-								<h:outputText value="-" rendered="#{userBean.user.dateOfBirth == null}" />
-							</dd>
-							
-							<dt><h:outputText value="#{msgs.registeredSince}" /></dt>
-							<dd><h:outputText value="#{userBean.user.createdOn}" converter="forum.DateConverter" /></dd>
-						</dl>
-						<div style="clear: both;"></div>
-		   			</td></tr></table>
-					
-					<h2>
-						<h:outputText value="#{msgs.latestThreads}" />
-					</h2>
-					<h:dataTable rendered="#{userBean.latestThreads.size() > 0}"
+			<div class="block">
+				<h2>
+					<h:outputText value="#{msgs.user}" />
+					<h:outputLink
+						rendered="#{loginBean.loggedin and loginBean.user.userId == userBean.user.userId}"
+						value="editProfile.xhtml">
+						<h:outputText value="#{msgs.editProfile}" />
+					</h:outputLink>
+				</h2>
+				<table>
+					<tr>
+						<td><h:graphicImage class="profile_avatar"
+								value="#{userBean.user.getAvatar(128)}" />
+							<dl class="profile_info">
+								<dt>
+									<h:outputText value="#{msgs.username}" />
+								</dt>
+								<dd>
+									<h:outputText value="#{userBean.user.username}" />
+								</dd>
+
+								<dt>
+									<h:outputText value="#{msgs.role}" />
+								</dt>
+								<dd>
+									<h:outputFormat value="#{msgs.permissionValue}">
+										<f:param value="#{userBean.user.permission}" />
+									</h:outputFormat>
+								</dd>
+
+								<dt>
+									<h:outputText value="#{msgs.firstName}" />
+								</dt>
+								<dd>
+									<h:outputText value="#{userBean.user.firstName}"
+										rendered="#{userBean.user.firstName != null}" />
+									<h:outputText value="-"
+										rendered="#{userBean.user.firstName == null}" />
+								</dd>
+
+								<dt>
+									<h:outputText value="#{msgs.lastName}" />
+								</dt>
+								<dd>
+									<h:outputText value="#{userBean.user.lastName}"
+										rendered="#{userBean.user.lastName != null}" />
+									<h:outputText value="-"
+										rendered="#{userBean.user.lastName == null}" />
+								</dd>
+
+								<dt>
+									<h:outputText value="#{msgs.website}" />
+								</dt>
+								<dd>
+									<h:outputText value="#{userBean.user.website}"
+										rendered="#{userBean.user.website != null}" />
+									<h:outputText value="-"
+										rendered="#{userBean.user.website == null}" />
+								</dd>
+
+								<dt>
+									<h:outputText value="#{msgs.location}" />
+								</dt>
+								<dd>
+									<h:outputText value="#{userBean.user.location}"
+										rendered="#{userBean.user.location != null}" />
+									<h:outputText value="-"
+										rendered="#{userBean.user.location == null}" />
+								</dd>
+
+								<dt>
+									<h:outputText value="#{msgs.age}" />
+								</dt>
+								<dd>
+									<h:outputText value="#{userBean.user.dateOfBirth}"
+										converter="forum.AgeConverter"
+										rendered="#{userBean.user.dateOfBirth != null}" />
+									<h:outputText value="-"
+										rendered="#{userBean.user.dateOfBirth == null}" />
+								</dd>
+
+								<dt>
+									<h:outputText value="#{msgs.registeredSince}" />
+								</dt>
+								<dd>
+									<h:outputText value="#{userBean.user.createdOn}"
+										converter="forum.DateConverter" />
+								</dd>
+							</dl>
+							<div style="clear: both;"></div>
+						</td>
+					</tr>
+				</table>
+
+				<h2>
+					<h:outputText value="#{msgs.latestThreads}" />
+				</h2>
+				<h:dataTable rendered="#{userBean.latestThreads.size() > 0}"
 					value="#{userBean.latestThreads}" var="thread"
 					columnClasses="left,center,right" columns="3" class="vmiddle">
 					<h:column>
@@ -78,14 +116,11 @@
 								<h:outputText value="#{thread.title}" />
 							</h:outputLink>
 						</h3>
-						<span class="meta">
-							<h:outputText value="#{msgs.by} " />
-							<h:outputLink value="profile.xhtml?userId=#{thread.user.userId}">
+						<span class="meta"> <h:outputText value="#{msgs.by} " /> <h:outputLink
+								value="profile.xhtml?userId=#{thread.user.userId}">
 								<h:outputText value="#{thread.user.username}" />
-							</h:outputLink>, 
-								<h:outputText value="#{thread.createdOn}"
-								converter="forum.DateConverter" />
-						</span>
+							</h:outputLink>, <h:outputText value="#{thread.createdOn}"
+								converter="forum.DateConverter" /> </span>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
@@ -120,11 +155,11 @@
 					rendered="#{userBean.latestThreads.size() == 0}">
 					<h:outputText value="#{msgs.noUserThreads}" />
 				</h:panelGrid>
-					
-					<h2>
-						<h:outputText value="#{msgs.latestReply}" />
-					</h2>
-					<h:dataTable rendered="#{userBean.latestReplies.size() > 0}"
+
+				<h2>
+					<h:outputText value="#{msgs.latestReply}" />
+				</h2>
+				<h:dataTable rendered="#{userBean.latestReplies.size() > 0}"
 					value="#{userBean.latestReplies}" var="reply"
 					columnClasses="left,center,right" columns="3" class="vmiddle">
 					<h:column>
@@ -132,18 +167,16 @@
 							<h:outputText value="#{msgs.thread}" styleClass="firstHeading" />
 						</f:facet>
 						<h3>
-							<h:outputLink value="thread.xhtml?threadId=#{reply.thread.threadId}">
+							<h:outputLink
+								value="thread.xhtml?threadId=#{reply.thread.threadId}">
 								<h:outputText value="#{reply.thread.title}" />
 							</h:outputLink>
 						</h3>
-						<span class="meta">
-							<h:outputText value="#{msgs.by} " />
-							<h:outputLink value="profile.xhtml?userId=#{reply.thread.user.userId}">
+						<span class="meta"> <h:outputText value="#{msgs.by} " /> <h:outputLink
+								value="profile.xhtml?userId=#{reply.thread.user.userId}">
 								<h:outputText value="#{reply.thread.user.username}" />
-							</h:outputLink>, 
-								<h:outputText value="#{reply.thread.createdOn}"
-								converter="forum.DateConverter" />
-						</span>
+							</h:outputLink>, <h:outputText value="#{reply.thread.createdOn}"
+								converter="forum.DateConverter" /> </span>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
@@ -178,8 +211,8 @@
 					rendered="#{userBean.latestReplies.size() == 0}">
 					<h:outputText value="#{msgs.noUserReplies}" />
 				</h:panelGrid>
-					
-			   	</div>
+
+			</div>
 		</ui:define>
 	</ui:composition>
 </body>
