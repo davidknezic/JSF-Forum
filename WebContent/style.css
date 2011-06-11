@@ -11,7 +11,7 @@ a {
 	color: #70a7bf;
 }
 
-a,a:focus,input:focus {
+a,a:focus,input:focus, textarea:focus {
 	outline: none;
 }
 
@@ -35,6 +35,20 @@ a:hover {
 	white-space: pre-line;
 }
 
+.messages {
+	color: red;
+}
+
+ul.messages {
+	list-style-type: disc;
+	margin-left: 30px;
+}
+
+span.messages {
+	display: block;
+	padding-left: 30px;
+}
+
 #top {
 	line-height: 50px;
 	padding: 0 20px;
@@ -43,19 +57,26 @@ a:hover {
 	border-bottom: 1px solid #dadada;
 }
 
+#top a {
+	margin: 0 0 0 10px;
+}
+
 #top>div {
 	width: 880px;
 	margin: 0 auto;
 }
 
-#top input[type=password],#top input[type=text] {
+input[type=password], input[type=text] {
 	height: 25px;
 	line-height: 25px;
+}
+
+input[type=password], input[type=text], textarea {
 	border: 1px solid #e0e0e0;
 	border-radius: 3px;
 	margin: 0 5px;
 	background: #ffffff;
-	color: #c2c2c2;
+	color: #909090;
 }
 
 #top a {
@@ -282,7 +303,7 @@ a:hover {
 }
 
 .addAction img {
-	margin: 6px 0 0 0;
+	margin: 10px 0 -2px 0;
 }
 
 #content input[type=text],#content input[type=password] {
@@ -290,7 +311,6 @@ a:hover {
 }
 
 #content textarea {
-	margin: 0;
 	width: 600px;
 	height: 180px;
 	max-width: 600px;

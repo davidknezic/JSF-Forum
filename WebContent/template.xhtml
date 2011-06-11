@@ -15,12 +15,15 @@
 			<ui:insert name="top">
 				<h:panelGroup layout="block" rendered="#{loginBean.loggedin}">
 					<h:form>
-						<h:commandButton value="#{msgs.logout}"
+						<h:outputFormat value="#{msgs.welcomeTop}" >
+							<f:param value="#{loginBean.user.username}" />
+						</h:outputFormat>
+						<h:commandLink value="#{msgs.logout}"
 							action="#{loginBean.logout}">
 							<f:param name="threadId" value="#{queryManager.get('threadId')}" />
 							<f:param name="boardId" value="#{queryManager.get('boardId')}" />
 							<f:param name="userId" value="#{queryManager.get('userId')}" />
-						</h:commandButton>
+						</h:commandLink>
 						<h:outputLink value="editProfile.xhtml">
 							<h:outputText value="#{msgs.editProfile}" />
 						</h:outputLink>
@@ -31,14 +34,14 @@
 						<h:panelGrid columns="6">
 							<h:outputText value="#{msgs.username}:" />
 							<h:panelGroup>
-								<h:message layout="list" class="messages" for="username" />
 								<h:inputText id="username" binding="#{loginBean.username}" />
+								<h:message layout="list" class="messages" for="username" />
 							</h:panelGroup>
 
 							<h:outputText value="#{msgs.password}:" />
 							<h:panelGroup>
-								<h:message layout="list" class="messages" for="password" />
 								<h:inputSecret id="password" validator="#{loginBean.login}" />
+								<h:message layout="list" class="messages" for="password" />
 							</h:panelGroup>
 
 							<h:commandButton value="#{msgs.login}" action="null">

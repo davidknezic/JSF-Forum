@@ -18,15 +18,15 @@
 						<h:outputText value="#{msgs.title}" />
 						<h:panelGroup>
 							<h:messages layout="list" class="messages" />
-							<h:message layout="list" class="messages" for="titleIn" />
 							<h:inputText value="#{newBoardBean.title}" id="titleIn"
 								required="true" />
+							<h:message layout="list" class="messages" for="titleIn" />
 						</h:panelGroup>
 						<h:outputText value="#{msgs.description}" />
 						<h:panelGroup>
-							<h:message layout="list" class="messages" for="descriptionIn" />
 							<h:inputTextarea value="#{newBoardBean.description}"
 								id="descriptionIn" required="true" />
+							<h:message layout="list" class="messages" for="descriptionIn" />
 						</h:panelGroup>
 						<h:panelGroup>
 						</h:panelGroup>
