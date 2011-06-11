@@ -8,6 +8,7 @@ This is a list of tasks to complete in the future. Feel free to extend!
 * David    Adapt Use-Cases to fit current features
 * David    Add pagination to profile page
 * Sven     Rework messages.properties file
+* Sven     Rework validator / required messages
 
 2. Testing
 ----------

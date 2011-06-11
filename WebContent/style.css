@@ -54,6 +54,12 @@ span.messages {
 	padding-left: 30px;
 }
 
+#top span.messages {
+	display: inline;
+	padding-left: 10px;
+	font-size: 10px;
+}
+
 #top {
 	line-height: 50px;
 	padding: 0 20px;
