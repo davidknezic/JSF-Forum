@@ -6,11 +6,11 @@
 </head>
 <body>
 	<ui:composition template="template.xhtml">
-		<div class="block">
-			<h2>
-				<h:outputText value="#{msgs.insufficientPermissionTitle}" />
-			</h2>
-			<h:panelGrid columns="1" columnClasses="left2,">
+		<ui:define name="content">
+			<div class="block">
+				<h2>
+					<h:outputText value="#{msgs.insufficientPermissionTitle}" />
+				</h2>
 				<h:panelGrid columns="1" columnClasses="left2,">
 					<h:panelGroup rendered="#{msgs.insufficientPermissionTitle}">
 						<h:outputText value="#{msgs.insufficientPermission}" />
@@ -23,8 +23,8 @@
 						</h:outputLink>
 					</h:panelGroup>
 				</h:panelGrid>
-			</h:panelGrid>
-		</div>
+			</div>
+		</ui:define>
 	</ui:composition>
 </body>
 </html>
