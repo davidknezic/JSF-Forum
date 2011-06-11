@@ -31,13 +31,13 @@
 						<h:panelGrid columns="6">
 							<h:outputText value="#{msgs.username}:" />
 							<h:panelGroup>
-								<h:message for="username"></h:message>
+								<h:message layout="list" class="messages" for="username" />
 								<h:inputText id="username" binding="#{loginBean.username}" />
 							</h:panelGroup>
 
 							<h:outputText value="#{msgs.password}:" />
 							<h:panelGroup>
-								<h:message for="password"></h:message>
+								<h:message layout="list" class="messages" for="password" />
 								<h:inputSecret id="password" validator="#{loginBean.login}" />
 							</h:panelGroup>
 
@@ -65,15 +65,18 @@
 				<li class="#{navigationHelper.getClass('/index.xhtml')}"><h:outputLink
 						value="index.xhtml">
 						<h:outputText value="#{msgs.home}" />
-					</h:outputLink></li>
+					</h:outputLink>
+				</li>
 				<li class="#{navigationHelper.getClass('/forum.xhtml')}"><h:outputLink
 						value="forum.xhtml">
 						<h:outputText value="#{msgs.forum}" />
-					</h:outputLink></li>
+					</h:outputLink>
+				</li>
 				<li class="#{navigationHelper.getClass('/users.xhtml')}"><h:outputLink
 						value="users.xhtml">
 						<h:outputText value="#{msgs.user}" />
-					</h:outputLink></li>
+					</h:outputLink>
+				</li>
 			</ul>
 			<div style="clear: both;"></div>
 		</div>

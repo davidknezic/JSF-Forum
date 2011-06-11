@@ -17,7 +17,7 @@
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.board}" />
 						<h:panelGroup>
-							<h:message for="boardIn" />
+							<h:message layout="list" class="messages" for="boardIn" />
 							<h:selectOneMenu id="boardIn" converter="forum.BoardConverter"
 								value="#{editThreadBean.currentBoard}">
 								<f:selectItems value="#{editThreadBean.boardList}" />
@@ -26,13 +26,13 @@
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.title}" />
 						<h:panelGroup>
-							<h:message for="titleIn" />
+							<h:message layout="list" class="messages" for="titleIn" />
 							<h:inputText value="#{editThreadBean.title}" id="titleIn"
 								required="true" />
 						</h:panelGroup>
 						<h:outputText value="#{msgs.content}" />
 						<h:panelGroup>
-							<h:message for="contentIn" />
+							<h:message layout="list" class="messages" for="contentIn" />
 							<h:inputTextarea value="#{editThreadBean.content}" id="contentIn"
 								required="true" />
 						</h:panelGroup>

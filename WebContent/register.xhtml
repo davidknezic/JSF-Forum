@@ -18,15 +18,15 @@
 
 						<h:outputText value="#{msgs.username}" />
 						<h:panelGroup>
-							<h:messages />
-							<h:message for="usernameIn" />
+							<h:messages layout="list" class="messages" />
+							<h:message layout="list" class="messages" for="usernameIn" />
 							<h:inputText value="#{registerBean.name}" id="usernameIn"
 								required="true" requiredMessage="usernameRequired" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.password}" />
 						<h:panelGroup>
-							<h:message for="pw" />
+							<h:message layout="list" class="messages" for="pw" />
 							<h:inputSecret value="#{registerBean.password}" id="pw"
 								required="true" requiredMessage="passwordRequired"
 								binding="#{equalityValidator.v2}">
@@ -36,7 +36,7 @@
 
 						<h:outputText value="#{msgs.passwordRepeat}" />
 						<h:panelGroup>
-							<h:message for="pwRep" />
+							<h:message layout="list" class="messages" for="pwRep" />
 							<h:inputSecret value="#{registerBean.passwordRepeated}"
 								id="pwRep" required="true" requiredMessage="passwordRequired"
 								validator="#{equalityValidator.validate}"
@@ -47,7 +47,7 @@
 
 						<h:outputText value="#{msgs.email}" />
 						<h:panelGroup>
-							<h:message for="email" />
+							<h:message layout="list" class="messages" for="email" />
 							<h:inputText value="#{registerBean.email}" id="email"
 								required="true" requiredMessage="emailRequired"
 								validator="EmailValidator" validatorMessage="emailInvalid" />
