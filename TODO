@@ -16,6 +16,5 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 3. Low priority
 ---------------
-* Sven     CSS stylings
 * -        Cache DB Results / Models
 * David    LoginBean / *Validator  ErrorMessages to messages.properties
