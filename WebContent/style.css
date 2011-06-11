@@ -5,13 +5,18 @@ body {
 	background: url(Bilder/bg.jpg) top left repeat;
 }
 
+textarea {
+	font-family: Verdana, "Sans Serif";
+	font-size: 11px;
+}	
+
 a {
 	outline: none;
 	text-decoration: none;
 	color: #70a7bf;
 }
 
-a,a:focus,input:focus, textarea:focus {
+a,a:focus,input:focus,textarea:focus {
 	outline: none;
 }
 
@@ -66,17 +71,26 @@ span.messages {
 	margin: 0 auto;
 }
 
-input[type=password], input[type=text] {
+#top input {
+	margin: 10px 5px 0 5px;
+}
+
+input[type=password],input[type=text] {
 	height: 25px;
 	line-height: 25px;
 }
 
-input[type=password], input[type=text], textarea {
+input[type=password],input[type=text],textarea {
 	border: 1px solid #e0e0e0;
 	border-radius: 3px;
 	margin: 0 5px;
 	background: #ffffff;
 	color: #909090;
+	padding: 0 3px;
+}
+
+textarea {
+	padding: 3px;
 }
 
 #top a {
@@ -99,7 +113,7 @@ input[type=password], input[type=text], textarea {
 	margin: 0 auto;
 	font-size: 36px;
 	padding: 60px 0 0 200px;
-	color: #222; 
+	color: #222;
 	text-shadow: 0px 2px 2px #555;
 }
 
@@ -126,9 +140,9 @@ input[type=password], input[type=text], textarea {
 		color-stop(1, #89B8CC) );
 	background-image: -moz-linear-gradient(center top, #B1D0DD 0%, #89B8CC 100%);
 	/* IE */
-	filter: progid :       DXImageTransform.Microsoft.gradient (     
-		 startColorstr =   
-		   '#b1d0dd', endColorstr =       '#89b8cc' );
+	filter: progid :         DXImageTransform.Microsoft.gradient (      
+		  startColorstr =    
+		    '#b1d0dd', endColorstr =         '#89b8cc' );
 	/* CSS 3 */
 	background: linear-gradient(top, #B1D0DD, #89B8CC);
 	border-top: 1px solid #d0e2ea;
@@ -178,9 +192,9 @@ input[type=password], input[type=text], textarea {
 		color-stop(1, #89B8CC) );
 	background-image: -moz-linear-gradient(center top, #B1D0DD 0%, #89B8CC 100%);
 	/* IE */
-	filter: progid :       DXImageTransform.Microsoft.gradient (     
-		 startColorstr =   
-		   '#b1d0dd', endColorstr =       '#89b8cc' );
+	filter: progid :         DXImageTransform.Microsoft.gradient (      
+		  startColorstr =    
+		    '#b1d0dd', endColorstr =         '#89b8cc' );
 	/* CSS 3 */
 	background: linear-gradient(top, #B1D0DD, #89B8CC);
 	border-top-left-radius: 3px;
@@ -347,15 +361,15 @@ input[type=password], input[type=text], textarea {
 		color-stop(1, #89B8CC) );
 	background-image: -moz-linear-gradient(center top, #B1D0DD 0%, #89B8CC 100%);
 	/* IE */
-	filter: progid :       DXImageTransform.Microsoft.gradient (     
-		 startColorstr =   
-		   '#b1d0dd', endColorstr =       '#89b8cc' );
+	filter: progid :         DXImageTransform.Microsoft.gradient (      
+		  startColorstr =    
+		    '#b1d0dd', endColorstr =         '#89b8cc' );
 	/* CSS 3 */
 	background: linear-gradient(top, #B1D0DD, #89B8CC);
 	border: none;
-	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	text-shadow: #7994a0 0 -1px 0;
 	color: white;
 	text-decoration: none;
@@ -375,9 +389,9 @@ input[type=password], input[type=text], textarea {
 		color-stop(1, #9bc3d4) );
 	background-image: -moz-linear-gradient(center top, #bde0ef 0%, #9bc3d4 100%);
 	/* IE */
-	filter: progid :       DXImageTransform.Microsoft.gradient (     
-		 startColorstr =   
-		   '#bde0ef', endColorstr =       '#9bc3d4' );
+	filter: progid :         DXImageTransform.Microsoft.gradient (      
+		  startColorstr =    
+		    '#bde0ef', endColorstr =         '#9bc3d4' );
 	/* CSS 3 */
 	background: linear-gradient(top, #bde0ef, #9bc3d4);
 }
