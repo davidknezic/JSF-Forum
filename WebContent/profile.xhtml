@@ -10,11 +10,6 @@
 			<div class="block">
 				<h2>
 					<h:outputText value="#{msgs.user}" />
-					<h:outputLink
-						rendered="#{loginBean.loggedin and loginBean.user.userId == profileBean.user.userId}"
-						value="editProfile.xhtml">
-						<h:outputText value="#{msgs.editProfile}" />
-					</h:outputLink>
 				</h2>
 				<table>
 					<tr>

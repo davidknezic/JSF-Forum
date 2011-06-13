@@ -30,7 +30,7 @@
 						<h:outputText value="#{msgs.password}" />
 						<h:panelGroup>
 							<h:inputSecret value="#{editProfileBean.password}" id="pw"
-								binding="#{equalityValidator.v2}">
+								binding="#{equalityValidator.v2}" validatorMessage="#{msgs.passwordMin}">
 								<f:validateLength minimum="5" />
 							</h:inputSecret>
 							<h:message layout="list" class="messages" for="pw" />
@@ -41,9 +41,7 @@
 						<h:panelGroup>
 							<h:inputSecret id="pwRep"
 								validator="#{equalityValidator.validate}"
-								validatorMessage="#{msgs.passwordsNotEqual}">
-								<f:validateLength minimum="5" />
-							</h:inputSecret>
+								validatorMessage="#{msgs.passwordsNotEqual}" />
 							<h:message layout="list" class="messages" for="pwRep" />
 						</h:panelGroup>
 
@@ -51,7 +49,7 @@
 						<h:panelGroup>
 							<h:inputText value="#{editProfileBean.email}" id="email"
 								required="true" requiredMessage="emailRequired"
-								validator="EmailValidator" validatorMessage="emailInvalid" />
+								validator="EmailValidator" validatorMessage="#{msgs.emailInvalid}" />
 							<h:message layout="list" class="messages" for="email" />
 						</h:panelGroup>
 
@@ -69,7 +67,7 @@
 
 						<h:outputText value="#{msgs.dateOfBirth}" />
 						<h:panelGroup>
-							<h:inputText value="#{editProfileBean.dob}" id="dateOfBirth">
+							<h:inputText value="#{editProfileBean.dob}" id="dateOfBirth" converterMessage="#{msgs.dateInvalid}">
 								<f:convertDateTime pattern="dd.MM.yyyy" />
 							</h:inputText>
 							<h:message layout="list" class="messages" for="dateOfBirth" />
