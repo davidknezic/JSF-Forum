@@ -8,17 +8,12 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import models.ReplyModel;
 import models.Settings;
-import models.ThreadModel;
 import models.UserModel;
 
 @ManagedBean
 @RequestScoped
 public class UserBean {
-	private UserModel user;
-	private ArrayList<ThreadModel> latestThreads;
-	private ArrayList<ReplyModel> latestReplies;
 	private ArrayList<UserModel> users;
 	
 	private int currentPage;
@@ -86,18 +81,6 @@ public class UserBean {
 	public int getSUPER_ADMIN() {
 		return SUPER_ADMIN;
 	}
-
-	public UserModel getUser() throws Throwable {
-		if(user == null) { 
-			Map<String, String> request = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-			Integer userId = Integer.parseInt(request.get("userId"));
-			
-			if(userId == null) throw new Exception("Invalid Request");
-			
-			user = new UserModel(userId);
-		}
-		return user;
-	}
 	
 	public String grant(UserModel user) throws Throwable {
 		if(loginBean.getLoggedin() & loginBean.getUser().getPermission() >= this.SUPER_ADMIN)
@@ -107,18 +90,6 @@ public class UserBean {
 		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
 		
 		return null;
-	}
-	
-	public ArrayList<ThreadModel> getLatestThreads() throws Throwable {
-		if(latestThreads == null)
-			latestThreads = this.getUser().getThreads(0, Settings.getInstance().getInt("profileLatestThreads"));
-		return latestThreads;
-	}
-	
-	public ArrayList<ReplyModel> getLatestReplies() throws Throwable {
-		if(latestReplies == null)
-			latestReplies = this.getUser().getReplies(0, Settings.getInstance().getInt("profileLatestReplies"));
-		return latestReplies;
 	}
 	
 	public ArrayList<UserModel> getUsers() throws Throwable {
