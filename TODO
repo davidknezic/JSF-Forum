@@ -7,6 +7,9 @@ This is a list of tasks to complete in the future. Feel free to extend!
 ----------------
 * David    Adapt Use-Cases to fit current features
 * David    Move role constants to LoginBean / Rename UserBean to UsersBean
+* David    Create Paginator tag
+* David    Adopt pageable facelets to use the new Paginator class
+* David    How about editing category and board information?
 * Sven     Rework messages.properties file
 * Sven     Check for duplicate username in register form by validator (current solution doesn't work properly)
 * David    Display option in list to move thread with category prepended. E.g. cat > board
