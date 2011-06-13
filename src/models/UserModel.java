@@ -413,6 +413,52 @@ public class UserModel {
 	}
 
 	/**
+	 * Get number of threads belonging to this user
+	 * 
+	 * @return int
+	 * @throws Throwable
+	 */
+	public int getThreadCount() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+
+		PreparedStatement stmt = conn
+				.prepareStatement("SELECT COUNT(*) FROM thread WHERE userId = ?");
+		stmt.setInt(1, this.userId);
+		ResultSet res = stmt.executeQuery();
+
+		if (res.first()) {
+			// Return the thread count
+			return res.getInt(1);
+		} else {
+			// An error occured, return zero
+			return 0;
+		}
+	}
+
+	/**
+	 * Get number of replies belonging to this user
+	 * 
+	 * @return int
+	 * @throws Throwable
+	 */
+	public int getReplyCount() throws Throwable {
+		Connection conn = DBConnection.getInstance().getConnection();
+
+		PreparedStatement stmt = conn
+				.prepareStatement("SELECT COUNT(*) FROM reply WHERE userId = ?");
+		stmt.setInt(1, this.userId);
+		ResultSet res = stmt.executeQuery();
+
+		if (res.first()) {
+			// Return the reply count
+			return res.getInt(1);
+		} else {
+			// An error occured, return zero
+			return 0;
+		}
+	}
+
+	/**
 	 * Get threads
 	 * 
 	 * @return ArrayList<ThreadModel>
@@ -519,7 +565,7 @@ public class UserModel {
 		ResultSet res = stmt.executeQuery();
 
 		if (res.first()) {
-			// Return the thread count
+			// Return the user count
 			return res.getInt(1);
 		} else {
 			// An error occured, return zero
