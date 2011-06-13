@@ -82,7 +82,7 @@ public class EditProfileBean {
 	}
 
 	public Date getDob() {
-		return new Date(loginBean.getUser().getDateOfBirth().getTime());
+			return loginBean.getUser().getDateOfBirth();
 	}
 
 	public void setDob(Date dob) {

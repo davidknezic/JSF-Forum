@@ -17,9 +17,8 @@
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.title}" />
 						<h:panelGroup>
-							<h:messages layout="list" class="messages" />
 							<h:inputText value="#{newCategoryBean.title}" id="titleIn"
-								required="true" />
+								required="true" requiredMessage="#{msgs.titleRequired}" />
 							<h:message layout="list" class="messages" for="titleIn" />
 						</h:panelGroup>
 						<h:panelGroup>

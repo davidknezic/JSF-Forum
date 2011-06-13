@@ -18,16 +18,18 @@
 
 						<h:outputText value="#{msgs.username}" />
 						<h:panelGroup>
-							<h:messages layout="list" class="messages" />
 							<h:inputText value="#{registerBean.name}" id="usernameIn"
-								required="true" requiredMessage="usernameRequired" />
+								required="true" requiredMessage="usernameRequired" validatorMessage="#{msgs.usernameMin}" >
+								<f:validateLength minimum="3" />
+							</h:inputText>
 							<h:message layout="list" class="messages" for="usernameIn" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.password}" />
 						<h:panelGroup>
 							<h:inputSecret value="#{registerBean.password}" id="pw"
-								required="true" requiredMessage="passwordRequired"
+								required="true" requiredMessage="#{msgs.passwordRequired}"
+								validatorMessage="#{msgs.passwordMin}"
 								binding="#{equalityValidator.v2}">
 								<f:validateLength minimum="5" />
 							</h:inputSecret>
@@ -37,19 +39,17 @@
 						<h:outputText value="#{msgs.passwordRepeat}" />
 						<h:panelGroup>
 							<h:inputSecret value="#{registerBean.passwordRepeated}"
-								id="pwRep" required="true" requiredMessage="passwordRequired"
+								id="pwRep" required="true" requiredMessage="#{msgs.passwordRequired}"
 								validator="#{equalityValidator.validate}"
-								validatorMessage="#{msgs.passwordsNotEqual}">
-								<f:validateLength minimum="5" />
-							</h:inputSecret>
+								validatorMessage="#{msgs.passwordsNotEqual}" />
 							<h:message layout="list" class="messages" for="pwRep" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.email}" />
 						<h:panelGroup>
 							<h:inputText value="#{registerBean.email}" id="email"
-								required="true" requiredMessage="emailRequired"
-								validator="EmailValidator" validatorMessage="emailInvalid" />
+								required="true" requiredMessage="#{msgs.emailRequired}"
+								validator="EmailValidator" validatorMessage="#{msgs.emailInvalid}" />
 							<h:message layout="list" class="messages" for="email" />
 						</h:panelGroup>
 

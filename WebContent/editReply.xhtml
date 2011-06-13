@@ -17,9 +17,9 @@
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.content}" />
 						<h:panelGroup>
-							<h:message for="contentIn" />
 							<h:inputTextarea value="#{editReplyBean.content}" id="contentIn"
-								required="true" />
+								required="true" requiredMessage="#{msgs.contentRequired}" />
+							<h:message for="contentIn" class="messages" layut="list" />
 						</h:panelGroup>
 						<h:panelGroup>
 						</h:panelGroup>

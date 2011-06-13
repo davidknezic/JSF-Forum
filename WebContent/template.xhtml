@@ -34,13 +34,13 @@
 						<h:panelGrid columns="6">
 							<h:outputText value="#{msgs.username}:" />
 							<h:panelGroup>
-								<h:inputText id="username" binding="#{loginBean.username}" required="true" />
+								<h:inputText id="username" binding="#{loginBean.username}" required="true" requiredMessage="#{msgs.loginUsernameRequired}" />
 								<h:message layout="list" class="messages" for="username" />
 							</h:panelGroup>
 
 							<h:outputText value="#{msgs.password}:" />
 							<h:panelGroup>
-								<h:inputSecret id="password" validator="#{loginBean.login}" required="true" />
+								<h:inputSecret id="password" validator="#{loginBean.login}" required="true" requiredMessage="#{msgs.loginPasswordRequired}" />
 								<h:message layout="list" class="messages" for="password" />
 							</h:panelGroup>
 

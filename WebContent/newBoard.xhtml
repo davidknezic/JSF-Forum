@@ -17,15 +17,14 @@
 						<f:facet name="header" />
 						<h:outputText value="#{msgs.title}" />
 						<h:panelGroup>
-							<h:messages layout="list" class="messages" />
 							<h:inputText value="#{newBoardBean.title}" id="titleIn"
-								required="true" />
+								required="true" requiredMessage="#{msgs.titleRequired}" />
 							<h:message layout="list" class="messages" for="titleIn" />
 						</h:panelGroup>
 						<h:outputText value="#{msgs.description}" />
 						<h:panelGroup>
 							<h:inputTextarea value="#{newBoardBean.description}"
-								id="descriptionIn" required="true" />
+								id="descriptionIn" required="true" requiredMessage="#{msgs.descriptionRequired}" />
 							<h:message layout="list" class="messages" for="descriptionIn" />
 						</h:panelGroup>
 						<h:panelGroup>
