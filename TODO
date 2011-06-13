@@ -13,7 +13,6 @@ This is a list of tasks to complete in the future. Feel free to extend!
 *          editProfile EqualityValidator not executed if repeat password is blank
 *          editProfile validate website
 *          Check whether DoB is in past or not (editProfile)
-*          Rework EmailValidator - some invalid mails (e.. info@eniu) aren't catched
 
 2. Testing
 ----------

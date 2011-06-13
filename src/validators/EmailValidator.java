@@ -16,7 +16,7 @@ public class EmailValidator implements Validator {
 			throws ValidatorException {
 		String email = (String)object;
 
-        Pattern p = Pattern.compile("^[_a-zA-Z0-9-]+(.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)*.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$");
+        Pattern p = Pattern.compile("^[_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9\\-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9\\-]+)*\\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$");
         
         Matcher m = p.matcher(email);
         
