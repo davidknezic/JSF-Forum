@@ -39,9 +39,7 @@ public class Paginator {
 
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = _lowerPageBound(currentPage);
-		System.out.println(this.currentPage);
 		this.currentPage = _upperPageBound(currentPage);
-		System.out.println(this.currentPage);
 	}
 
 	public int getPageCount() {
@@ -73,6 +71,8 @@ public class Paginator {
 	}
 
 	private int _upperPageBound(int page) {
+		// FIX: No pages
+		if (this.pageCount == 0) return 0;
 		return (page < this.pageCount ? page : this.pageCount - 1);
 	}
 
