@@ -11,7 +11,7 @@
 				<h2>
 					<h:outputText value="#{msgs.user}" />
 					<h:outputLink
-						rendered="#{loginBean.loggedin and loginBean.user.userId == userBean.user.userId}"
+						rendered="#{loginBean.loggedin and loginBean.user.userId == profileBean.user.userId}"
 						value="editProfile.xhtml">
 						<h:outputText value="#{msgs.editProfile}" />
 					</h:outputLink>
@@ -19,13 +19,13 @@
 				<table>
 					<tr>
 						<td><h:graphicImage class="profile_avatar"
-								value="#{userBean.user.getAvatar(128)}" />
+								value="#{profileBean.user.getAvatar(128)}" />
 							<dl class="profile_info">
 								<dt>
 									<h:outputText value="#{msgs.username}" />
 								</dt>
 								<dd>
-									<h:outputText value="#{userBean.user.username}" />
+									<h:outputText value="#{profileBean.user.username}" />
 								</dd>
 
 								<dt>
@@ -33,7 +33,7 @@
 								</dt>
 								<dd>
 									<h:outputFormat value="#{msgs.permissionValue}">
-										<f:param value="#{userBean.user.permission}" />
+										<f:param value="#{profileBean.user.permission}" />
 									</h:outputFormat>
 								</dd>
 
@@ -41,58 +41,58 @@
 									<h:outputText value="#{msgs.firstName}" />
 								</dt>
 								<dd>
-									<h:outputText value="#{userBean.user.firstName}"
-										rendered="#{userBean.user.firstName != null}" />
+									<h:outputText value="#{profileBean.user.firstName}"
+										rendered="#{profileBean.user.firstName != null}" />
 									<h:outputText value="-"
-										rendered="#{userBean.user.firstName == null}" />
+										rendered="#{profileBean.user.firstName == null}" />
 								</dd>
 
 								<dt>
 									<h:outputText value="#{msgs.lastName}" />
 								</dt>
 								<dd>
-									<h:outputText value="#{userBean.user.lastName}"
-										rendered="#{userBean.user.lastName != null}" />
+									<h:outputText value="#{profileBean.user.lastName}"
+										rendered="#{profileBean.user.lastName != null}" />
 									<h:outputText value="-"
-										rendered="#{userBean.user.lastName == null}" />
+										rendered="#{profileBean.user.lastName == null}" />
 								</dd>
 
 								<dt>
 									<h:outputText value="#{msgs.website}" />
 								</dt>
 								<dd>
-									<h:outputText value="#{userBean.user.website}"
-										rendered="#{userBean.user.website != null}" />
+									<h:outputText value="#{profileBean.user.website}"
+										rendered="#{profileBean.user.website != null}" />
 									<h:outputText value="-"
-										rendered="#{userBean.user.website == null}" />
+										rendered="#{profileBean.user.website == null}" />
 								</dd>
 
 								<dt>
 									<h:outputText value="#{msgs.location}" />
 								</dt>
 								<dd>
-									<h:outputText value="#{userBean.user.location}"
-										rendered="#{userBean.user.location != null}" />
+									<h:outputText value="#{profileBean.user.location}"
+										rendered="#{profileBean.user.location != null}" />
 									<h:outputText value="-"
-										rendered="#{userBean.user.location == null}" />
+										rendered="#{profileBean.user.location == null}" />
 								</dd>
 
 								<dt>
 									<h:outputText value="#{msgs.age}" />
 								</dt>
 								<dd>
-									<h:outputText value="#{userBean.user.dateOfBirth}"
+									<h:outputText value="#{profileBean.user.dateOfBirth}"
 										converter="forum.AgeConverter"
-										rendered="#{userBean.user.dateOfBirth != null}" />
+										rendered="#{profileBean.user.dateOfBirth != null}" />
 									<h:outputText value="-"
-										rendered="#{userBean.user.dateOfBirth == null}" />
+										rendered="#{profileBean.user.dateOfBirth == null}" />
 								</dd>
 
 								<dt>
 									<h:outputText value="#{msgs.registeredSince}" />
 								</dt>
 								<dd>
-									<h:outputText value="#{userBean.user.createdOn}"
+									<h:outputText value="#{profileBean.user.createdOn}"
 										converter="forum.DateConverter" />
 								</dd>
 							</dl>
@@ -104,8 +104,8 @@
 				<h2>
 					<h:outputText value="#{msgs.latestThreads}" />
 				</h2>
-				<h:dataTable rendered="#{userBean.latestThreads.size() > 0}"
-					value="#{userBean.latestThreads}" var="thread"
+				<h:dataTable rendered="#{profileBean.latestThreads.size() > 0}"
+					value="#{profileBean.latestThreads}" var="thread"
 					columnClasses="left,center,right" columns="3" class="vmiddle">
 					<h:column>
 						<f:facet name="header">
@@ -152,15 +152,26 @@
 					</h:column>
 				</h:dataTable>
 				<h:panelGrid columns="1" columnClasses="left"
-					rendered="#{userBean.latestThreads.size() == 0}">
+					rendered="#{profileBean.latestThreads.size() == 0}">
 					<h:outputText value="#{msgs.noUserThreads}" />
 				</h:panelGrid>
+				
+				<div class="pagination">
+				<h:outputLink rendered="#{profileBean.threadPaginator.hasPrev()}" class="prev"
+					value="profile.xhtml?userId=#{queryManager.get('userId')}&amp;threadPage=#{profileBean.threadPaginator.prev}&amp;replyPage=#{profileBean.replyPaginator.currentPage}">
+					<h:outputText value="#{msgs.previous}" />
+				</h:outputLink>
+				<h:outputLink rendered="#{profileBean.threadPaginator.hasNext()}" class="next"
+					value="profile.xhtml?userId=#{queryManager.get('userId')}&amp;threadPage=#{profileBean.threadPaginator.next}&amp;replyPage=#{profileBean.replyPaginator.currentPage}">
+					<h:outputText value="#{msgs.next}" />
+				</h:outputLink>
+				</div>
 
 				<h2>
 					<h:outputText value="#{msgs.latestReply}" />
 				</h2>
-				<h:dataTable rendered="#{userBean.latestReplies.size() > 0}"
-					value="#{userBean.latestReplies}" var="reply"
+				<h:dataTable rendered="#{profileBean.latestReplies.size() > 0}"
+					value="#{profileBean.latestReplies}" var="reply"
 					columnClasses="left,center,right" columns="3" class="vmiddle">
 					<h:column>
 						<f:facet name="header">
@@ -208,9 +219,20 @@
 					</h:column>
 				</h:dataTable>
 				<h:panelGrid columns="1" columnClasses="left"
-					rendered="#{userBean.latestReplies.size() == 0}">
+					rendered="#{profileBean.latestReplies.size() == 0}">
 					<h:outputText value="#{msgs.noUserReplies}" />
 				</h:panelGrid>
+
+				<div class="pagination">
+				<h:outputLink rendered="#{profileBean.replyPaginator.hasPrev()}" class="prev"
+					value="profile.xhtml?userId=#{queryManager.get('userId')}&amp;threadPage=#{profileBean.threadPaginator.currentPage}&amp;replyPage=#{profileBean.replyPaginator.prev}">
+					<h:outputText value="#{msgs.previous}" />
+				</h:outputLink>
+				<h:outputLink rendered="#{profileBean.replyPaginator.hasNext()}" class="next"
+					value="profile.xhtml?userId=#{queryManager.get('userId')}&amp;threadPage=#{profileBean.threadPaginator.currentPage}&amp;replyPage=#{profileBean.replyPaginator.next}">
+					<h:outputText value="#{msgs.next}" />
+				</h:outputLink>
+				</div>
 
 			</div>
 		</ui:define>
