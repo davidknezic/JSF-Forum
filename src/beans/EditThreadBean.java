@@ -41,7 +41,7 @@ public class EditThreadBean {
 			ArrayList<BoardModel> boards = category.getBoards();
 			for (BoardModel board : boards) {
 				SelectItem item = new SelectItem();
-				item.setLabel(board.getTitle());
+				item.setLabel(board.getCategory().getTitle() + " È " + board.getTitle());
 				item.setValue(board);
 				this.boardList.add(item);
 			}
