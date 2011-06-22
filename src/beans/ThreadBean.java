@@ -55,6 +55,17 @@ public class ThreadBean {
 		}
 	}
 	
+	public String delete() throws Throwable {
+		int boardId = this.thread.getBoardId();
+
+		this.thread.delete();
+
+		String re = String.format("board.xhtml?boardId=%d", boardId);
+		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
+
+		return null;
+	}
+	
 	public int getCurrentPage() {
 		return this.currentPage;
 	}
