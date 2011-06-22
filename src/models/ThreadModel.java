@@ -158,7 +158,7 @@ public class ThreadModel {
 	 * @return int
 	 */
 	public int getBoardId() {
-		return threadId;
+		return this.boardId;
 	}
 
 	/**
