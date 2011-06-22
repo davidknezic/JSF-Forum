@@ -320,6 +320,7 @@ textarea {
 
 .addAction {
 	float: right;
+	margin-left: 10px;
 }
 
 .addAction img {

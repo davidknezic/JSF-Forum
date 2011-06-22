@@ -8,6 +8,7 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="content">
 			<div class="block">
+				<h:form>
 				<h2>
 					<h:outputText value="#{threadBean.thread.title}" />
 
@@ -16,7 +17,14 @@
 						<f:param name="threadId" value="#{threadBean.thread.threadId}" />
 						<h:graphicImage value="Bilder/edit.png" />
 					</h:outputLink>
+					
+					<h:commandLink action="#{threadBean.delete()}" class="addAction"
+						rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN}">
+						<f:param name="threadId" value="#{threadBean.thread.threadId}" />
+						<h:graphicImage value="Bilder/delete.png" />
+					</h:commandLink>
 				</h2>
+				</h:form>
 				<h:dataTable value="#{threadBean.replies}" var="reply"
 					columnClasses="replyLeft,replyRight">
 					<h:column>
