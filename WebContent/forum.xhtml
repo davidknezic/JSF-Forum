@@ -15,17 +15,31 @@
 			<h:dataTable value="#{categoryBean.categories}" var="category"
 				columnClasses="block">
 				<h:column>
+					<h:form>
 					<h2>
 						<h:outputText value="#{category.title}" />
 
-						<h:outputLink value="newBoard.xhtml" class="addAction"
-							rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}">
+						<h:panelGroup rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}">
+
+						<h:outputLink value="newBoard.xhtml" class="addAction">
 							<f:param name="categoryId" value="#{category.categoryId}" />
 							<h:graphicImage value="Bilder/add.png" />
 						</h:outputLink>
+						
+						<h:outputLink value="editCategory.xhtml" class="addAction">
+							<f:param name="categoryId" value="#{category.categoryId}" />
+							<h:graphicImage value="Bilder/edit.png" />
+						</h:outputLink>
+						
+						<h:commandLink action="#{categoryBean.deleteCategory(category.categoryId)}" class="addAction">
+							<h:graphicImage value="Bilder/delete.png" />
+						</h:commandLink>
+						
+						</h:panelGroup>
 					</h2>
+					</h:form>
 					<h:dataTable value="#{category.boards}" var="board"
-						columnClasses="left,center,right" class="vmiddle">
+						columnClasses="left,center,right,admin" class="vmiddle">
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="#{msgs.forum}" styleClass="firstHeading" />
@@ -73,6 +87,17 @@
 									-
 								</h:panelGroup>
 
+						</h:column>
+						<h:column rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.SUPER_ADMIN}">
+							<h:form>
+							<h:outputLink value="editBoard.xhtml" class="addAction">
+								<f:param name="boardId" value="#{board.boardId}" />
+								<h:graphicImage value="Bilder/edit.png" />
+							</h:outputLink>
+							<h:commandLink action="#{categoryBean.deleteBoard(board.boardId)}" class="addAction">
+								<h:graphicImage value="Bilder/delete.png" />
+							</h:commandLink>
+							</h:form>
 						</h:column>
 					</h:dataTable>
 				</h:column>

@@ -279,6 +279,11 @@ textarea {
 	line-height: 16px;
 }
 
+.block table .admin {
+	padding-right: 10px;
+	width: 60px;
+}
+
 .block table tfoot td {
 	padding: 10px;
 }
