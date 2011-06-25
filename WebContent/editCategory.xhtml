@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<div class="block">
+					<h2>
+						<h:outputText value="#{msgs.editCategory}" />
+					</h2>
+					<h:panelGrid columns="2"
+						columnClasses="newThreadLeft,newThreadRight">
+						<f:facet name="header" />
+						<h:outputText value="#{msgs.title}" />
+						<h:panelGroup>
+							<h:inputText value="#{editCategoryBean.title}" id="titleIn"
+								required="true" requiredMessage="#{msgs.contentRequired}" />
+							<h:message for="titleIn" class="messages" layut="list" />
+						</h:panelGroup>
+						<h:panelGroup>
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:commandButton value="#{msgs.save}"
+								action="#{editCategoryBean.save()}">
+								<f:param name="categoryId" value="#{queryManager.get('categoryId')}" />
+							</h:commandButton>
+						</h:panelGroup>
+					</h:panelGrid>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
