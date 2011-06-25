@@ -43,13 +43,19 @@
 						</h:outputFormat>
 						<h:graphicImage url="#{reply.user.getAvatar(64)}"
 							class="reply_avatar" />
-						<div>
+						<h:form>
+							<h:commandLink action="#{threadBean.deleteReply(reply.replyId)}" class="replyAction"
+								rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN and reply.replyId != 0}">
+								<f:param name="threadId" value="#{threadBean.thread.threadId}" />
+								<f:param name="page" value="#{threadBean.currentPage}" />
+								<h:graphicImage value="Bilder/delete.png" />
+							</h:commandLink>
 							<h:outputLink value="editReply.xhtml" class="replyAction"
 								rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN and reply.replyId != 0}">
 								<f:param name="replyId" value="#{reply.replyId}" />
 								<h:graphicImage value="Bilder/edit.png" />
 							</h:outputLink>
-						</div>
+						</h:form>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
