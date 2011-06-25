@@ -66,6 +66,16 @@ public class ThreadBean {
 		return null;
 	}
 	
+	public String deleteReply(int replyId) throws Throwable {
+		ReplyModel reply = new ReplyModel(replyId);
+		reply.delete();
+		
+		String re = String.format("thread.xhtml?threadId=%d&page=%d", this.thread.getThreadId(), this.currentPage);
+		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
+		
+		return null;
+	}
+	
 	public int getCurrentPage() {
 		return this.currentPage;
 	}
