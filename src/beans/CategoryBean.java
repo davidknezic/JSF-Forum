@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
+import models.BoardModel;
 import models.CategoryModel;
 
 @ManagedBean
@@ -21,6 +23,28 @@ public class CategoryBean {
 		// Return the category array
 		if(categories == null) categories = CategoryModel.getCategories();
 		return categories;
+	}
+	
+	public String deleteCategory(int categoryId) throws Throwable {
+		CategoryModel category = new CategoryModel(categoryId);
+		
+		category.delete();
+		
+		String re = String.format("forum.xhtml");
+		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
+		
+		return null;
+	}
+	
+	public String deleteBoard(int boardId) throws Throwable {
+		BoardModel board = new BoardModel(boardId);
+		
+		board.delete();
+		
+		String re = String.format("forum.xhtml");
+		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
+		
+		return null;
 	}
 
 }
