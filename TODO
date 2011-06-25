@@ -7,7 +7,7 @@ This is a list of tasks to complete in the future. Feel free to extend!
 ----------------
 * Enable user mutation by admin and higher eligible roles
 * Move role constants to LoginBean / rename UserBean to UsersBean
-* Enable mutation and deletion of categories and boards
+* Enable moving boards between categories
 * Check for duplicate username in register form by validator
 * Fix EqualityValidator / blank field conflict in editProfile facelet
 
