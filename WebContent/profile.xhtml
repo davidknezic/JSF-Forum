@@ -10,6 +10,12 @@
 			<div class="block">
 				<h2>
 					<h:outputText value="#{msgs.user}" />
+					
+					<h:outputLink value="editProfile.xhtml" class="addAction"
+						rendered="#{loginBean.loggedin and loginBean.user.permission >= userBean.ADMIN or loginBean.user.userId == profileBean.user.userId}">
+						<f:param name="userId" value="#{profileBean.user.userId}" />
+						<h:graphicImage value="Bilder/edit.png" />
+					</h:outputLink>
 				</h2>
 				<table>
 					<tr>
