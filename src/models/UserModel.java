@@ -387,11 +387,15 @@ public class UserModel {
 	 * @param createdOn
 	 */
 	public void setDateOfBirth(Timestamp dateOfBirth) {
-		this.dateOfBirth = new Timestamp(dateOfBirth.getTime());
+		this.dateOfBirth = dateOfBirth;
 	}
 	
 	public void setDateOfBirth(Date dob) {
-		this.dateOfBirth = new Timestamp(dob.getTime());
+		if (dob == null) {
+			this.dateOfBirth = null;
+		} else {
+			this.dateOfBirth = new Timestamp(dob.getTime());
+		}
 	}
 
 	/**
@@ -622,4 +626,16 @@ public class UserModel {
 			return null;
 		}
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof UserModel)) {
+			return false;
+		}
+
+		UserModel user = (UserModel) obj;
+
+		return (this.userId == user.userId);
+	}
+	
 }
