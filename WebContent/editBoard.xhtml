@@ -15,6 +15,14 @@
 					<h:panelGrid columns="2"
 						columnClasses="newThreadLeft,newThreadRight">
 						<f:facet name="header" />
+						<h:outputText value="#{msgs.category}" />
+						<h:panelGroup>
+							<h:selectOneMenu id="categoryIn" converter="forum.CategoryConverter"
+								value="#{editBoardBean.currentCategory}">
+								<f:selectItems value="#{editBoardBean.categoryList}" />
+							</h:selectOneMenu>
+							<h:message layout="list" class="messages" for="categoryIn" />
+						</h:panelGroup>
 						<h:outputText value="#{msgs.title}" />
 						<h:panelGroup>
 							<h:inputText value="#{editBoardBean.title}" id="titleIn"
