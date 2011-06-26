@@ -22,11 +22,27 @@ public class EditProfileBean {
 	private String location;
 	private Date dob;
 	
+	private UserModel user;
+	
 	@ManagedProperty(value = "#{loginBean}")
 	private LoginBean loginBean;
 	
+	public EditProfileBean() throws Throwable {
+		int userId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userId"));
+		
+		this.user = new UserModel(userId);
+		
+		this.firstName = this.user.getFirstName();
+		this.lastName = this.user.getLastName();
+		this.email = this.user.getEmail();
+		this.website = this.user.getWebsite();
+		this.location = this.user.getLocation();
+		
+		this.dob = this.user.getDateOfBirth();
+	}
+	
 	public String getFirstName() {
-		return loginBean.getUser().getFirstName();
+		return this.firstName;
 	}
 
 	public void setFirstName(String firstName) {
@@ -34,31 +50,35 @@ public class EditProfileBean {
 	}
 
 	public String getLastName() {
-		return loginBean.getUser().getLastName();
+		return this.lastName;
 	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	// FIXME: I'm broken!
 	public String getPassword() {
 		return "";
 	}
 	
+	// FIXME: I'm broken!
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
+	// FIXME: I'm broken!
 	public String getPasswordRepeated() {
 		return "";
 	}
 	
+	// FIXME: I'm broken!
 	public void setPasswordRepeated(String passwordRepeated) {
 		this.passwordRepeated = passwordRepeated;
 	}
 	
 	public String getEmail() {
-		return loginBean.getUser().getEmail();
+		return this.email;
 	}
 	
 	public void setEmail(String email) {
@@ -66,7 +86,7 @@ public class EditProfileBean {
 	}
 	
 	public String getWebsite() {
-		return loginBean.getUser().getWebsite();
+		return this.website;
 	}
 
 	public void setWebsite(String website) {
@@ -74,7 +94,7 @@ public class EditProfileBean {
 	}
 
 	public String getLocation() {
-		return loginBean.getUser().getLocation();
+		return this.location;
 	}
 
 	public void setLocation(String location) {
@@ -82,13 +102,17 @@ public class EditProfileBean {
 	}
 
 	public Date getDob() {
-			return loginBean.getUser().getDateOfBirth();
+		return this.dob;
 	}
 
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
+	public UserModel getUser() {
+		return this.user;
+	}
+	
 	public LoginBean getLoginBean() {
 		return loginBean;
 	}
@@ -98,22 +122,22 @@ public class EditProfileBean {
 	}
 
 	public String save() throws Throwable {
-		UserModel u = loginBean.getUser();
-		if(!password.equals("")) {
-			u.setPassword(password);
+		if(!loginBean.getLoggedin() || loginBean.getUser().getPermission() < UserModel.ADMIN) {
+			if (!loginBean.getUser().equals(this.user)) {
+				String re = String.format("insufficientPermission.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect(re);
+			}
 		}
-		u.setEmail(email);
-		u.setWebsite(website);
-		u.setLocation(location);
-		u.setDateOfBirth(dob);
-		u.setFirstName(firstName);
-		u.setLastName(lastName);
 		
-		u.save();
+		this.user.setEmail(email);
+		this.user.setWebsite(website);
+		this.user.setLocation(location);
+		this.user.setDateOfBirth(dob);
+		this.user.setFirstName(firstName);
+		this.user.setLastName(lastName);
 		
-		String re = String.format("profile.xhtml?userId=%d", u.getUserId());
-		FacesContext.getCurrentInstance().getExternalContext().redirect(re);
+		this.user.save();
 		
-		return null;
+		return String.format("profile.xhtml?userId=%d", this.user.getUserId());
 	}
 }
