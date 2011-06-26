@@ -186,5 +186,16 @@ public class CategoryModel {
 
 		return categories;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof CategoryModel)) {
+			return false;
+		}
+
+		CategoryModel category = (CategoryModel) obj;
+
+		return (this.categoryId == category.categoryId);
+	}
 
 }
