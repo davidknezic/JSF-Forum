@@ -78,6 +78,7 @@
 						<h:panelGroup>
 							<h:commandButton value="#{msgs.save}"
 								action="#{editProfileBean.save}">
+								<f:param name="userId" value="#{editProfileBean.user.userId}" />
 							</h:commandButton>
 						</h:panelGroup>
 					</h:panelGrid>
