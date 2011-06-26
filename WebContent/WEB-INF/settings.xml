@@ -10,7 +10,7 @@
     <pagination>
     	<threadsPerPage>10</threadsPerPage>
     	<repliesPerPage>5</repliesPerPage>
-    	<usersPerPage>3</usersPerPage>
+    	<usersPerPage>10</usersPerPage>
     </pagination>
     <profile>
     	<profileLatestThreads>4</profileLatestThreads>
