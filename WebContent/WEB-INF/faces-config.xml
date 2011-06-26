@@ -36,6 +36,13 @@
 	
 	<converter>
 
+		<converter-id>forum.CategoryConverter</converter-id>
+		<converter-class>converters.CategoryConverter</converter-class>
+
+	</converter>
+	
+	<converter>
+
 		<converter-id>forum.BoardConverter</converter-id>
 		<converter-class>converters.BoardConverter</converter-class>
 
