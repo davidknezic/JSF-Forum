@@ -10,7 +10,6 @@ This is a list of tasks to complete in the future. Feel free to extend!
 
 2. Normal priority
 ------------------
-* Adapt use cases to fit current features
 * Revise messages.properties file
 * Security Testing (Send delete requests when logged out, etc.)
 * Functional Testing
