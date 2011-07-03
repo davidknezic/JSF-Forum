@@ -3,7 +3,6 @@ package beans;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -11,7 +10,6 @@ import javax.faces.model.SelectItem;
 import models.BoardModel;
 import models.CategoryModel;
 import models.ThreadModel;
-import models.UserModel;
 
 @ManagedBean
 @RequestScoped
@@ -20,9 +18,6 @@ public class EditThreadBean {
 	private String title, content;
 	private ArrayList<SelectItem> boardList;
 	private BoardModel currentBoard;
-	
-	@ManagedProperty(value = "#{loginBean}") 
-	private LoginBean loginBean;
 	
 	public EditThreadBean() throws Throwable {
 		int threadId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("threadId"));
@@ -41,26 +36,14 @@ public class EditThreadBean {
 			ArrayList<BoardModel> boards = category.getBoards();
 			for (BoardModel board : boards) {
 				SelectItem item = new SelectItem();
-				item.setLabel(board.getCategory().getTitle() + " È " + board.getTitle());
+				item.setLabel(board.getCategory().getTitle() + " + " + board.getTitle());
 				item.setValue(board);
 				this.boardList.add(item);
 			}
 		}
 	}
-	
-	public LoginBean getLoginBean() {
-		return loginBean;
-	}
-
-	public void setLoginBean(LoginBean loginBean) {
-		this.loginBean = loginBean;
-	}
 
 	public String save() throws Throwable {
-		if(!loginBean.getLoggedin() || loginBean.getUser().getPermission() < UserModel.ADMIN) {
-			return null;
-		}
-		
 		this.thread.setTitle(this.title);
 		this.thread.setContent(this.content);
 		

@@ -3,14 +3,12 @@ package beans;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import models.BoardModel;
 import models.CategoryModel;
-import models.UserModel;
 
 @ManagedBean
 @RequestScoped
@@ -21,9 +19,6 @@ public class EditBoardBean {
 	private String description;
 	private ArrayList<SelectItem> categoryList;
 	private CategoryModel currentCategory;
-	
-	@ManagedProperty(value = "#{loginBean}")
-	private LoginBean loginBean;
 	
 	public EditBoardBean() throws Throwable {
 		int boardId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("boardId"));
@@ -74,19 +69,7 @@ public class EditBoardBean {
 		this.currentCategory = currentCategory;
 	}
 	
-	public LoginBean getLoginBean() {
-		return loginBean;
-	}
-
-	public void setLoginBean(LoginBean loginBean) {
-		this.loginBean = loginBean;
-	}
-	
 	public String save() throws Throwable {
-		if(!loginBean.getLoggedin() || loginBean.getUser().getPermission() < UserModel.SUPER_ADMIN) {
-			return "insufficientPermission.xhtml";
-		}
-
 		this.board.setTitle(this.title);
 		this.board.setDescription(this.description);
 		

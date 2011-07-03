@@ -384,7 +384,7 @@ public class UserModel {
 	/**
 	 * Set the "timestamp of birth" as a standard java Date
 	 * 
-	 * @param createdOn
+	 * @param dateOfBirth
 	 */
 	public void setDateOfBirth(Timestamp dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;

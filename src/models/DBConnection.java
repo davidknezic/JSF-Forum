@@ -67,8 +67,6 @@ public class DBConnection {
 
 	/**
 	 * Clean up routine
-	 * 
-	 * @return void
 	 */
 	public void finalize() {
 		try {

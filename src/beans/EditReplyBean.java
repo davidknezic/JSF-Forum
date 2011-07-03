@@ -1,12 +1,10 @@
 package beans;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import models.ReplyModel;
-import models.UserModel;
 
 @ManagedBean
 @RequestScoped
@@ -15,9 +13,6 @@ public class EditReplyBean {
 
 	private String content;
 	
-	@ManagedProperty(value = "#{loginBean}") 
-	private LoginBean loginBean;
-	
 	public EditReplyBean() throws Throwable {
 		int replyId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("replyId"));
 		
@@ -25,20 +20,8 @@ public class EditReplyBean {
 
 		this.content = this.reply.getContent();
 	}
-	
-	public LoginBean getLoginBean() {
-		return loginBean;
-	}
-
-	public void setLoginBean(LoginBean loginBean) {
-		this.loginBean = loginBean;
-	}
 
 	public String save() throws Throwable {
-		if(!loginBean.getLoggedin() || loginBean.getUser().getPermission() < UserModel.ADMIN) {
-			return null;
-		}
-
 		this.reply.setContent(this.content);
 
 		this.reply.save();

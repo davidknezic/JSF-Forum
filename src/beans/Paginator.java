@@ -76,8 +76,9 @@ public class Paginator {
 		return (page < this.pageCount ? page : this.pageCount - 1);
 	}
 
+	@Override
 	public String toString() {
-		StringBuffer b = new StringBuffer();
+		StringBuilder b = new StringBuilder();
 		b.append(String.format("entriesPerPage: %d\n", this.entriesPerPage));
 		b.append(String.format("entryCount: %d\n", this.entryCount));
 		b.append(String.format("currentPage: %d\n", this.currentPage));

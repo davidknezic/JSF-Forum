@@ -122,11 +122,9 @@ public class EditProfileBean {
 	}
 
 	public String save() throws Throwable {
-		if(!loginBean.getLoggedin() || loginBean.getUser().getPermission() < UserModel.ADMIN) {
-			if (!loginBean.getUser().equals(this.user)) {
-				String re = String.format("insufficientPermission.xhtml");
-				FacesContext.getCurrentInstance().getExternalContext().redirect(re);
-			}
+		if(!loginBean.getLoggedin() || !loginBean.getUser().equals(this.user)) {
+			String re = String.format("insufficientPermission.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect(re);
 		}
 		
 		this.user.setEmail(email);
