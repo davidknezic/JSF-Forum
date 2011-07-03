@@ -1,4 +1,6 @@
 digraph G {
+		rank = sink;
+
 	fontname = "Bitstream Vera Sans"
 	fontsize = 8
 
@@ -11,125 +13,245 @@ digraph G {
 	edge [
 		fontname = "Bitstream Vera Sans"
 		fontsize = 8
+		labeldistance = 2
 	]
 
 	subgraph clusterBeans {
-		label = "Package beans"
-
-		AccessChecker [
-			label = "{AccessChecker|- permissions : HashMap\<String, Integer\>\n|+ afterPhase(event : PhaseEvent) : void\n+ hasPermission(perm : int) : boolean\n+ beforePhase(event : PhaseEvent) : void\n+ getPhaseId() : PhaseId\n}"
-		]
-
-		BoardBean [
-			label = "{BoardBean|- currentPage : int\n-pages : int|+ BoardBean()\n+ hasPrev() : boolean\n+ hasNext() : boolean}"
-		]
-
-		//BoardBean -> BoardModel
-		//BoardBean -> ThreadModel 0..*
-
-		CategoryBean [
-			label = "{CategoryBean||+ deleteCategory(categoryId : int) : String\n+ deleteBoatd(boardId : int) : String}"
-		]
-
-		//CategoryBean -> CategoryModel 0..*
-
-		EditBoardBean [
-			label = "{EditBoardBean|- title : String\n- description : String\n- categoryList : ArrayList\<SelectItem\>|+ EditBoardBean()\n+ save () : String}"
-		]
-
-		//EditBoardBean -> BoardModel
-		//EditBoardBean -> CategoryModel
-
-		EditCategoryBean [
-			label = "{EditCategoryBean|- title : String|+ EditCategoryBean()\n+ save() : String}"
-		]
-
-		//EditCategoryBean -> CategoryModel
-
-		EditProfielBean [
-			label = "{EditProfileBean|- firstName : String\n- lastName : String\n- password : String\n- passwordRepeated : String\n- email : String\n- website : String\n- location : String\n- dob : Date|+ EditProfileBean()\n+ save() : String}"
-		]
-
-		//EditProfileBean -> UserModel
-		//EditProgileBean -> LoginBean
-
-		EditReplyBean [
-			label = "{EditReplyBean|- content : String|+ save() : String}"
-		]
-
-		//EditReplyBean -> ReplyModel
-
-		EditThreadBean [
-			label = "{EditThreadBean|- title : String\n- content : String\n- boardList : ArrayList\<SelectItem\>|+ EditThreadBean()\n+ save() : String}"
-		]
-		
-		//EditThreadBean -> ThreadModel
-		//EditThreadBean -> BoardModel
+		rank = max;
+		label = "beans"
 
 		ExceptionHandlerBean [
 			label = "{ExceptionHandlerBean|- exception : Throwable|+ ExceptionHandlerBean()\n+ getMessage() : String\n+ getStackTrace() : String}"
-		]
-
-		LoginBean [
-			label = "{LoginBean|- username : UIInput\n- name : String|+ LoginBean()\n+ getLoggedIn() : boolean\n+ logout() : void\n+ login(context : FacesContext, component : UIComponent, value : Object) : void}"
-		]
-
-		//LoginBean -> UserModel
-
-		NavigationHelper [
-			label = "{NavigationHelper|- ACTIVE_CLASS : String|+ getClass(facelet : String) : String}"
 		]
 
 		NewBoardBean [
 			label = "{NewBoardBean|- title : String\n- description : String|+ save() : String}"
 		]
 
-		NewCategoryBean [
-			label = "{NewCategoryBean|- title : String|}" 
-		]
-
-		NewThreadBean [
-			label = "{NewThreadBean|- title : String\n- content : String|+ save() : String}"
-		]
-
-		//NewThreadBean -> LoginBean
-
-		Paginator [
-			label = "{Paginator|- entriesPerPage : int\n- entryCount : int\n- currentPage : int\n- pageCount : int|+ Paginator(entriesPerPage : int, entryCount : int)\n- _lowerPageBound(page : int) : int\n- _upperPageBound(page : int) : int\n+ generateOffset() : int\n+ hasPrev() : boolean\n+ hasNext() :  boolean\n+ getPrev() : int\n+ getNext() : int\n+ toString() : String}"
-		]
-
-		ProfileBean [
-			label = "{ProfileBean||+ ProfileBean()}"
-		]
-
-		//ProfileBean -> UserModel
-		//ProgileBean -> Paginator 2
-		//ProfileBean -> ThreadModel 0..*
-		//ProfileBean -> ReplyModel 0..*
-
 		QueryManager [
 			label = "{QueryManager||+ get(key : String) : String}"
-		]
-
-		RegisterBean [
-			label = "{RegisterBean|- DUB_INDEX : Pattern\n- name : String\n- password : String\n-passwordRepeated : String\n- email : String|+ save() : String}"
 		]
 
 		ReplyBean [
 			label = "{ReplyBean|- content : String|}"
 		]
 
-		ThreadBean [
-			label = "{ThreadBean|- currentPage : int\n- pages : int|+ ThreadBean()\n+ delete() : String\n+ deleteReply(replyId : int) : String\n+ hasPrev() : boolean\n+ hasNext() : boolean}"
+		LoginBean [
+			label = "{LoginBean|- username : UIInput\n- name : String|+ LoginBean()\n+ getLoggedIn() : boolean\n+ logout() : void\n+ login(context : FacesContext, component : UIComponent, value : Object) : void}"
 		]
-
-		//ThreadBean -> ThreadModel
-		//ThreadBean -> ReplyModel 0..*
 
 		UserBean [
 			label = "{UserBean|- USER : int\n- ADMIN : int\n- SUPER_ADMIN : int\n- currentPage : int\n- pages : int|+ UserBean()\n+ hasPrev() : boolean\n+ hasNext() : boolean\n+ grant(user : UserModel) : String}"
 		]
 
-		//UserBean -> UserModel 0..*
+		ProfileBean [
+			label = "{ProfileBean||+ ProfileBean()}"
+		]
+
+		ThreadBean [
+			label = "{ThreadBean|- currentPage : int\n- pages : int|+ ThreadBean()\n+ delete() : String\n+ deleteReply(replyId : int) : String\n+ hasPrev() : boolean\n+ hasNext() : boolean}"
+		]
+
+		EditReplyBean [
+			label = "{EditReplyBean|- content : String|+ save() : String}"
+		]
+
+		BoardBean [
+			label = "{BoardBean|- currentPage : int\n-pages : int|+ BoardBean()\n+ hasPrev() : boolean\n+ hasNext() : boolean}"
+		]
+
+		EditThreadBean [
+			label = "{EditThreadBean|- title : String\n- content : String\n- boardList : ArrayList\<SelectItem\>|+ EditThreadBean()\n+ save() : String}"
+		]
+
+		EditBoardBean [
+			label = "{EditBoardBean|- title : String\n- description : String\n- categoryList : ArrayList\<SelectItem\>|+ EditBoardBean()\n+ save () : String}"
+		]
+
+		CategoryBean [
+			label = "{CategoryBean||+ deleteCategory(categoryId : int) : String\n+ deleteBoatd(boardId : int) : String}"
+		]
+
+		EditCategoryBean [
+			label = "{EditCategoryBean|- title : String|+ EditCategoryBean()\n+ save() : String}"
+		]
+
+		EditProfileBean [
+			label = "{EditProfileBean|- firstName : String\n- lastName : String\n- password : String\n- passwordRepeated : String\n- email : String\n- website : String\n- location : String\n- dob : Date|+ EditProfileBean()\n+ save() : String}"
+		]
+
+		NewThreadBean [
+			label = "{NewThreadBean|- title : String\n- content : String|+ save() : String}"
+		]
+
+		RegisterBean [
+			label = "{RegisterBean|- DUB_INDEX : Pattern\n- name : String\n- password : String\n-passwordRepeated : String\n- email : String|+ save() : String}"
+		]
+
+		NewCategoryBean [
+			label = "{NewCategoryBean|- title : String|}" 
+		]
+
+		NavigationHelper [
+			label = "{NavigationHelper|- ACTIVE_CLASS : String|+ getClass(facelet : String) : String}"
+		]
+
+		Paginator [
+			label = "{Paginator|- entriesPerPage : int\n- entryCount : int\n- currentPage : int\n- pageCount : int|+ Paginator(entriesPerPage : int, entryCount : int)\n- _lowerPageBound(page : int) : int\n- _upperPageBound(page : int) : int\n+ generateOffset() : int\n+ hasPrev() : boolean\n+ hasNext() :  boolean\n+ getPrev() : int\n+ getNext() : int\n+ toString() : String}"
+		]
+
+		AccessChecker [
+			label = "{AccessChecker|- permissions : HashMap\<String, Integer\>\n|+ afterPhase(event : PhaseEvent) : void\n+ hasPermission(perm : int) : boolean\n+ beforePhase(event : PhaseEvent) : void\n+ getPhaseId() : PhaseId\n}"
+		]
+
 	}
+
+	subgraph clusterConverters {
+		label = "converters"
+
+		AgeConverter [
+			label = "{AgeConverter}"
+		]
+
+		BoardConverter [
+			label = "{BoardConverter}"
+		]
+
+		CategoryConverter [
+			label = "{CategoryConverter}"
+		]
+
+		DateConverter [
+			label = "{DateConverter}"
+		]
+
+		LengthConverter [
+			label = "{LengthConverter}"
+		]
+	}
+
+	Converter [
+		label = "{\<\<interface\>\>\njavax.faces.convert.Converter||+ getAsObject(context : FacesContext, component : UIComponent, value : String) : Object\n+ getAsString(context : FacesContext, component : UIComponent, value : Object) : String}"
+	]
+
+	subGraph clusterModels {
+		label = "models"
+
+		BoardModel [
+			label = "{BoardModel|- boardId : int\n- categoryId : int\n- title : String\n- description : String|+ BoardModel()\n+ BoardModel(boardId : int)\n+ save() : void\n+ delete() : void\n+get Category() : CategoryModel\n+ getThreads(off : int, max : int) : ArrayList\<ThreadModel\>\n+ getLastThread() : Thread\n+ getThreadCount() : int\n+ getReplyCount() : int\n+ equals(obj:Object) : boolean}"
+		]
+
+		CategoryModel [
+			label = "{CategoryModel|- categoryId : int\n- title : String|+ CategoryModel()\n+ CategoryModel(categoryId : int)\n+ save() : void\n+ delete() : void\n+ getBoards() : ArrayList\<BoardModel\>\n+ STATIC getCategories() : ArrayList\<CategoryModel\>\n+ equals(obj : Object) : boolean}"
+		]
+
+		DBConnection [
+			label = "{DBConnection|- STATIC instance : DBConnection\n- database : MysqlDataSource\n- connection : Connection|+ STATIC getInstance() : DBConnection()\n- DBConnection()\n+ finalize() : void}"
+		]
+
+		ReplyModel [
+			label = "{ReplyModel|- replyId : int\n- threadId : int\n- userId : int\n- content : String\n- createdOn : Timestamp|+ ReplyModel()\n+ ReplyModel(replyId : int)\n+ save() : void\n+ delete() : void}"
+		]
+
+		Settings [
+			label = "{Settings|- STATIC instance : Settings\n- map : HashMap\<String, String\>|- Settings()\n+ STATIC getInstance() : Setttings\n- set(key : String, value : String)\n+ get(key : String) : String}"
+		]
+
+		SettingsHandler [
+			label = "{Settings.SettingsHandler|- currentValue : String\n- currentKey : String|+ startDocument() : void\n+ startElement(namespace : String, localName : String, qName : String, attr : Attributes) : void\n+ endElement(namespace : String, localName : String, qName : String) : void\n+ characters(ch : char[], start : int, length : int) : void}"
+		]
+
+		ThreadModel [
+			label = "{ThreadModel|- threadId : int\n- boardId : int\n- userId : int\n- title : String\n- content : String\n- createdOn : Timestamp|+ ThreadModel()\n+ ThreadModel(threadId : int)\n+ save() : void\n+ delete() : void\n+ getBoard() : BoardModel\n+ getUser() : UserModel\n+ getReplies(off : int, max : int) : ArrayList\<ReplyModel\>\n- getLastReply() : ReplyModel\n- getReplyCount() : int}"
+		]
+
+		UserModel [
+			label = "{UserModel|- USER : int\n- ADMIN : int\n- SUPER_ADMIN : int\n- userId : int\n- permission : int\n- username : String\n- password : String\n- email : String\n- website : String\n- location : String\n- firstName : String\n- lastName : String\n- dateOfBirth : Timestamp\n- active : boolean\n- createdOn : Timestamp\n|+ USerModel()\n+ UserModel(userId : int)\n+ save() : void\n+ delete() : void\n+setDateOfBirth(dob : Date) : void\n+ getThreadCount() : int\n+ getReplyCount() : int\n+ getThreads(off : int, max : int) : ArrayList\<ThreadModel\>\n+ getReplies(off : int, max : int) : ArrayList\<ReplyModel\>\n+ getAvatar(size : Long) : String\n+ STATIC getUSers(off : int, max : int) : ArrayList\<UserModel\>\n+ STATIC getUserCount() : int\n+ STATIC getUserByUsername(username : String) : UserModel\n+ STATIC authenticate(username : String, password : String) : UserModel\n+ equals(obj : Object) : boolean}"
+		]
+
+	}
+
+	subGraph clusterValidators {
+		label = "validators"
+
+		EmailValidator [
+			label = "{EmailValidator||}"
+		]
+
+		EqualityValidator [
+			label = "{EqualityValidator|- v2 : UIInput|}"
+		]
+	}
+
+	Validator [
+		label = "{\<\<interface\>\>\njavax.faces.validator.Validator||+ validate(context : FacesContext, component : UIComponent, value : Object) : void}"
+	]
+
+	// Relations / Inheritation
+
+	edge [
+		arrowhead = "vee"
+	]
+
+	EditProfileBean -> LoginBean
+	NewThreadBean -> LoginBean
+
+	edge [
+		minlen = 5
+	]
+
+	BoardBean -> BoardModel
+	EditBoardBean -> BoardModel
+	EditBoardBean -> CategoryModel
+	EditCategoryBean -> CategoryModel
+	EditProfileBean -> UserModel
+	EditReplyBean -> ReplyModel
+	EditThreadBean -> ThreadModel
+	EditThreadBean -> BoardModel
+	LoginBean -> UserModel
+	ProfileBean -> UserModel
+	ThreadBean -> ThreadModel
+
+	edge [
+		arrowhead = "vee"
+		headlabel = "      0..*"
+	]
+
+	ProfileBean -> ThreadModel
+	ProfileBean -> ReplyModel
+	BoardBean -> ThreadModel
+	CategoryBean -> CategoryModel
+	ThreadBean -> ReplyModel
+	UserBean -> UserModel
+
+	edge [
+		minlen = 0
+		headlabel = ""
+	]
+
+	ReplyModel -> ThreadModel
+	ReplyModel -> UserModel
+
+	edge [
+		arrowhead = "vee"
+		headlabel = "      2"
+		minlen = 1
+	]
+
+	ProfileBean -> Paginator
+
+	edge [
+		arrowhead = "empty"
+		headlabel = ""
+		style = "dashed"
+	]
+
+	AgeConverter -> Converter
+	BoardConverter -> Converter
+	CategoryConverter -> Converter
+	DateConverter -> Converter
+	LengthConverter -> Converter
+
+	EqualityValidator -> Validator
+	EmailValidator -> Validator
 }
