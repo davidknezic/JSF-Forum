@@ -33,7 +33,7 @@ public class DBConnection {
 	/**
 	 * Constructor
 	 */
-	public DBConnection() throws Throwable {
+	private DBConnection() throws Throwable {
 		// Get Settings
 		Settings settings = Settings.getInstance();
 		

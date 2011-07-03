@@ -14,7 +14,7 @@ public class Settings {
 	private static Settings instance;
 	private HashMap<String, String> map = new HashMap<String, String>();
 	
-	public Settings() throws Exception {
+	private Settings() throws Exception {
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser		 parser  = factory.newSAXParser();
