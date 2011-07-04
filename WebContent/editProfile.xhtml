@@ -18,13 +18,13 @@
 						<h:outputText value="#{msgs.firstName}" />
 						<h:panelGroup>
 							<h:inputText value="#{editProfileBean.firstName}" id="firstName" />
-							<h:message layout="list" class="messages" for="firstName" />
+							<h:message styleClass="messages" for="firstName" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.lastName}" />
 						<h:panelGroup>
 							<h:inputText value="#{editProfileBean.lastName}" id="lastName" />
-							<h:message layout="list" class="messages" for="lastName" />
+							<h:message styleClass="messages" for="lastName" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.password}" />
@@ -33,16 +33,16 @@
 								binding="#{equalityValidator.v2}" validatorMessage="#{msgs.passwordMin}">
 								<f:validateLength minimum="5" />
 							</h:inputSecret>
-							<h:message layout="list" class="messages" for="pw" />
+							<h:message styleClass="messages" for="pw" />
 							<h:outputText value="#{msgs.blankNoChange}" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.passwordRepeat}" />
 						<h:panelGroup>
-							<h:inputSecret id="pwRep"
+							<h:inputSecret value="#{editProfileBean.passwordRepeated}"  id="pwRep"
 								validator="#{equalityValidator.validate}"
 								validatorMessage="#{msgs.passwordsNotEqual}" />
-							<h:message layout="list" class="messages" for="pwRep" />
+							<h:message styleClass="messages" for="pwRep" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.email}" />
@@ -50,19 +50,19 @@
 							<h:inputText value="#{editProfileBean.email}" id="email"
 								required="true" requiredMessage="emailRequired"
 								validator="EmailValidator" validatorMessage="#{msgs.emailInvalid}" />
-							<h:message layout="list" class="messages" for="email" />
+							<h:message styleClass="messages" for="email" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.website}" />
 						<h:panelGroup>
 							<h:inputText value="#{editProfileBean.website}" id="website" />
-							<h:message layout="list" class="messages" for="website" />
+							<h:message styleClass="messages" for="website" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.location}" />
 						<h:panelGroup>
 							<h:inputText value="#{editProfileBean.location}" id="location" />
-							<h:message layout="list" class="messages" for="location" />
+							<h:message styleClass="messages" for="location" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.dateOfBirth}" />
@@ -70,7 +70,7 @@
 							<h:inputText value="#{editProfileBean.dob}" id="dateOfBirth" converterMessage="#{msgs.dateInvalid}">
 								<f:convertDateTime pattern="dd.MM.yyyy" />
 							</h:inputText>
-							<h:message layout="list" class="messages" for="dateOfBirth" />
+							<h:message styleClass="messages" for="dateOfBirth" />
 						</h:panelGroup>
 
 						<h:panelGroup>

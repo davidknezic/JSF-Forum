@@ -59,22 +59,18 @@ public class EditProfileBean {
 		this.lastName = lastName;
 	}
 
-	// FIXME: I'm broken!
 	public String getPassword() {
-		return "";
+		return this.password;
 	}
 	
-	// FIXME: I'm broken!
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
-	// FIXME: I'm broken!
 	public String getPasswordRepeated() {
-		return "";
+		return this.passwordRepeated;
 	}
 	
-	// FIXME: I'm broken!
 	public void setPasswordRepeated(String passwordRepeated) {
 		this.passwordRepeated = passwordRepeated;
 	}
@@ -120,7 +116,6 @@ public class EditProfileBean {
 	}
 
 	public void setLoginBean(LoginBean loginBean) {
-		System.out.println("set " + loginBean);
 		this.loginBean = loginBean;
 	}
 
@@ -130,12 +125,19 @@ public class EditProfileBean {
 			FacesContext.getCurrentInstance().getExternalContext().redirect(re);
 		}
 		
-		this.user.setEmail(email);
-		this.user.setWebsite(website);
-		this.user.setLocation(location);
-		this.user.setDateOfBirth(dob);
-		this.user.setFirstName(firstName);
-		this.user.setLastName(lastName);
+		this.user.setEmail(this.email);
+		this.user.setWebsite(this.website);
+		this.user.setLocation(this.location);
+		this.user.setDateOfBirth(this.dob);
+		this.user.setFirstName(this.firstName);
+		this.user.setLastName(this.lastName);
+		
+		System.out.println(password);
+		System.out.println(passwordRepeated);
+		
+		if(this.password != null && !this.password.equals("") && this.passwordRepeated != null && !this.passwordRepeated.equals("")) {
+			this.user.setPassword(this.password);
+		}
 		
 		this.user.save();
 		
