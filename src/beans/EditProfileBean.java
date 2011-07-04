@@ -28,9 +28,7 @@ public class EditProfileBean {
 	private LoginBean loginBean;
 	
 	public EditProfileBean() throws Throwable {
-		int userId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userId"));
-		
-		this.user = new UserModel(userId);
+		this.user = this.loginBean.getUser();
 		
 		this.firstName = this.user.getFirstName();
 		this.lastName = this.user.getLastName();
@@ -118,6 +116,7 @@ public class EditProfileBean {
 	}
 
 	public void setLoginBean(LoginBean loginBean) {
+		System.out.println("set " + loginBean);
 		this.loginBean = loginBean;
 	}
 
