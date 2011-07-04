@@ -183,7 +183,7 @@ digraph G {
 		]
 
 		UsernameValidator [
-			label = "{EqualityValidator||- getResourceBundle(context : FacesContext) : ResourceBundle}"
+			label = "{UsernameValidator||- getResourceBundle(context : FacesContext) : ResourceBundle}"
 		]
 	}
 
@@ -258,4 +258,5 @@ digraph G {
 
 	EqualityValidator -> Validator
 	EmailValidator -> Validator
+	UsernameValidator -> Validator
 }
