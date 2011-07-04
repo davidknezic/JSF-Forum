@@ -25,6 +25,7 @@
 							<f:param name="userId" value="#{queryManager.get('userId')}" />
 						</h:commandLink>
 						<h:outputLink value="editProfile.xhtml">
+							<f:param name="userId" value="#{loginBean.user.userId}" />
 							<h:outputText value="#{msgs.editProfile}" />
 						</h:outputLink>
 					</h:form>
