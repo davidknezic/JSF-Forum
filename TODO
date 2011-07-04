@@ -7,6 +7,7 @@ This is a list of tasks to complete in the future. Feel free to extend!
 ----------------
 * Check for duplicate username in register form by validator
 * Implement password editing on editProfile facelet
+* Add a link back to the board on thread page
 
 2. Normal priority
 ------------------
