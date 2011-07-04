@@ -69,6 +69,13 @@
         
     </validator>
 	
+    <validator>
+    
+        <validator-id>UsernameValidator</validator-id>
+        <validator-class>validators.UsernameValidator</validator-class>
+        
+    </validator>
+	
 	<lifecycle>
  		<phase-listener>beans.AccessChecker</phase-listener>
 	</lifecycle>

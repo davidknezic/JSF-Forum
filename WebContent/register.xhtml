@@ -19,10 +19,10 @@
 						<h:outputText value="#{msgs.username}" />
 						<h:panelGroup>
 							<h:inputText value="#{registerBean.name}" id="usernameIn"
-								required="true" requiredMessage="usernameRequired" validatorMessage="#{msgs.usernameMin}" >
+								required="true" requiredMessage="usernameRequired" validator="UsernameValidator" >
 								<f:validateLength minimum="3" />
 							</h:inputText>
-							<h:message layout="list" class="messages" for="usernameIn" />
+							<h:message styleClass="messages" for="usernameIn" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.password}" />
@@ -33,7 +33,7 @@
 								binding="#{equalityValidator.v2}">
 								<f:validateLength minimum="5" />
 							</h:inputSecret>
-							<h:message layout="list" class="messages" for="pw" />
+							<h:message styleClass="messages" for="pw" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.passwordRepeat}" />
@@ -42,7 +42,7 @@
 								id="pwRep" required="true" requiredMessage="#{msgs.passwordRequired}"
 								validator="#{equalityValidator.validate}"
 								validatorMessage="#{msgs.passwordsNotEqual}" />
-							<h:message layout="list" class="messages" for="pwRep" />
+							<h:message styleClass="messages" for="pwRep" />
 						</h:panelGroup>
 
 						<h:outputText value="#{msgs.email}" />
@@ -50,7 +50,7 @@
 							<h:inputText value="#{registerBean.email}" id="email"
 								required="true" requiredMessage="#{msgs.emailRequired}"
 								validator="EmailValidator" validatorMessage="#{msgs.emailInvalid}" />
-							<h:message layout="list" class="messages" for="email" />
+							<h:message styleClass="messages" for="email" />
 						</h:panelGroup>
 
 						<h:panelGroup>
