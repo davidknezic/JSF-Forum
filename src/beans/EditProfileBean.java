@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.Date;
+import javax.annotation.PostConstruct;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -27,8 +28,11 @@ public class EditProfileBean {
 	@ManagedProperty(value = "#{loginBean}")
 	private LoginBean loginBean;
 	
-	public EditProfileBean() throws Throwable {
-		this.user = this.loginBean.getUser();
+	// Can't do this in constructor becuase it needs to run after the setter injection of loginBean
+	@PostConstruct
+	public void init()
+	{
+		this.user = this.getLoginBean().getUser();
 		
 		this.firstName = this.user.getFirstName();
 		this.lastName = this.user.getLastName();
