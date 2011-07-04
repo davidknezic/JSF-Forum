@@ -77,7 +77,7 @@ digraph G {
 		]
 
 		EditProfileBean [
-			label = "{EditProfileBean|- firstName : String\n- lastName : String\n- password : String\n- passwordRepeated : String\n- email : String\n- website : String\n- location : String\n- dob : Date|+ init() : void\n+ save() : String}"
+			label = "{EditProfileBean|- firstName : String\n- lastName : String\n- password : String\n- passwordRepeated : String\n- email : String\n- website : String\n- location : String\n- dob : Date|+ EditProfileBean()\n+ save() : String}"
 		]
 
 		NewThreadBean [

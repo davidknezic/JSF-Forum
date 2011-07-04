@@ -10,10 +10,10 @@ import javax.faces.context.FacesContext;
 
 import models.UserModel;
 
-
 @ManagedBean
 @RequestScoped
 public class EditProfileBean {
+
 	private String firstName;
 	private String lastName;
 	private String password;
@@ -22,27 +22,23 @@ public class EditProfileBean {
 	private String website;
 	private String location;
 	private Date dob;
-	
 	private UserModel user;
-	
 	@ManagedProperty(value = "#{loginBean}")
 	private LoginBean loginBean;
-	
-	// Can't do this in constructor becuase it needs to run after the setter injection of loginBean
-	@PostConstruct
-	public void init()
-	{
-		this.user = this.getLoginBean().getUser();
-		
+
+	public EditProfileBean() throws Throwable {
+		int userId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("userId"));
+		this.user = new UserModel(userId);
+
 		this.firstName = this.user.getFirstName();
 		this.lastName = this.user.getLastName();
 		this.email = this.user.getEmail();
 		this.website = this.user.getWebsite();
 		this.location = this.user.getLocation();
-		
+
 		this.dob = this.user.getDateOfBirth();
 	}
-	
+
 	public String getFirstName() {
 		return this.firstName;
 	}
@@ -62,27 +58,27 @@ public class EditProfileBean {
 	public String getPassword() {
 		return this.password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getPasswordRepeated() {
 		return this.passwordRepeated;
 	}
-	
+
 	public void setPasswordRepeated(String passwordRepeated) {
 		this.passwordRepeated = passwordRepeated;
 	}
-	
+
 	public String getEmail() {
 		return this.email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getWebsite() {
 		return this.website;
 	}
@@ -110,7 +106,7 @@ public class EditProfileBean {
 	public UserModel getUser() {
 		return this.user;
 	}
-	
+
 	public LoginBean getLoginBean() {
 		return loginBean;
 	}
@@ -120,24 +116,24 @@ public class EditProfileBean {
 	}
 
 	public String save() throws Throwable {
-		if(!loginBean.getLoggedin() || !loginBean.getUser().equals(this.user)) {
+		if (!loginBean.getLoggedin() || !(loginBean.getUser().getPermission() >= UserModel.ADMIN || loginBean.getUser().equals(this.user))) {
 			String re = String.format("insufficientPermission.xhtml");
 			FacesContext.getCurrentInstance().getExternalContext().redirect(re);
 		}
-		
+
 		this.user.setEmail(this.email);
 		this.user.setWebsite(this.website);
 		this.user.setLocation(this.location);
 		this.user.setDateOfBirth(this.dob);
 		this.user.setFirstName(this.firstName);
 		this.user.setLastName(this.lastName);
-		
-		if(this.password != null && !this.password.equals("") && this.passwordRepeated != null && !this.passwordRepeated.equals("")) {
+
+		if (this.password != null && !this.password.equals("") && this.passwordRepeated != null && !this.passwordRepeated.equals("")) {
 			this.user.setPassword(this.password);
 		}
-		
+
 		this.user.save();
-		
+
 		return String.format("profile.xhtml?userId=%d", this.user.getUserId());
 	}
 }
