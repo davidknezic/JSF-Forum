@@ -126,7 +126,7 @@ digraph G {
 		]
 
 		LengthConverter [
-			label = "{LengthConverter}"
+			label = "{LengthConverter||- LENGTH : int}"
 		]
 	}
 
@@ -142,11 +142,11 @@ digraph G {
 		]
 
 		CategoryModel [
-			label = "{CategoryModel|- categoryId : int\n- title : String|+ CategoryModel()\n+ CategoryModel(categoryId : int)\n+ save() : void\n+ delete() : void\n+ getBoards() : ArrayList\<BoardModel\>\n+ STATIC getCategories() : ArrayList\<CategoryModel\>\n+ equals(obj : Object) : boolean}"
+			label = "{CategoryModel|- categoryId : int\n- title : String|+ CategoryModel()\n+ CategoryModel(categoryId : int)\n+ save() : void\n+ delete() : void\n+ getBoards() : ArrayList\<BoardModel\>\n+ getCategories() : ArrayList\<CategoryModel\>\n+ equals(obj : Object) : boolean}"
 		]
 
 		DBConnection [
-			label = "{DBConnection|- STATIC instance : DBConnection\n- database : MysqlDataSource\n- connection : Connection|+ STATIC getInstance() : DBConnection()\n- DBConnection()\n+ finalize() : void}"
+			label = "{DBConnection|- instance : DBConnection\n- database : MysqlDataSource\n- connection : Connection|- DBConnection()\n+ finalize() : void}"
 		]
 
 		ReplyModel [
@@ -154,7 +154,7 @@ digraph G {
 		]
 
 		Settings [
-			label = "{Settings|- STATIC instance : Settings\n- map : HashMap\<String, String\>|- Settings()\n+ STATIC getInstance() : Setttings\n- set(key : String, value : String)\n+ get(key : String) : String}"
+			label = "{Settings|- instance : Settings\n- map : HashMap\<String, String\>|- Settings()\n+ getInstance() : Setttings\n- set(key : String, value : String)\n+ get(key : String) : String}"
 		]
 
 		SettingsHandler [
@@ -166,7 +166,7 @@ digraph G {
 		]
 
 		UserModel [
-			label = "{UserModel|- USER : int\n- ADMIN : int\n- SUPER_ADMIN : int\n- userId : int\n- permission : int\n- username : String\n- password : String\n- email : String\n- website : String\n- location : String\n- firstName : String\n- lastName : String\n- dateOfBirth : Timestamp\n- active : boolean\n- createdOn : Timestamp\n|+ USerModel()\n+ UserModel(userId : int)\n+ save() : void\n+ delete() : void\n+setDateOfBirth(dob : Date) : void\n+ getThreadCount() : int\n+ getReplyCount() : int\n+ getThreads(off : int, max : int) : ArrayList\<ThreadModel\>\n+ getReplies(off : int, max : int) : ArrayList\<ReplyModel\>\n+ getAvatar(size : Long) : String\n+ STATIC getUSers(off : int, max : int) : ArrayList\<UserModel\>\n+ STATIC getUserCount() : int\n+ STATIC getUserByUsername(username : String) : UserModel\n+ STATIC authenticate(username : String, password : String) : UserModel\n+ equals(obj : Object) : boolean}"
+			label = "{UserModel|- USER : int\n- ADMIN : int\n- SUPER_ADMIN : int\n- userId : int\n- permission : int\n- username : String\n- password : String\n- email : String\n- website : String\n- location : String\n- firstName : String\n- lastName : String\n- dateOfBirth : Timestamp\n- active : boolean\n- createdOn : Timestamp\n|+ USerModel()\n+ UserModel(userId : int)\n+ save() : void\n+ delete() : void\n+setDateOfBirth(dob : Date) : void\n+ getThreadCount() : int\n+ getReplyCount() : int\n+ getThreads(off : int, max : int) : ArrayList\<ThreadModel\>\n+ getReplies(off : int, max : int) : ArrayList\<ReplyModel\>\n+ getAvatar(size : Long) : String\n+ getUSers(off : int, max : int) : ArrayList\<UserModel\>\n+ getUserCount() : int\n+ getUserByUsername(username : String) : UserModel\n+ authenticate(username : String, password : String) : UserModel\n+ equals(obj : Object) : boolean}"
 		]
 
 	}
@@ -180,6 +180,10 @@ digraph G {
 
 		EqualityValidator [
 			label = "{EqualityValidator|- v2 : UIInput|}"
+		]
+
+		UsernameValidator [
+			label = "{EqualityValidator||- getResourceBundle(context : FacesContext) : ResourceBundle}"
 		]
 	}
 
