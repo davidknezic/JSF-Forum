@@ -132,9 +132,6 @@ public class EditProfileBean {
 		this.user.setFirstName(this.firstName);
 		this.user.setLastName(this.lastName);
 		
-		System.out.println(password);
-		System.out.println(passwordRepeated);
-		
 		if(this.password != null && !this.password.equals("") && this.passwordRepeated != null && !this.passwordRepeated.equals("")) {
 			this.user.setPassword(this.password);
 		}

@@ -63,9 +63,6 @@ public class ProfileBean {
 		 */
 		this.latestThreads = this.user.getThreads(this.threadPaginator.generateOffset(), threadsPerPage);
 		this.latestReplies = this.user.getReplies(this.replyPaginator.generateOffset(), repliesPerPage);
-		
-		System.out.println(this.threadPaginator.toString());
-		System.out.println(this.replyPaginator.toString());
 	}
 
 	public UserModel getUser() {

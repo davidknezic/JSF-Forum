@@ -25,7 +25,6 @@ public class EqualityValidator implements Validator {
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object v1)
 			throws ValidatorException {
-		System.out.println("validate");
         if (!v1.equals(v2.getLocalValue())) {
             FacesMessage message = new FacesMessage();
             message.setDetail("Values are not equal");
